@@ -1,0 +1,2174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f7f4ed" />
+  <title>叁缺壹｜独立音乐乐迷聚集地</title>
+
+  <!-- Supabase -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+  <style>
+    :root {
+      --paper: #f6f3eb;
+      --paper-2: #eeebe2;
+      --ink: #20201d;
+      --muted: #77766f;
+      --line: rgba(32, 32, 29, .13);
+
+      --blue: #5f9fa4;
+      --blue-light: #dcefed;
+
+      --yellow: #e4aa3a;
+      --yellow-light: #f8edcf;
+
+      --pink: #dc7d8e;
+      --pink-light: #f8e1e5;
+
+      --red: #c9574d;
+
+      --white: rgba(255,255,255,.72);
+      --shadow: 0 18px 50px rgba(34, 31, 25, .08);
+
+      --radius: 26px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background:
+        radial-gradient(circle at 15% 10%, rgba(95,159,164,.08), transparent 25%),
+        radial-gradient(circle at 85% 45%, rgba(220,125,142,.07), transparent 25%),
+        var(--paper);
+      color: var(--ink);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "PingFang SC",
+        "Microsoft YaHei",
+        "Noto Sans SC",
+        sans-serif;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* =========================
+       顶部
+    ========================= */
+
+    .topbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      background: rgba(246,243,235,.78);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(32,32,29,.07);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 20px;
+      letter-spacing: -.05em;
+    }
+
+    .logo-mark {
+      width: 36px;
+      height: 36px;
+      border: 2px solid var(--ink);
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      transform: rotate(-7deg);
+      font-size: 14px;
+    }
+
+    .nav {
+      display: flex;
+      gap: 34px;
+      color: #55544e;
+      font-size: 14px;
+    }
+
+    .nav a {
+      position: relative;
+    }
+
+    .nav a:hover {
+      color: var(--red);
+    }
+
+    .nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -8px;
+      height: 2px;
+      background: var(--red);
+      transform: scaleX(0);
+      transition: .25s;
+    }
+
+    .nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    .menu {
+      display: none;
+      border: 0;
+      background: none;
+      font-size: 25px;
+    }
+
+    /* =========================
+       Hero
+    ========================= */
+
+    .hero {
+      min-height: 720px;
+      padding: 120px 5vw 70px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1380px;
+      margin: auto;
+      min-height: 620px;
+      position: relative;
+      display: grid;
+      grid-template-columns: .8fr 1.25fr;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 3;
+      padding-left: 2vw;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,.5);
+      font-size: 13px;
+      margin-bottom: 28px;
+    }
+
+    .eyebrow span {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--red);
+    }
+
+    .hero h1 {
+      font-family:
+        "STKaiti",
+        "KaiTi",
+        "FZKai-Z03",
+        serif;
+      font-size: clamp(56px, 7vw, 108px);
+      line-height: .95;
+      letter-spacing: -.08em;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 em {
+      display: block;
+      color: var(--red);
+      font-style: normal;
+      transform: rotate(-3deg);
+    }
+
+    .hero-desc {
+      max-width: 430px;
+      font-size: 17px;
+      color: #66655e;
+      line-height: 2;
+      margin-bottom: 30px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .hero-btn {
+      border: 1px solid var(--ink);
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: var(--ink);
+      color: white;
+      transition: .25s;
+    }
+
+    .hero-btn:hover {
+      transform: translateY(-3px) rotate(-1deg);
+    }
+
+    .hero-btn.secondary {
+      background: transparent;
+      color: var(--ink);
+    }
+
+    .hero-image-wrap {
+      position: relative;
+      z-index: 2;
+    }
+
+    .brush {
+      position: absolute;
+      inset: -35px -50px -30px -80px;
+      background: #1d243d;
+      clip-path: polygon(
+        10% 13%, 31% 4%, 56% 8%, 82% 2%,
+        96% 17%, 90% 37%, 99% 57%,
+        91% 82%, 68% 90%, 48% 98%,
+        22% 91%, 3% 77%, 8% 54%,
+        0% 33%
+      );
+      transform: rotate(-2deg);
+      z-index: -1;
+      opacity: .95;
+    }
+
+    .hero-image {
+      width: 100%;
+      aspect-ratio: 1.18 / 1;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      filter: saturate(.9) contrast(1.02);
+      clip-path: polygon(
+        5% 6%, 29% 3%, 57% 7%, 88% 4%,
+        97% 20%, 94% 48%, 99% 76%,
+        80% 94%, 48% 96%, 20% 91%,
+        4% 77%, 7% 45%, 1% 23%
+      );
+    }
+
+    .hero-note {
+      position: absolute;
+      right: -10px;
+      bottom: 18px;
+      padding: 13px 18px;
+      background: #fff7d9;
+      border: 1px solid rgba(32,32,29,.12);
+      transform: rotate(4deg);
+      box-shadow: 5px 8px 0 rgba(32,32,29,.08);
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 19px;
+    }
+
+    .scribble {
+      position: absolute;
+      width: 170px;
+      height: 45px;
+      border-top: 5px solid #8bc5c5;
+      transform: rotate(-5deg);
+      opacity: .8;
+    }
+
+    .scribble.one {
+      left: 3%;
+      bottom: 105px;
+    }
+
+    .scribble.two {
+      right: 8%;
+      top: 80px;
+      border-color: #e89aa5;
+      transform: rotate(8deg);
+    }
+
+    /* =========================
+       Section
+    ========================= */
+
+    .section {
+      max-width: 1240px;
+      margin: 0 auto;
+      padding: 80px 5vw;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      margin-bottom: 35px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1;
+      letter-spacing: -.07em;
+    }
+
+    .section-desc {
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* =========================
+       三大模块
+    ========================= */
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      position: relative;
+      min-height: 430px;
+      padding: 30px;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(32,32,29,.09);
+      box-shadow: var(--shadow);
+      transition: .35s;
+    }
+
+    .feature:hover {
+      transform: translateY(-8px) rotate(-.4deg);
+      box-shadow: 0 25px 65px rgba(34,31,25,.13);
+    }
+
+    .feature-city {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.65), transparent),
+        var(--blue-light);
+    }
+
+    .feature-shop {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.7), transparent),
+        var(--yellow-light);
+    }
+
+    .feature-friend {
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.7), transparent),
+        var(--pink-light);
+    }
+
+    .feature-num {
+      display: inline-grid;
+      place-items: center;
+      width: 47px;
+      height: 47px;
+      border-radius: 50%;
+      color: white;
+      font-weight: 800;
+      margin-bottom: 38px;
+    }
+
+    .feature-city .feature-num {
+      background: var(--blue);
+    }
+
+    .feature-shop .feature-num {
+      background: var(--yellow);
+    }
+
+    .feature-friend .feature-num {
+      background: var(--pink);
+    }
+
+    .feature h3 {
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 35px;
+      line-height: 1.15;
+      margin-bottom: 18px;
+      letter-spacing: -.05em;
+    }
+
+    .feature p {
+      color: #68675f;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .feature-art {
+      position: absolute;
+      right: 25px;
+      bottom: 82px;
+      font-size: 75px;
+      opacity: .2;
+      transform: rotate(-8deg);
+    }
+
+    .feature-btn {
+      position: absolute;
+      bottom: 25px;
+      left: 30px;
+      right: 30px;
+      border: 1px solid currentColor;
+      background: rgba(255,255,255,.42);
+      border-radius: 999px;
+      padding: 11px;
+      transition: .25s;
+    }
+
+    .feature-btn:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    /* =========================
+       城市 / 日期
+    ========================= */
+
+    .city-panel {
+      margin-top: 35px;
+      padding: 30px;
+      background: rgba(255,255,255,.57);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .filter-title {
+      width: 100%;
+      font-weight: 800;
+      margin-bottom: 3px;
+    }
+
+    .filter {
+      border: 1px solid var(--line);
+      background: white;
+      border-radius: 999px;
+      padding: 8px 17px;
+      transition: .2s;
+    }
+
+    .filter.active,
+    .filter:hover {
+      background: var(--ink);
+      color: white;
+    }
+
+    .event-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .event {
+      display: grid;
+      grid-template-columns: 100px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.65);
+      border: 1px solid rgba(32,32,29,.08);
+      transition: .2s;
+    }
+
+    .event:hover {
+      transform: translateX(5px);
+    }
+
+    .event-date {
+      font-weight: 900;
+      font-size: 20px;
+    }
+
+    .event-city {
+      font-weight: 800;
+    }
+
+    .event-info {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .event-link {
+      border: 0;
+      background: none;
+      font-size: 20px;
+    }
+
+    /* =========================
+       商城
+    ========================= */
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .product {
+      background: rgba(255,255,255,.67);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 15px;
+      transition: .3s;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-img {
+      aspect-ratio: 1;
+      border-radius: 16px;
+      background:
+        linear-gradient(135deg, #d6d1c6, #eee8db);
+      display: grid;
+      place-items: center;
+      font-size: 75px;
+      margin-bottom: 16px;
+    }
+
+    .product h4 {
+      font-size: 17px;
+      margin-bottom: 4px;
+    }
+
+    .product p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .product-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price {
+      font-weight: 900;
+      font-size: 18px;
+    }
+
+    .buy {
+      border: 0;
+      border-radius: 999px;
+      padding: 8px 15px;
+      background: var(--ink);
+      color: white;
+    }
+
+    /* =========================
+       交友
+    ========================= */
+
+    .friend-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 20px;
+    }
+
+    .post-form,
+    .posts {
+      background: rgba(255,255,255,.6);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px;
+    }
+
+    .post-form h3 {
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 30px;
+      margin-bottom: 10px;
+    }
+
+    .post-form p {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 20px;
+    }
+
+    .input {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      padding: 12px 14px;
+      background: rgba(255,255,255,.7);
+      outline: none;
+      margin-bottom: 11px;
+    }
+
+    .input:focus {
+      border-color: var(--blue);
+    }
+
+    textarea.input {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    .post-submit {
+      width: 100%;
+      border: 0;
+      border-radius: 999px;
+      background: var(--pink);
+      color: white;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    .post-list {
+      display: grid;
+      gap: 12px;
+      max-height: 550px;
+      overflow-y: auto;
+    }
+
+    .post {
+      padding: 17px;
+      background: rgba(255,255,255,.75);
+      border-radius: 18px;
+      border: 1px solid rgba(32,32,29,.07);
+    }
+
+    .post-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .post-name {
+      font-weight: 800;
+    }
+
+    .post-city {
+      color: var(--pink);
+      font-size: 12px;
+    }
+
+    .post-content {
+      color: #5d5c56;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* =========================
+       微信
+    ========================= */
+
+    .contact {
+      max-width: 1100px;
+      margin: 40px auto 100px;
+      padding: 50px;
+      border-radius: 35px;
+      position: relative;
+      overflow: hidden;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.8), rgba(255,255,255,.42)),
+        #e7f0ed;
+      border: 1px solid rgba(32,32,29,.08);
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr 230px;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .contact::before {
+      content: "";
+      position: absolute;
+      width: 280px;
+      height: 45px;
+      background: #e99aa5;
+      opacity: .35;
+      transform: rotate(-8deg);
+      left: -50px;
+      bottom: 25px;
+    }
+
+    .contact h2 {
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: clamp(35px, 5vw, 55px);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .contact h2 span {
+      position: relative;
+    }
+
+    .contact h2 span::after {
+      content: "";
+      position: absolute;
+      height: 8px;
+      left: -3px;
+      right: -3px;
+      bottom: 0;
+      background: #e99aa5;
+      opacity: .5;
+      z-index: -1;
+    }
+
+    .wechat-id {
+      font-size: 18px;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+
+    .contact-desc {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .qr {
+      width: 210px;
+      height: 210px;
+      background: white;
+      padding: 10px;
+      border-radius: 20px;
+      object-fit: contain;
+      box-shadow: 0 15px 35px rgba(0,0,0,.1);
+    }
+
+    /* =========================
+       Footer
+    ========================= */
+
+    footer {
+      text-align: center;
+      padding: 40px 20px 100px;
+      color: #88877f;
+      font-size: 12px;
+    }
+
+    /* =========================
+       Mobile Bottom Nav
+    ========================= */
+
+    .bottom-nav {
+      display: none;
+    }
+
+    /* =========================
+       Modal
+    ========================= */
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(25,25,23,.45);
+      backdrop-filter: blur(8px);
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal-box {
+      width: min(520px, 100%);
+      background: var(--paper);
+      border-radius: 26px;
+      padding: 30px;
+      position: relative;
+      animation: modalIn .25s ease;
+    }
+
+    @keyframes modalIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px) scale(.97);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .modal-close {
+      position: absolute;
+      right: 20px;
+      top: 17px;
+      border: 0;
+      background: none;
+      font-size: 24px;
+    }
+
+    .modal h3 {
+      font-family: "STKaiti", "KaiTi", serif;
+      font-size: 34px;
+      margin-bottom: 12px;
+    }
+
+    .modal p {
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .modal-qr {
+      display: block;
+      width: 180px;
+      height: 180px;
+      object-fit: contain;
+      margin: 20px auto;
+      background: white;
+      padding: 8px;
+      border-radius: 15px;
+    }
+
+    /* =========================
+       Responsive
+    ========================= */
+
+    @media (max-width: 900px) {
+      .nav {
+        display: none;
+      }
+
+      .menu {
+        display: block;
+      }
+
+      .hero {
+        padding-top: 100px;
+      }
+
+      .hero-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy {
+        padding-left: 0;
+        margin-bottom: 25px;
+      }
+
+      .hero h1 {
+        font-size: clamp(55px, 15vw, 90px);
+      }
+
+      .hero-image-wrap {
+        margin: 0 -2vw;
+      }
+
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .feature {
+        min-height: 340px;
+      }
+
+      .products {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .friend-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding-bottom: 70px;
+      }
+
+      .topbar {
+        height: 62px;
+        padding: 0 18px;
+      }
+
+      .logo {
+        font-size: 17px;
+      }
+
+      .logo-mark {
+        width: 31px;
+        height: 31px;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 90px 18px 40px;
+      }
+
+      .hero-inner {
+        min-height: auto;
+      }
+
+      .hero h1 {
+        font-size: 63px;
+      }
+
+      .hero-desc {
+        font-size: 15px;
+      }
+
+      .hero-image {
+        aspect-ratio: .95 / 1;
+      }
+
+      .hero-note {
+        right: 4px;
+        bottom: 8px;
+        font-size: 15px;
+      }
+
+      .section {
+        padding: 55px 18px;
+      }
+
+      .section-head {
+        display: block;
+      }
+
+      .section-desc {
+        margin-top: 10px;
+      }
+
+      .feature {
+        min-height: 330px;
+        padding: 24px;
+      }
+
+      .feature h3 {
+        font-size: 31px;
+      }
+
+      .city-panel {
+        padding: 18px;
+      }
+
+      .event {
+        grid-template-columns: 70px 1fr auto;
+        gap: 10px;
+        padding: 14px;
+      }
+
+      .event-date {
+        font-size: 16px;
+      }
+
+      .event-info {
+        font-size: 11px;
+      }
+
+      .products {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+      }
+
+      .product {
+        padding: 10px;
+        border-radius: 17px;
+      }
+
+      .product h4 {
+        font-size: 14px;
+      }
+
+      .product p {
+        font-size: 11px;
+      }
+
+      .price {
+        font-size: 15px;
+      }
+
+      .buy {
+        font-size: 11px;
+        padding: 7px 10px;
+      }
+
+      .friend-layout {
+        gap: 12px;
+      }
+
+      .post-form,
+      .posts {
+        padding: 20px;
+      }
+
+      .contact {
+        margin: 20px 18px 50px;
+        padding: 30px 22px;
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 20px;
+        border-radius: 25px;
+      }
+
+      .qr {
+        width: 180px;
+        height: 180px;
+        margin: auto;
+      }
+
+      .bottom-nav {
+        position: fixed;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 68px;
+        z-index: 150;
+        background: rgba(250,248,243,.92);
+        backdrop-filter: blur(18px);
+        border-top: 1px solid var(--line);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+
+      .bottom-nav a {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 11px;
+        color: #77766f;
+        gap: 2px;
+      }
+
+      .bottom-nav a span:first-child {
+        font-size: 20px;
+      }
+
+      .bottom-nav a.active {
+        color: var(--red);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       顶部导航
+  ========================== -->
+
+  <header class="topbar">
+    <a href="#home" class="logo">
+      <div class="logo-mark">叁</div>
+      <span>叁缺壹</span>
+    </a>
+
+    <nav class="nav">
+      <a href="#events">现场</a>
+      <a href="#records">唱片</a>
+      <a href="#friends">乐迷</a>
+      <a href="#contact">联系</a>
+    </nav>
+
+    <button class="menu">☰</button>
+  </header>
+
+
+  <!-- =========================
+       Hero
+  ========================== -->
+
+  <main>
+
+    <section class="hero" id="home">
+      <div class="hero-inner">
+
+        <div class="hero-copy">
+
+          <div class="eyebrow">
+            <span></span>
+            独立音乐乐迷聚集地
+          </div>
+
+          <h1>
+            独立的声音，
+            <em>一起听。</em>
+          </h1>
+
+          <p class="hero-desc">
+            给喜欢现场、黑胶、CD和那些不太一样的声音的人。
+            找同城乐迷，去现场，交换唱片，也许还能认识一个真正懂你的人。
+          </p>
+
+          <div class="hero-links">
+            <a href="#events" class="hero-btn">去找现场 →</a>
+            <a href="#friends" class="hero-btn secondary">找个乐迷</a>
+          </div>
+
+        </div>
+
+
+        <div class="hero-image-wrap">
+
+          <div class="brush"></div>
+
+          <!-- 你提供的现场照片 -->
+          <img
+            src="images/hero-live.jpg"
+            class="hero-image"
+            alt="独立音乐现场"
+          />
+
+          <div class="hero-note">
+            “有些歌，还是要现场听。”
+          </div>
+
+        </div>
+
+        <div class="scribble one"></div>
+        <div class="scribble two"></div>
+
+      </div>
+    </section>
+
+
+    <!-- =========================
+         三大模块
+    ========================== -->
+
+    <section class="section">
+
+      <div class="section-head">
+        <div>
+          <div class="section-kicker">Three things</div>
+          <h2 class="section-title">我们在这里做三件事</h2>
+        </div>
+
+        <div class="section-desc">
+          听现场 · 买唱片 · 认识同频的人
+        </div>
+      </div>
+
+
+      <div class="feature-grid">
+
+        <!-- 城市群 -->
+
+        <article class="feature feature-city">
+
+          <div class="feature-num">01</div>
+
+          <h3>
+            进叁缺壹<br>
+            城市 & 日期群
+          </h3>
+
+          <p>
+            上海、杭州、深圳、广州、北京……
+            找到你所在的城市群，获取演出、
+            线下聚会和乐迷活动。
+          </p>
+
+          <div class="feature-art">♫</div>
+
+          <button
+            class="feature-btn"
+            onclick="document.querySelector('#events').scrollIntoView()"
+          >
+            选择城市 →
+          </button>
+
+        </article>
+
+
+        <!-- 唱片 -->
+
+        <article class="feature feature-shop">
+
+          <div class="feature-num">02</div>
+
+          <h3>
+            实体专辑<br>
+            & 黑胶
+          </h3>
+
+          <p>
+            喜欢一张专辑，
+            就把它真正带回家。
+            CD、黑胶、限量实体，
+            支持真正做音乐的人。
+          </p>
+
+          <div class="feature-art">◎</div>
+
+          <button
+            class="feature-btn"
+            onclick="document.querySelector('#records').scrollIntoView()"
+          >
+            去逛唱片 →
+          </button>
+
+        </article>
+
+
+        <!-- 交友 -->
+
+        <article class="feature feature-friend">
+
+          <div class="feature-num">03</div>
+
+          <h3>
+            乐迷<br>
+            交友
+          </h3>
+
+          <p>
+            找一起去现场的人，
+            找同城搭子，
+            分享歌单，也可以只是聊聊
+            最近喜欢的那首歌。
+          </p>
+
+          <div class="feature-art">♡</div>
+
+          <button
+            class="feature-btn"
+            onclick="document.querySelector('#friends').scrollIntoView()"
+          >
+            去认识乐迷 →
+          </button>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         城市 / 日期
+    ========================== -->
+
+    <section class="section" id="events">
+
+      <div class="section-head">
+
+        <div>
+          <div class="section-kicker">Live</div>
+          <h2 class="section-title">进叁缺壹</h2>
+        </div>
+
+        <div class="section-desc">
+          城市群 × 日期群
+        </div>
+
+      </div>
+
+
+      <div class="city-panel">
+
+        <div class="filter-row">
+
+          <div class="filter-title">
+            选择城市
+          </div>
+
+          <button class="filter active" data-city="全部">
+            全部
+          </button>
+
+          <button class="filter" data-city="上海">
+            上海
+          </button>
+
+          <button class="filter" data-city="杭州">
+            杭州
+          </button>
+
+          <button class="filter" data-city="深圳">
+            深圳
+          </button>
+
+          <button class="filter" data-city="广州">
+            广州
+          </button>
+
+          <button class="filter" data-city="北京">
+            北京
+          </button>
+
+        </div>
+
+
+        <div class="filter-row">
+
+          <div class="filter-title">
+            选择日期
+          </div>
+
+          <button class="filter active" data-date="全部">
+            全部
+          </button>
+
+          <button class="filter" data-date="11月13日">
+            11月13日
+          </button>
+
+          <button class="filter" data-date="11月14日">
+            11月14日
+          </button>
+
+          <button class="filter" data-date="11月15日">
+            11月15日
+          </button>
+
+        </div>
+
+
+        <div class="event-list" id="eventList"></div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         唱片
+    ========================== -->
+
+    <section class="section" id="records">
+
+      <div class="section-head">
+
+        <div>
+          <div class="section-kicker">Records</div>
+          <h2 class="section-title">把喜欢的声音带回家</h2>
+        </div>
+
+        <div class="section-desc">
+          CD · 黑胶 · 实体专辑
+        </div>
+
+      </div>
+
+
+      <div class="products">
+
+        <article class="product">
+
+          <div class="product-img">
+            💿
+          </div>
+
+          <h4>独立音乐实体 CD</h4>
+
+          <p>
+            精选独立音乐人实体专辑
+          </p>
+
+          <div class="product-bottom">
+            <span class="price">¥ 68</span>
+
+            <button
+              class="buy"
+              onclick="openContact('购买实体 CD')"
+            >
+              咨询
+            </button>
+          </div>
+
+        </article>
+
+
+        <article class="product">
+
+          <div class="product-img">
+            🎵
+          </div>
+
+          <h4>独立音乐黑胶</h4>
+
+          <p>
+            限量黑胶唱片
+          </p>
+
+          <div class="product-bottom">
+            <span class="price">¥ 188</span>
+
+            <button
+              class="buy"
+              onclick="openContact('购买黑胶')"
+            >
+              咨询
+            </button>
+          </div>
+
+        </article>
+
+
+        <article class="product">
+
+          <div class="product-img">
+            🎸
+          </div>
+
+          <h4>特别版实体专辑</h4>
+
+          <p>
+            限量版 / 签名版
+          </p>
+
+          <div class="product-bottom">
+            <span class="price">¥ 128</span>
+
+            <button
+              class="buy"
+              onclick="openContact('购买特别版实体专辑')"
+            >
+              咨询
+            </button>
+          </div>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         乐迷交友
+    ========================== -->
+
+    <section class="section" id="friends">
+
+      <div class="section-head">
+
+        <div>
+          <div class="section-kicker">Friends</div>
+          <h2 class="section-title">找到同频的人</h2>
+        </div>
+
+        <div class="section-desc">
+          找搭子 · 去现场 · 聊音乐
+        </div>
+
+      </div>
+
+
+      <div class="friend-layout">
+
+        <div class="post-form">
+
+          <h3>发一条搭子帖</h3>
+
+          <p>
+            想找一个一起去现场的人？
+            留下你的城市和想说的话。
+          </p>
+
+          <input
+            id="postName"
+            class="input"
+            placeholder="你的昵称"
+            maxlength="20"
+          />
+
+          <input
+            id="postCity"
+            class="input"
+            placeholder="所在城市，例如：上海"
+            maxlength="20"
+          />
+
+          <textarea
+            id="postContent"
+            class="input"
+            placeholder="例如：11月14日想去看现场，有没有一起的？"
+            maxlength="200"
+          ></textarea>
+
+          <button
+            class="post-submit"
+            onclick="submitPost()"
+          >
+            发布搭子帖
+          </button>
+
+        </div>
+
+
+        <div class="posts">
+
+          <div class="post-list" id="postList">
+
+            <article class="post">
+
+              <div class="post-top">
+                <span class="post-name">小树</span>
+                <span class="post-city">上海</span>
+              </div>
+
+              <div class="post-content">
+                11月14日有没有一起去现场的？
+                一个人去也可以，但两个人一起应该更快乐。
+              </div>
+
+            </article>
+
+
+            <article class="post">
+
+              <div class="post-top">
+                <span class="post-name">阿岛</span>
+                <span class="post-city">杭州</span>
+              </div>
+
+              <div class="post-content">
+                最近在循环一些独立音乐，
+                想认识杭州同城的乐迷，周末一起喝杯酒聊歌也行。
+              </div>
+
+            </article>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =========================
+         联系
+    ========================== -->
+
+    <section class="contact" id="contact">
+
+      <div>
+
+        <div class="section-kicker">
+          Contact
+        </div>
+
+        <h2>
+          所有需求<br>
+          都可以联系<span>摘花花</span>
+        </h2>
+
+        <div class="wechat-id">
+          VX：zhaihuahau88
+        </div>
+
+        <div class="contact-desc">
+          演出 / 唱片 / 黑胶 / 城市群 / 乐迷交友<br>
+          扫码添加微信，直接聊。
+        </div>
+
+      </div>
+
+
+      <img
+        src="images/wechat-qr.png"
+        class="qr"
+        alt="摘花花微信二维码"
+      />
+
+    </section>
+
+  </main>
+
+
+  <!-- =========================
+       Footer
+  ========================== -->
+
+  <footer>
+    <p>独立的声音，我们一起听。</p>
+    <p style="margin-top:8px;">
+      © 2026 叁缺壹 · Independent Music Community
+    </p>
+  </footer>
+
+
+  <!-- =========================
+       手机底部导航
+  ========================== -->
+
+  <nav class="bottom-nav">
+
+    <a href="#home" class="active">
+      <span>⌂</span>
+      <span>首页</span>
+    </a>
+
+    <a href="#events">
+      <span>♬</span>
+      <span>现场</span>
+    </a>
+
+    <a href="#records">
+      <span>◎</span>
+      <span>唱片</span>
+    </a>
+
+    <a href="#friends">
+      <span>♡</span>
+      <span>乐迷</span>
+    </a>
+
+  </nav>
+
+
+  <!-- =========================
+       Modal
+  ========================== -->
+
+  <div
+    class="modal"
+    id="modal"
+    onclick="closeModal(event)"
+  >
+
+    <div
+      class="modal-box"
+      onclick="event.stopPropagation()"
+    >
+
+      <button
+        class="modal-close"
+        onclick="closeContact()"
+      >
+        ×
+      </button>
+
+      <h3 id="modalTitle">
+        联系摘花花
+      </h3>
+
+      <p id="modalText">
+        扫码添加微信，直接沟通。
+      </p>
+
+      <img
+        src="images/wechat-qr.png"
+        class="modal-qr"
+        alt="微信二维码"
+      />
+
+      <p style="text-align:center;">
+        VX：<strong>zhaihuahau88</strong>
+      </p>
+
+    </div>
+
+  </div>
+
+
+  <script>
+    /* ==================================================
+       Supabase 配置
+       ==================================================
+
+       部署到 Cloudflare 后：
+
+       1. 创建 Supabase 项目
+       2. 获取 Project URL
+       3. 获取 Publishable Key
+       4. 填到下面
+
+       注意：
+       这里只能放 publishable/anon key，
+       不要把 service_role key 放到前端。
+    ================================================== */
+
+    const SUPABASE_URL = "";
+    const SUPABASE_KEY = "";
+
+    let supabaseClient = null;
+
+    if (SUPABASE_URL && SUPABASE_KEY) {
+      supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+      );
+    }
+
+
+    /* ==================================================
+       演出数据
+    ================================================== */
+
+    const events = [
+      {
+        city: "上海",
+        date: "11月13日",
+        title: "独立音乐现场",
+        place: "上海 · Livehouse",
+        type: "进叁缺壹"
+      },
+      {
+        city: "上海",
+        date: "11月14日",
+        title: "独立音乐现场",
+        place: "上海 · Livehouse",
+        type: "进叁缺壹"
+      },
+      {
+        city: "杭州",
+        date: "11月13日",
+        title: "杭州乐迷聚会",
+        place: "杭州 · Livehouse",
+        type: "城市群"
+      },
+      {
+        city: "杭州",
+        date: "11月15日",
+        title: "独立音乐现场",
+        place: "杭州 · Livehouse",
+        type: "进叁缺壹"
+      },
+      {
+        city: "深圳",
+        date: "11月14日",
+        title: "深圳独立音乐现场",
+        place: "深圳 · Livehouse",
+        type: "进叁缺壹"
+      },
+      {
+        city: "广州",
+        date: "11月15日",
+        title: "广州乐迷见面",
+        place: "广州 · Livehouse",
+        type: "城市群"
+      },
+      {
+        city: "北京",
+        date: "11月13日",
+        title: "北京独立音乐现场",
+        place: "北京 · Livehouse",
+        type: "进叁缺壹"
+      }
+    ];
+
+    let selectedCity = "全部";
+    let selectedDate = "全部";
+
+
+    function renderEvents() {
+
+      const list = document.getElementById("eventList");
+
+      const filtered = events.filter(event => {
+
+        const cityOK =
+          selectedCity === "全部" ||
+          event.city === selectedCity;
+
+        const dateOK =
+          selectedDate === "全部" ||
+          event.date === selectedDate;
+
+        return cityOK && dateOK;
+      });
+
+
+      if (!filtered.length) {
+
+        list.innerHTML = `
+          <div style="
+            padding:40px;
+            text-align:center;
+            color:#888;
+          ">
+            暂时没有找到对应场次。
+          </div>
+        `;
+
+        return;
+      }
+
+
+      list.innerHTML = filtered.map(event => `
+
+        <article class="event">
+
+          <div class="event-date">
+            ${event.date}
+          </div>
+
+          <div>
+
+            <div class="event-city">
+              ${event.city} · ${event.title}
+            </div>
+
+            <div class="event-info">
+              ${event.place} · ${event.type}
+            </div>
+
+          </div>
+
+          <button
+            class="event-link"
+            onclick="openContact('${event.city} ${event.date} 场次')"
+          >
+            →
+          </button>
+
+        </article>
+
+      `).join("");
+    }
+
+
+    renderEvents();
+
+
+    /* ==================================================
+       城市 / 日期筛选
+    ================================================== */
+
+    document.querySelectorAll("[data-city]").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedCity = button.dataset.city;
+
+        document
+          .querySelectorAll("[data-city]")
+          .forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        renderEvents();
+      });
+
+    });
+
+
+    document.querySelectorAll("[data-date]").forEach(button => {
+
+      button.addEventListener("click", () => {
+
+        selectedDate = button.dataset.date;
+
+        document
+          .querySelectorAll("[data-date]")
+          .forEach(btn => btn.classList.remove("active"));
+
+        button.classList.add("active");
+
+        renderEvents();
+      });
+
+    });
+
+
+    /* ==================================================
+       微信弹窗
+    ================================================== */
+
+    function openContact(title) {
+
+      document.getElementById("modalTitle").innerText =
+        "联系摘花花";
+
+      document.getElementById("modalText").innerText =
+        title + "，可以直接添加微信沟通。";
+
+      document
+        .getElementById("modal")
+        .classList.add("show");
+
+    }
+
+
+    function closeContact() {
+
+      document
+        .getElementById("modal")
+        .classList.remove("show");
+
+    }
+
+
+    function closeModal(event) {
+
+      if (event.target.id === "modal") {
+        closeContact();
+      }
+
+    }
+
+
+    /* ==================================================
+       乐迷发帖
+    ================================================== */
+
+    async function submitPost() {
+
+      const name =
+        document.getElementById("postName").value.trim();
+
+      const city =
+        document.getElementById("postCity").value.trim();
+
+      const content =
+        document.getElementById("postContent").value.trim();
+
+
+      if (!name || !city || !content) {
+
+        alert("请把昵称、城市和内容都填写完整。");
+
+        return;
+      }
+
+
+      const post = {
+        name,
+        city,
+        content
+      };
+
+
+      /*
+       * 有 Supabase：
+       * 写入数据库
+       */
+
+      if (supabaseClient) {
+
+        const { error } =
+          await supabaseClient
+            .from("fan_posts")
+            .insert([post]);
+
+        if (error) {
+
+          console.error(error);
+
+          alert("发布失败，请稍后再试。");
+
+          return;
+        }
+
+      }
+
+
+      /*
+       * 无 Supabase：
+       * 先直接在前端显示
+       */
+
+      addPostToPage(post);
+
+
+      document.getElementById("postName").value = "";
+      document.getElementById("postCity").value = "";
+      document.getElementById("postContent").value = "";
+
+
+      alert("搭子帖发布成功！");
+    }
+
+
+    function addPostToPage(post) {
+
+      const list =
+        document.getElementById("postList");
+
+      const article =
+        document.createElement("article");
+
+      article.className = "post";
+
+      article.innerHTML = `
+
+        <div class="post-top">
+
+          <span class="post-name">
+            ${escapeHTML(post.name)}
+          </span>
+
+          <span class="post-city">
+            ${escapeHTML(post.city)}
+          </span>
+
+        </div>
+
+        <div class="post-content">
+          ${escapeHTML(post.content)}
+        </div>
+
+      `;
+
+      list.prepend(article);
+    }
+
+
+    function escapeHTML(str) {
+
+      return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+    }
+
+
+    /* ==================================================
+       从 Supabase 加载乐迷帖子
+    ================================================== */
+
+    async function loadPosts() {
+
+      if (!supabaseClient) {
+        return;
+      }
+
+
+      const {
+        data,
+        error
+      } = await supabaseClient
+        .from("fan_posts")
+        .select("*")
+        .order("created_at", {
+          ascending: false
+        })
+        .limit(50);
+
+
+      if (error) {
+
+        console.error("加载帖子失败：", error);
+
+        return;
+      }
+
+
+      const list =
+        document.getElementById("postList");
+
+      list.innerHTML = "";
+
+
+      data.forEach(post => {
+
+        addPostToPage({
+          name: post.name,
+          city: post.city,
+          content: post.content
+        });
+
+      });
+
+    }
+
+
+    loadPosts();
+
+
+    /* ==================================================
+       手机端导航
+    ================================================== */
+
+    document
+      .querySelectorAll(".bottom-nav a")
+      .forEach(link => {
+
+        link.addEventListener("click", () => {
+
+          document
+            .querySelectorAll(".bottom-nav a")
+            .forEach(item =>
+              item.classList.remove("active")
+            );
+
+          link.classList.add("active");
+
+        });
+
+      });
+
+
+    /* ==================================================
+       手机菜单
+    ================================================== */
+
+    document
+      .querySelector(".menu")
+      .addEventListener("click", () => {
+
+        document
+          .querySelector(".nav")
+          .classList.toggle("mobile-open");
+
+      });
+
+
+    /* ==================================================
+       ESC 关闭弹窗
+    ================================================== */
+
+    document.addEventListener("keydown", event => {
+
+      if (event.key === "Escape") {
+        closeContact();
+      }
+
+    });
+
+  </script>
+
+</body>
+</html>
