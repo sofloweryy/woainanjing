@@ -2,8 +2,13 @@
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<meta name="theme-color" content="#f3f4f4">
+
+<meta
+  name="viewport"
+  content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+>
+
+<meta name="theme-color" content="#f4f5f5">
 
 <title>摘花花的朋友们｜Independent Music Community</title>
 
@@ -11,7 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap"
   rel="stylesheet"
 >
 
@@ -23,21 +28,18 @@
 <style>
 
 :root{
-  --paper:#f3f4f4;
-  --paper-2:#f8f7f3;
-
+  --paper:#f4f5f5;
   --ink:#181a1d;
   --muted:#747a7f;
 
-  --red:#d95852;
-  --blue:#7d9dad;
-  --purple:#8e87a5;
-  --pink:#cb7a81;
+  --red:#d95b55;
+  --blue:#7d9eae;
+  --purple:#9189aa;
+  --pink:#d16e73;
 
-  --blue-light:#e2edf1;
-  --purple-light:#ece8f0;
-  --pink-light:#f3e2e4;
-  --cream:#f4ecdc;
+  --blue-light:#e5f0f4;
+  --purple-light:#efebf3;
+  --pink-light:#f6e7e8;
 
   --font-body:
     "Noto Sans SC",
@@ -76,8 +78,16 @@ html{
 
 body{
   background:
-    radial-gradient(circle at 0 0,rgba(125,157,173,.10),transparent 25%),
-    radial-gradient(circle at 100% 45%,rgba(203,122,129,.05),transparent 28%),
+    radial-gradient(
+      circle at 0 0,
+      rgba(125,158,174,.10),
+      transparent 25%
+    ),
+    radial-gradient(
+      circle at 100% 45%,
+      rgba(209,110,115,.05),
+      transparent 28%
+    ),
     var(--paper);
 
   color:var(--ink);
@@ -96,11 +106,6 @@ img{
 }
 
 
-a{
-  color:inherit;
-}
-
-
 button,
 input,
 textarea,
@@ -114,22 +119,27 @@ button{
 }
 
 
+a{
+  color:inherit;
+}
+
+
 .page{
-  width:min(1120px,calc(100% - 46px));
+  width:min(1120px,calc(100% - 48px));
 
   margin:auto;
 
-  padding:40px 0 50px;
+  padding:42px 0 34px;
 }
 
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .header{
-  margin-bottom:40px;
+  margin-bottom:38px;
 }
 
 
@@ -142,6 +152,8 @@ button{
 
   margin-bottom:10px;
 
+  color:#c64f49;
+
   font-family:var(--font-en);
 
   font-size:9px;
@@ -149,17 +161,15 @@ button{
   font-weight:700;
 
   letter-spacing:.18em;
-
-  color:#bd4742;
 }
 
 
 .brand-dots{
   position:relative;
 
-  width:23px;
+  width:24px;
 
-  height:10px;
+  height:11px;
 }
 
 
@@ -196,18 +206,20 @@ button{
 .brand{
   font-family:var(--font-hand);
 
-  font-size:clamp(52px,6vw,78px);
+  font-size:clamp(54px,6vw,80px);
 
   font-weight:400;
 
   line-height:1;
 
-  letter-spacing:.01em;
+  letter-spacing:.02em;
 }
 
 
 .brand-en{
-  margin-top:11px;
+  margin-top:10px;
+
+  color:#7d8388;
 
   font-family:var(--font-en);
 
@@ -216,22 +228,20 @@ button{
   font-weight:500;
 
   letter-spacing:.24em;
-
-  color:#777d82;
 }
 
 
 
-/* =====================================================
+/* =========================================================
    INTRO
-===================================================== */
+========================================================= */
 
 .intro{
   display:grid;
 
   grid-template-columns:.88fr 1.12fr;
 
-  gap:58px;
+  gap:52px;
 
   align-items:center;
 
@@ -239,14 +249,18 @@ button{
 }
 
 
+/* 顶部歌词：手写，一行 */
+
 .quote{
-  font-family:var(--font-literary);
+  font-family:var(--font-hand);
 
-  font-size:clamp(31px,3.7vw,48px);
+  font-size:clamp(28px,3vw,42px);
 
-  line-height:1.55;
+  line-height:1.4;
 
   letter-spacing:.015em;
+
+  white-space:nowrap;
 }
 
 
@@ -264,109 +278,129 @@ button{
 
   position:absolute;
 
-  left:-4px;
+  left:-3px;
 
-  right:-5px;
+  right:-3px;
 
-  bottom:4px;
+  bottom:3px;
 
   height:7px;
 
   z-index:-1;
 
-  background:#d9e7ec;
+  background:#d9e8ed;
 
   transform:rotate(-2deg);
 }
 
 
 
-/* =====================================================
-   HERO
-===================================================== */
+/* =========================================================
+   HERO / 不规则相框
+========================================================= */
 
 .hero{
   position:relative;
 }
 
 
-.hero-photo-wrap{
+.hero-frame{
   position:relative;
+
+  z-index:1;
 }
 
 
-.hero-photo-wrap::before{
+.hero-frame::before{
   content:"";
 
   position:absolute;
 
-  inset:-8px -7px -9px -8px;
-
-  background:#24282c;
+  inset:
+    -14px
+    -13px
+    -14px
+    -14px;
 
   z-index:-1;
 
+  background:#24282c;
+
   clip-path:polygon(
-    2% 5%,
-    28% 2%,
-    51% 5%,
-    76% 3%,
-    98% 5%,
-    96% 30%,
-    100% 58%,
+    3% 5%,
+    27% 1%,
+    49% 5%,
+    74% 2%,
+    97% 6%,
+    95% 30%,
+    99% 56%,
     96% 96%,
-    72% 98%,
+    74% 98%,
     49% 95%,
-    23% 98%,
-    3% 94%,
-    5% 63%,
-    1% 34%
+    25% 99%,
+    4% 94%,
+    6% 65%,
+    2% 36%
   );
+
+  transform:rotate(-.5deg);
 }
 
 
 .hero-photo{
   width:100%;
 
-  aspect-ratio:1.45 / 1;
+  aspect-ratio:1.48 / 1;
 
   object-fit:cover;
 
   clip-path:polygon(
-    2% 3%,
-    29% 1%,
-    54% 4%,
-    78% 2%,
-    99% 5%,
-    97% 31%,
-    100% 62%,
+    2% 4%,
+    28% 1%,
+    52% 4%,
+    77% 2%,
+    98% 5%,
+    96% 31%,
+    100% 60%,
     96% 98%,
-    70% 96%,
-    45% 99%,
-    20% 96%,
-    2% 97%,
-    4% 64%,
-    1% 33%
+    72% 96%,
+    48% 99%,
+    22% 96%,
+    2% 98%,
+    5% 64%,
+    1% 34%
   );
+
+  box-shadow:
+    0
+    15px
+    35px
+    rgba(0,0,0,.08);
 }
 
 
 .hero-note{
   position:absolute;
 
-  right:10px;
+  right:18px;
 
   bottom:-17px;
 
-  padding:10px 15px;
+  z-index:3;
 
-  background:#f2ead8;
+  padding:9px 16px;
 
-  box-shadow:4px 5px 0 rgba(0,0,0,.06);
+  background:#f5eddb;
+
+  box-shadow:
+    4px
+    5px
+    0
+    rgba(0,0,0,.05);
 
   font-family:var(--font-literary);
 
-  font-size:18px;
+  font-size:17px;
 
   transform:rotate(1.5deg);
 }
@@ -378,22 +412,22 @@ button{
 
 
 
-/* =====================================================
-   DIVIDER
-===================================================== */
+/* =========================================================
+   THREE THINGS
+========================================================= */
 
 .section-line{
   display:flex;
 
   align-items:center;
 
-  gap:15px;
+  gap:16px;
 
-  margin-bottom:24px;
+  margin-bottom:23px;
 
   font-family:var(--font-en);
 
-  font-size:8px;
+  font-size:7px;
 
   font-weight:600;
 
@@ -409,19 +443,19 @@ button{
 
   height:1px;
 
-  background:#565b5e;
+  background:#686d70;
 }
 
 
 
-/* =====================================================
+/* =========================================================
    MODULES
-===================================================== */
+========================================================= */
 
 .modules{
   display:grid;
 
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(3,minmax(0,1fr));
 
   gap:18px;
 }
@@ -430,32 +464,53 @@ button{
 .module{
   position:relative;
 
-  min-height:380px;
+  min-width:0;
 
-  padding:22px;
+  padding:24px;
 
-  border-radius:23px;
+  border-radius:26px;
+
+  border:
+    1px solid
+    rgba(0,0,0,.035);
 
   overflow:hidden;
 
-  border:1px solid rgba(0,0,0,.04);
-
-  box-shadow:0 15px 34px rgba(0,0,0,.045);
+  box-shadow:
+    0
+    14px
+    34px
+    rgba(0,0,0,.045);
 }
 
 
 .module-community{
-  background:linear-gradient(150deg,#eef4f6,var(--blue-light));
+  background:
+    linear-gradient(
+      145deg,
+      #eff6f8,
+      var(--blue-light)
+    );
 }
 
 
 .module-record{
-  background:linear-gradient(150deg,#f3f0f6,var(--purple-light));
+  background:
+    linear-gradient(
+      145deg,
+      #f4f1f6,
+      var(--purple-light)
+    );
 }
 
 
 .module-friend{
-  background:linear-gradient(150deg,#f8eeee,var(--pink-light));
+  background:
+    linear-gradient(
+      145deg,
+      #faefef,
+      var(--pink-light)
+    );
 }
 
 
@@ -466,14 +521,14 @@ button{
 
   align-items:center;
 
-  margin-bottom:12px;
+  margin-bottom:17px;
 }
 
 
 .module-number{
-  width:36px;
+  width:40px;
 
-  height:36px;
+  height:40px;
 
   display:grid;
 
@@ -492,21 +547,23 @@ button{
 
 
 .module-community .module-number{
-  background:#779bad;
+  background:var(--blue);
 }
 
 
 .module-record .module-number{
-  background:#8e87a5;
+  background:var(--purple);
 }
 
 
 .module-friend .module-number{
-  background:#d06e74;
+  background:var(--pink);
 }
 
 
 .module-type{
+  color:#7b8185;
+
   font-family:var(--font-en);
 
   font-size:6px;
@@ -514,17 +571,15 @@ button{
   font-weight:600;
 
   letter-spacing:.18em;
-
-  color:#788086;
 }
 
 
 .module h2{
-  margin-bottom:13px;
+  margin-bottom:17px;
 
   font-family:var(--font-hand);
 
-  font-size:36px;
+  font-size:42px;
 
   font-weight:400;
 
@@ -536,21 +591,16 @@ button{
 .module-placeholder{
   width:100%;
 
-  height:210px;
+  height:250px;
 
-  margin-bottom:12px;
+  margin-bottom:15px;
 
-  border-radius:8px;
+  border-radius:10px;
 }
 
 
 .module-image{
   object-fit:cover;
-}
-
-
-.group-image{
-  object-fit:contain;
 }
 
 
@@ -562,74 +612,235 @@ button{
   justify-content:center;
 
   border:
-    1px dashed rgba(24,26,29,.15);
-
-  background:
-    rgba(255,255,255,.15);
+    1px dashed
+    rgba(24,26,29,.16);
 
   color:
-    rgba(24,26,29,.29);
+    rgba(24,26,29,.28);
 
   font-family:var(--font-literary);
 
-  font-size:17px;
+  font-size:18px;
 }
 
 
 .module-list{
   font-size:15px;
 
-  line-height:1.55;
-
-  color:#26292c;
+  line-height:1.6;
 }
 
 
 
-/* =====================================================
+/* =========================================================
+   联系摘花花 + 留下足迹：错落拼贴
+========================================================= */
+
+.action-zone{
+  display:grid;
+
+  grid-template-columns:1.08fr .92fr;
+
+  gap:18px;
+
+  margin-top:18px;
+
+  align-items:start;
+}
+
+
+
+/* =========================================================
+   联系摘花花
+========================================================= */
+
+.module-contact{
+  position:relative;
+
+  min-height:180px;
+
+  padding:30px 34px;
+
+  display:flex;
+
+  flex-direction:column;
+
+  justify-content:center;
+
+  background:#faf6ee;
+
+  border:
+    1px solid
+    rgba(24,26,29,.08);
+
+  border-radius:18px;
+
+  box-shadow:
+    7px
+    8px
+    0
+    rgba(125,158,174,.10);
+
+  transform:rotate(-.5deg);
+
+  overflow:hidden;
+}
+
+
+.module-contact::before{
+  content:"";
+
+  position:absolute;
+
+  left:22px;
+
+  top:-8px;
+
+  width:66px;
+
+  height:20px;
+
+  background:
+    rgba(202,178,128,.45);
+
+  transform:rotate(-4deg);
+}
+
+
+.module-contact-title{
+  padding-right:75px;
+
+  font-family:var(--font-literary);
+
+  font-size:22px;
+
+  line-height:1.55;
+}
+
+
+.module-contact-title strong{
+  color:var(--red);
+
+  font-weight:500;
+}
+
+
+.module-contact-wechat{
+  margin-top:9px;
+
+  color:#676d71;
+
+  font-size:13px;
+}
+
+
+.qr-button{
+  width:max-content;
+
+  margin-top:15px;
+
+  padding:8px 15px;
+
+  border:
+    1px solid
+    rgba(217,91,85,.48);
+
+  border-radius:999px;
+
+  background:
+    rgba(255,255,255,.45);
+
+  color:var(--red);
+
+  font-size:12px;
+}
+
+
+.qr-button:hover{
+  background:white;
+
+  transform:translateY(-1px);
+}
+
+
+.contact-flower{
+  position:absolute;
+
+  right:24px;
+
+  bottom:18px;
+}
+
+
+.flower-big{
+  display:block;
+
+  font-family:var(--font-hand);
+
+  font-size:46px;
+
+  transform:rotate(10deg);
+
+  opacity:.85;
+}
+
+
+
+/* =========================================================
    留下足迹
-===================================================== */
+========================================================= */
 
 .coordinate{
   position:relative;
 
-  margin-top:26px;
+  min-height:200px;
 
-  padding:29px 34px;
+  margin-top:10px;
 
-  display:grid;
+  padding:30px;
 
-  grid-template-columns:1fr auto;
-
-  gap:25px;
-
-  align-items:center;
-
-  background:
-    linear-gradient(
-      130deg,
-      #faf7ef,
-      #f2ede4
-    );
+  background:#edf3f5;
 
   border:
-    1px solid rgba(24,26,29,.09);
+    1px solid
+    rgba(24,26,29,.08);
 
-  border-radius:22px;
+  border-radius:18px;
 
   box-shadow:
-    6px 7px 0
-    rgba(127,157,171,.10);
+    7px
+    8px
+    0
+    rgba(209,110,115,.08);
+
+  transform:rotate(.7deg);
 }
 
 
-.coordinate-copy{
-  min-width:0;
+.coordinate::before{
+  content:"";
+
+  position:absolute;
+
+  right:28px;
+
+  top:-9px;
+
+  width:58px;
+
+  height:19px;
+
+  background:
+    rgba(213,142,144,.32);
+
+  transform:rotate(4deg);
 }
 
 
 .coordinate-label{
-  margin-bottom:5px;
+  margin-bottom:7px;
+
+  color:var(--red);
 
   font-family:var(--font-en);
 
@@ -637,16 +848,14 @@ button{
 
   font-weight:700;
 
-  letter-spacing:.21em;
-
-  color:var(--red);
+  letter-spacing:.22em;
 }
 
 
 .coordinate-title{
   font-family:var(--font-hand);
 
-  font-size:40px;
+  font-size:42px;
 
   font-weight:400;
 
@@ -655,44 +864,45 @@ button{
 
 
 .coordinate-desc{
-  margin-top:7px;
+  margin-top:8px;
 
-  font-size:15px;
+  color:#62686c;
 
-  color:#555b60;
+  font-size:14px;
 }
 
 
 .coordinate-btn{
-  min-width:160px;
+  width:auto;
 
-  height:52px;
+  margin-top:22px;
 
-  padding:0 21px;
+  height:45px;
+
+  padding:0 22px;
 
   border:0;
 
   border-radius:999px;
 
-  background:#4f8ba9;
+  background:#6696ad;
 
   color:white;
 
-  font-size:16px;
+  font-size:13px;
 
-  transition:.2s ease;
+  box-shadow:
+    0
+    6px
+    14px
+    rgba(102,150,173,.18);
 }
 
 
-.coordinate-btn:hover{
-  transform:translateY(-2px);
-}
 
-
-
-/* =====================================================
+/* =========================================================
    花瓣墙
-===================================================== */
+========================================================= */
 
 .wall{
   padding:40px 0 30px;
@@ -715,7 +925,7 @@ button{
 .wall-title{
   font-family:var(--font-hand);
 
-  font-size:41px;
+  font-size:42px;
 
   font-weight:400;
 }
@@ -729,9 +939,9 @@ button{
 .wall-desc{
   margin-top:2px;
 
-  font-size:13px;
-
   color:#777d82;
+
+  font-size:13px;
 }
 
 
@@ -740,16 +950,17 @@ button{
 
   background:none;
 
-  color:#555b60;
+  color:#5e6468;
 
-  font-size:13px;
+  font-size:12px;
 }
 
 
 .wall-grid{
   display:grid;
 
-  grid-template-columns:repeat(4,1fr);
+  grid-template-columns:
+    repeat(4,minmax(0,1fr));
 
   gap:13px;
 }
@@ -758,17 +969,22 @@ button{
 .wall-card{
   position:relative;
 
+  min-width:0;
+
   min-height:160px;
 
   padding:18px 16px;
 
-  background:#f5eedc;
+  background:#f6efdf;
 
   border:
-    1px solid rgba(24,26,29,.08);
+    1px solid
+    rgba(24,26,29,.08);
 
   box-shadow:
-    3px 5px 0
+    3px
+    5px
+    0
     rgba(24,26,29,.035);
 }
 
@@ -813,18 +1029,18 @@ button{
 .wall-music{
   margin-bottom:12px;
 
-  font-size:11px;
-
   color:#697075;
+
+  font-size:11px;
 }
 
 
 .wall-message{
   font-family:var(--font-literary);
 
-  font-size:19px;
+  font-size:18px;
 
-  line-height:1.4;
+  line-height:1.45;
 }
 
 
@@ -836,7 +1052,8 @@ button{
   padding:3px 8px;
 
   border:
-    1px solid rgba(217,88,82,.4);
+    1px solid
+    rgba(217,88,82,.4);
 
   border-radius:999px;
 
@@ -847,226 +1064,337 @@ button{
 
 
 
-/* =====================================================
-   联系区
-===================================================== */
+/* =========================================================
+   FOLLOW
+========================================================= */
 
-.bottom-row{
+.follow{
+  margin-top:5px;
+
   display:grid;
 
-  grid-template-columns:.92fr 1.08fr;
+  grid-template-columns:190px minmax(0,1fr);
 
-  gap:16px;
-
-  margin-top:4px;
-}
-
-
-.contact{
-  display:grid;
-
-  grid-template-columns:120px 1fr;
-
-  gap:20px;
+  gap:32px;
 
   align-items:center;
 
-  padding:22px;
+  padding:24px 26px;
 
-  background:#f8f5ed;
-
-  border:
-    1px solid rgba(24,26,29,.08);
-
-  border-radius:18px;
-}
-
-
-.contact-qr{
-  width:110px;
-
-  padding:5px;
-
-  background:white;
+  background:
+    rgba(250,249,246,.75);
 
   border:
-    1px solid rgba(24,26,29,.10);
+    1px solid
+    rgba(24,26,29,.08);
+
+  border-radius:19px;
 }
 
 
-.contact-copy{
-  font-size:15px;
+.follow-photo-wrap{
+  position:relative;
 
-  line-height:1.65;
+  width:100%;
 }
 
 
-.contact-copy strong{
-  display:block;
+.follow-photo-wrap::before{
+  content:"";
 
-  margin-bottom:4px;
+  position:absolute;
 
-  font-family:var(--font-literary);
+  inset:
+    -6px
+    6px
+    6px
+    -6px;
 
-  font-size:19px;
+  background:#27292b;
+
+  z-index:-1;
+
+  transform:rotate(-2deg);
 }
 
 
-.contact-wechat{
-  margin-top:7px;
+.follow-photo{
+  width:100%;
 
-  font-size:12px;
+  aspect-ratio:.9 / 1;
 
-  color:#555b60;
+  object-fit:cover;
+
+  border-radius:4px;
 }
 
 
-
-/* =====================================================
-   FOLLOW
-===================================================== */
-
-.follow{
-  padding:22px;
-
-  background:#f8f7f3;
-
-  border:
-    1px solid rgba(24,26,29,.08);
-
-  border-radius:18px;
+.follow-content{
+  min-width:0;
 }
 
 
 .follow-heading{
-  margin-bottom:16px;
+  margin-bottom:18px;
+
+  text-align:center;
 
   font-family:var(--font-literary);
 
-  font-size:21px;
+  font-size:22px;
+
+  line-height:1.3;
 }
 
 
 .social{
   display:grid;
 
-  grid-template-columns:repeat(5,1fr);
+  grid-template-columns:
+    repeat(5,minmax(0,1fr));
 
-  gap:9px;
+  gap:8px;
 }
 
 
 .social-link{
-  min-height:72px;
+  position:relative;
+
+  min-width:0;
+
+  min-height:78px;
 
   display:flex;
 
   flex-direction:column;
 
-  justify-content:center;
-
   align-items:center;
+
+  justify-content:center;
 
   gap:5px;
 
-  padding:9px 6px;
+  padding:8px 4px;
 
   text-align:center;
 
   text-decoration:none;
 
-  border-radius:10px;
+  border-radius:11px;
 
   transition:.2s ease;
 }
 
 
+.social-link::after{
+  content:"↗";
+
+  position:absolute;
+
+  top:6px;
+
+  right:7px;
+
+  color:#a3a7aa;
+
+  font-size:9px;
+
+  opacity:.7;
+}
+
+
 .social-link:hover{
   background:white;
+
+  transform:translateY(-2px);
 }
 
 
 .social-platform{
+  color:#969b9e;
+
   font-family:var(--font-en);
 
-  font-size:6px;
+  font-size:5px;
 
   font-weight:700;
 
-  letter-spacing:.10em;
-
-  color:#8a9095;
+  letter-spacing:.11em;
 }
 
 
 .social-name{
   font-size:11px;
 
-  line-height:1.25;
+  line-height:1.35;
 }
 
 
 
-/* =====================================================
-   FOOTER
-===================================================== */
+/* =========================================================
+   FOOTER：不做黑框，一整行
+========================================================= */
 
 .footer{
-  margin-top:20px;
+  margin-top:28px;
 
-  display:flex;
+  padding:27px 10px 13px;
 
-  justify-content:space-between;
+  text-align:center;
 
-  align-items:flex-end;
-
-  gap:30px;
-
-  padding:28px 25px 18px;
-
-  background:#222629;
-
-  color:white;
-
-  clip-path:polygon(
-    0 10%,
-    12% 5%,
-    27% 9%,
-    43% 4%,
-    59% 8%,
-    74% 3%,
-    89% 7%,
-    100% 3%,
-    100% 100%,
-    0 100%
-  );
+  border-top:
+    1px solid
+    rgba(24,26,29,.20);
 }
 
 
 .footer-quote{
-  font-family:var(--font-literary);
+  font-family:var(--font-hand);
 
-  font-size:23px;
+  font-size:clamp(18px,2.2vw,28px);
 
-  line-height:1.45;
+  line-height:1.4;
+
+  white-space:nowrap;
 }
 
 
 .footer-tag{
-  flex-shrink:0;
+  margin-top:14px;
+
+  color:#7a8084;
 
   font-family:var(--font-en);
 
   font-size:7px;
 
-  letter-spacing:.23em;
+  letter-spacing:.24em;
 }
 
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* =========================================================
+   QR MODAL
+========================================================= */
+
+.qr-modal{
+  position:fixed;
+
+  inset:0;
+
+  z-index:1000;
+
+  display:none;
+
+  align-items:center;
+
+  justify-content:center;
+
+  padding:20px;
+
+  background:
+    rgba(20,22,24,.42);
+
+  backdrop-filter:blur(8px);
+
+  -webkit-backdrop-filter:
+    blur(8px);
+}
+
+
+.qr-modal.show{
+  display:flex;
+}
+
+
+.qr-box{
+  position:relative;
+
+  width:min(340px,100%);
+
+  padding:30px 25px 25px;
+
+  text-align:center;
+
+  background:#faf8f3;
+
+  border-radius:22px;
+
+  box-shadow:
+    0
+    20px
+    60px
+    rgba(0,0,0,.16);
+}
+
+
+.qr-close{
+  position:absolute;
+
+  top:12px;
+
+  right:12px;
+
+  width:34px;
+
+  height:34px;
+
+  border:0;
+
+  background:none;
+
+  font-size:22px;
+}
+
+
+.qr-title{
+  margin-bottom:17px;
+
+  font-family:var(--font-hand);
+
+  font-size:35px;
+
+  font-weight:400;
+}
+
+
+.qr-image{
+  width:190px;
+
+  margin:0 auto 14px;
+
+  padding:7px;
+
+  background:white;
+
+  border:
+    1px solid
+    rgba(24,26,29,.10);
+}
+
+
+.qr-wechat{
+  color:var(--red);
+
+  font-size:14px;
+}
+
+
+.qr-desc{
+  margin-top:9px;
+
+  color:#777d81;
+
+  font-size:12px;
+
+  line-height:1.6;
+}
+
+
+
+/* =========================================================
+   留下足迹 MODAL
+========================================================= */
 
 .modal{
   position:fixed;
@@ -1088,7 +1416,8 @@ button{
 
   backdrop-filter:blur(8px);
 
-  -webkit-backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:
+    blur(8px);
 }
 
 
@@ -1148,16 +1477,17 @@ button{
 .form-desc{
   margin:5px 0 20px;
 
-  font-size:13px;
-
   color:#71777b;
+
+  font-size:13px;
 }
 
 
 .form-grid{
   display:grid;
 
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:
+    repeat(2,minmax(0,1fr));
 
   gap:13px;
 }
@@ -1169,6 +1499,8 @@ button{
   flex-direction:column;
 
   gap:6px;
+
+  min-width:0;
 }
 
 
@@ -1178,9 +1510,9 @@ button{
 
 
 .field label{
-  font-size:12px;
-
   color:#44494d;
+
+  font-size:12px;
 }
 
 
@@ -1190,7 +1522,8 @@ button{
   width:100%;
 
   border:
-    1px solid rgba(24,26,29,.14);
+    1px solid
+    rgba(24,26,29,.14);
 
   border-radius:9px;
 
@@ -1235,7 +1568,8 @@ button{
   padding:6px 10px;
 
   border:
-    1px solid rgba(24,26,29,.13);
+    1px solid
+    rgba(24,26,29,.13);
 
   border-radius:999px;
 
@@ -1261,11 +1595,11 @@ button{
 
   gap:8px;
 
+  color:#686e72;
+
   font-size:11px;
 
   line-height:1.5;
-
-  color:#686e72;
 }
 
 
@@ -1301,72 +1635,60 @@ button{
 
 
 
-/* =====================================================
+/* =========================================================
    TABLET
-===================================================== */
+========================================================= */
 
 @media(max-width:900px){
 
   .intro{
     grid-template-columns:1fr;
 
-    gap:34px;
+    gap:30px;
   }
 
 
-  .modules{
-    grid-template-columns:repeat(3,1fr);
-
-    gap:12px;
-  }
-
-
-  .module{
-    padding:18px;
-  }
-
-
-  .module-image,
-  .module-placeholder{
-    height:180px;
+  .quote{
+    font-size:30px;
   }
 
 
   .wall-grid{
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns:
+      repeat(2,minmax(0,1fr));
   }
 
 
-  .bottom-row{
-    grid-template-columns:1fr;
+  .follow{
+    grid-template-columns:
+      160px
+      minmax(0,1fr);
+
+    gap:22px;
   }
 
 }
 
 
 
-/* =====================================================
-   真正手机端
-   纯纵向，不左右滑
-===================================================== */
+/* =========================================================
+   MOBILE：纯纵向，无左右滑动
+========================================================= */
 
 @media(max-width:650px){
 
   .page{
-    width:
-      calc(100% - 24px);
+    width:calc(100% - 24px);
 
-    padding:
-      23px 0
-      30px;
+    padding:23px 0 28px;
   }
 
 
 
-  /* header */
+  /* Header */
 
   .header{
-    margin-bottom:25px;
+    margin-bottom:26px;
   }
 
 
@@ -1378,8 +1700,7 @@ button{
 
 
   .brand{
-    font-size:
-      clamp(38px,11vw,48px);
+    font-size:clamp(38px,11vw,49px);
 
     white-space:nowrap;
   }
@@ -1393,55 +1714,58 @@ button{
 
 
 
-  /* intro */
+  /* 顶部歌词：一整行 */
 
   .intro{
     display:block;
 
-    margin-bottom:34px;
+    margin-bottom:35px;
   }
 
 
   .quote{
+    width:100%;
+
     margin-bottom:20px;
 
-    font-size:
-      clamp(20px,5.7vw,26px);
+    font-size:clamp(17px,4.9vw,22px);
 
-    line-height:1.7;
+    line-height:1.4;
+
+    letter-spacing:-.035em;
+
+    white-space:nowrap;
   }
 
 
-  .quote br{
-    display:none;
+  .quote-mark::after{
+    height:4px;
+
+    bottom:1px;
   }
 
 
-  .quote::after{
-    content:"";
-  }
 
+  /* Hero */
 
   .hero{
     width:100%;
   }
 
 
-  .hero-photo-wrap::before{
-    inset:-5px;
+  .hero-frame::before{
+    inset:-7px;
+
+    transform:rotate(-.4deg);
   }
 
 
   .hero-photo{
     width:100%;
 
-    aspect-ratio:1.55 / 1;
+    aspect-ratio:1.5 / 1;
 
     object-fit:cover;
-
-    clip-path:none;
-
-    border-radius:16px;
   }
 
 
@@ -1454,24 +1778,20 @@ button{
 
     width:max-content;
 
-    max-width:86%;
+    max-width:88%;
 
-    margin:
-      -14px auto 0;
+    margin:-12px auto 0;
 
-    padding:
-      7px 12px;
-
-    font-size:14px;
+    padding:7px 12px;
 
     text-align:center;
 
-    z-index:2;
+    font-size:14px;
   }
 
 
 
-  /* divider */
+  /* Divider */
 
   .section-line{
     margin-bottom:14px;
@@ -1481,7 +1801,7 @@ button{
 
 
 
-  /* modules 纯纵向 */
+  /* Modules */
 
   .modules{
     display:grid;
@@ -1501,19 +1821,24 @@ button{
 
     display:grid;
 
-    grid-template-columns:auto 1fr 112px;
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      112px;
 
-    grid-template-rows:auto auto;
+    grid-template-rows:
+      auto
+      auto;
 
     column-gap:12px;
 
-    row-gap:4px;
+    row-gap:5px;
 
     align-items:center;
 
     padding:16px;
 
-    border-radius:17px;
+    border-radius:18px;
   }
 
 
@@ -1547,7 +1872,9 @@ button{
 
     margin:0;
 
-    font-size:29px;
+    font-size:30px;
+
+    white-space:nowrap;
   }
 
 
@@ -1559,11 +1886,13 @@ button{
 
     width:100%;
 
-    height:86px;
+    height:87px;
 
     margin:0;
 
     border-radius:8px;
+
+    font-size:12px;
   }
 
 
@@ -1574,81 +1903,114 @@ button{
 
     padding-left:43px;
 
-    font-size:12px;
+    font-size:11.5px;
 
     line-height:1.45;
   }
 
 
 
-  /* 足迹入口 */
+  /* 拼贴区域 */
 
-  .coordinate{
-    margin-top:11px;
-
-    padding:18px 16px;
-
-    display:grid;
-
+  .action-zone{
     grid-template-columns:1fr;
 
-    gap:13px;
+    gap:12px;
 
-    border-radius:17px;
+    margin-top:12px;
   }
 
 
-  .coordinate-label{
-    font-size:4px;
+  .module-contact{
+    min-height:0;
+
+    padding:21px 19px;
+
+    transform:rotate(-.3deg);
+
+    border-radius:16px;
   }
 
 
-  .coordinate-title{
+  .module-contact-title{
+    padding-right:42px;
+
+    font-size:16px;
+  }
+
+
+  .module-contact-wechat{
+    font-size:10px;
+  }
+
+
+  .qr-button{
+    margin-top:10px;
+
+    padding:6px 12px;
+
+    font-size:10px;
+  }
+
+
+  .flower-big{
     font-size:32px;
   }
 
 
+  .coordinate{
+    min-height:0;
+
+    margin:0;
+
+    padding:21px 19px;
+
+    transform:rotate(.3deg);
+
+    border-radius:16px;
+  }
+
+
+  .coordinate-title{
+    font-size:33px;
+  }
+
+
   .coordinate-desc{
-    font-size:13px;
+    font-size:12px;
   }
 
 
   .coordinate-btn{
     width:100%;
 
-    min-width:0;
+    margin-top:14px;
 
-    height:45px;
+    height:43px;
 
-    font-size:14px;
+    font-size:13px;
   }
 
 
 
-  /* 花瓣墙，不横滑 */
+  /* Wall */
 
   .wall{
-    padding:
-      31px 0
-      25px;
+    padding:30px 0 25px;
   }
 
 
   .wall-heading{
     display:block;
-
-    margin-bottom:15px;
   }
 
 
   .wall-title{
-    font-size:33px;
+    font-size:34px;
   }
 
 
   .wall-desc{
-    margin-top:2px;
-
     font-size:11px;
   }
 
@@ -1661,169 +2023,175 @@ button{
 
 
   .wall-grid{
-    display:grid;
-
     grid-template-columns:
       repeat(2,minmax(0,1fr));
 
-    gap:9px;
-
-    width:100%;
-
-    overflow:visible;
+    gap:8px;
   }
 
 
   .wall-card{
-    min-width:0;
-
     min-height:140px;
 
-    padding:15px 13px;
+    padding:14px 12px;
   }
 
 
   .wall-meta{
-    font-size:11px;
+    font-size:10px;
   }
 
 
   .wall-music{
-    font-size:10px;
+    font-size:9px;
   }
 
 
   .wall-message{
-    font-size:16px;
+    font-size:15px;
+
+    line-height:1.45;
   }
 
 
   .wall-tag{
-    font-size:9px;
+    font-size:8px;
   }
 
 
 
-  /* 底部 */
-
-  .bottom-row{
-    display:grid;
-
-    grid-template-columns:1fr;
-
-    gap:10px;
-  }
-
-
-  .contact{
-    grid-template-columns:90px 1fr;
-
-    gap:14px;
-
-    padding:16px;
-
-    border-radius:15px;
-  }
-
-
-  .contact-qr{
-    width:82px;
-  }
-
-
-  .contact-copy{
-    font-size:12px;
-  }
-
-
-  .contact-copy strong{
-    font-size:15px;
-  }
-
-
-  .contact-wechat{
-    font-size:10px;
-  }
-
-
-
-  /* social */
+  /* Follow */
 
   .follow{
-    padding:16px;
+    display:grid;
 
-    border-radius:15px;
+    grid-template-columns:
+      90px
+      minmax(0,1fr);
+
+    gap:13px;
+
+    padding:15px 13px;
+
+    border-radius:16px;
+  }
+
+
+  .follow-photo-wrap{
+    width:90px;
+  }
+
+
+  .follow-photo{
+    width:90px;
+
+    aspect-ratio:.88 / 1;
   }
 
 
   .follow-heading{
-    margin-bottom:12px;
+    margin-bottom:11px;
 
-    font-size:16px;
+    text-align:center;
+
+    font-size:14px;
+
+    line-height:1.3;
+
+    white-space:nowrap;
   }
 
 
   .social{
-    display:grid;
-
     grid-template-columns:
       repeat(3,minmax(0,1fr));
 
-    gap:7px;
+    gap:5px;
   }
 
 
   .social-link{
-    min-height:58px;
+    min-height:54px;
 
-    padding:7px 4px;
+    padding:5px 2px;
   }
 
 
   .social-platform{
-    font-size:4px;
+    font-size:3.5px;
   }
 
 
   .social-name{
-    font-size:9px;
-  }
-
-
-  .social-link:nth-child(4),
-  .social-link:nth-child(5){
-    grid-column:auto;
+    font-size:8px;
   }
 
 
 
-  /* footer */
+  /* Footer：一行 */
 
   .footer{
-    display:block;
+    margin-top:21px;
 
-    margin-top:12px;
-
-    padding:
-      24px 16px
-      15px;
+    padding:22px 0 8px;
   }
 
 
   .footer-quote{
-    font-size:17px;
+    width:100%;
+
+    font-size:clamp(10px,3.25vw,15px);
+
+    letter-spacing:-.015em;
+
+    white-space:nowrap;
   }
 
 
   .footer-tag{
-    margin-top:13px;
+    margin-top:11px;
 
-    font-size:5px;
+    font-size:4.5px;
   }
 
 
 
-  /* modal 底部弹出 */
+  /* QR modal */
+
+  .qr-modal{
+    align-items:flex-end;
+
+    padding:8px;
+  }
+
+
+  .qr-box{
+    width:100%;
+
+    padding:
+      27px
+      20px
+      calc(
+        24px +
+        env(safe-area-inset-bottom)
+      );
+
+    border-radius:21px;
+  }
+
+
+  .qr-title{
+    font-size:34px;
+  }
+
+
+  .qr-image{
+    width:180px;
+  }
+
+
+
+  /* Form modal */
 
   .modal{
     align-items:flex-end;
@@ -1839,7 +2207,8 @@ button{
       calc(100vh - 16px);
 
     padding:
-      24px 17px
+      24px
+      17px
       calc(
         24px +
         env(safe-area-inset-bottom)
@@ -1874,9 +2243,9 @@ button{
 
 
 
-/* =====================================================
-   特别窄的手机
-===================================================== */
+/* =========================================================
+   SMALL MOBILE
+========================================================= */
 
 @media(max-width:380px){
 
@@ -1886,19 +2255,22 @@ button{
 
 
   .quote{
-    font-size:19px;
+    font-size:15px;
   }
 
 
   .module{
-    grid-template-columns:auto 1fr 95px;
+    grid-template-columns:
+      auto
+      minmax(0,1fr)
+      94px;
 
     column-gap:9px;
   }
 
 
   .module h2{
-    font-size:26px;
+    font-size:27px;
   }
 
 
@@ -1911,25 +2283,37 @@ button{
   .module-list{
     padding-left:40px;
 
-    font-size:11px;
+    font-size:10.5px;
   }
 
 
-  .wall-grid{
-    grid-template-columns:1fr 1fr;
-
-    gap:7px;
-  }
-
-
-  .wall-card{
-    padding:13px 11px;
-  }
-
-
-  .social{
+  .follow{
     grid-template-columns:
-      repeat(3,1fr);
+      78px
+      minmax(0,1fr);
+
+    gap:10px;
+  }
+
+
+  .follow-photo-wrap,
+  .follow-photo{
+    width:78px;
+  }
+
+
+  .follow-heading{
+    font-size:12px;
+  }
+
+
+  .social-name{
+    font-size:7px;
+  }
+
+
+  .footer-quote{
+    font-size:9.8px;
   }
 
 }
@@ -1940,7 +2324,9 @@ button{
 
 <body>
 
+
 <main class="page">
+
 
 
 <!-- =====================================================
@@ -1950,18 +2336,13 @@ button{
 <header class="header">
 
   <div class="brand-top">
-
     ZHAI HUA HUA
-
     <span class="brand-dots"></span>
-
   </div>
-
 
   <h1 class="brand">
     摘花花的朋友们
   </h1>
-
 
   <div class="brand-en">
     INDEPENDENT MUSIC COMMUNITY
@@ -1972,29 +2353,25 @@ button{
 
 
 <!-- =====================================================
-     INTRO
+     顶部
 ===================================================== -->
 
 <section class="intro">
 
 
   <div class="quote">
-
-    「我从遥远的地方来看你，
-    要说许多的
-    <span class="quote-mark">故事</span>
-    给你听。」
-
+    我从遥远的地方来看你，要说许多的<span class="quote-mark">故事</span>给你听。
   </div>
 
 
 
   <div class="hero">
 
-    <div class="hero-photo-wrap">
+
+    <div class="hero-frame">
 
       <img
-        src="images/lizhiconcert.jpg?v=3"
+        src="images/lizhiconcert.jpg?v=6"
         class="hero-photo"
         alt="现场照片"
       >
@@ -2006,6 +2383,7 @@ button{
       有些歌，还是要<span>现场听</span>。
     </div>
 
+
   </div>
 
 
@@ -2013,20 +2391,18 @@ button{
 
 
 
-<!-- =====================================================
-     THREE THINGS
-===================================================== -->
-
 <div class="section-line">
   THREE THINGS
 </div>
 
 
 
+<!-- =====================================================
+     THREE MODULES
+===================================================== -->
+
 <section class="modules">
 
-
-  <!-- 01 -->
 
   <article class="module module-community">
 
@@ -2049,8 +2425,6 @@ button{
     </h2>
 
 
-    <!-- 你 P 好后改成 img -->
-
     <div class="module-placeholder">
       图片施工中 :)
     </div>
@@ -2064,8 +2438,6 @@ button{
   </article>
 
 
-
-  <!-- 02 -->
 
   <article class="module module-record">
 
@@ -2101,8 +2473,6 @@ button{
   </article>
 
 
-
-  <!-- 03 -->
 
   <article class="module module-friend">
 
@@ -2143,13 +2513,55 @@ button{
 
 
 <!-- =====================================================
-     留下足迹
+     联系 + 留下足迹
 ===================================================== -->
 
-<section class="coordinate">
+<div class="action-zone">
 
 
-  <div class="coordinate-copy">
+  <section class="module-contact">
+
+
+    <div class="module-contact-title">
+
+      进群、找唱片、认识同好，<br>
+
+      都来找
+
+      <strong>
+        摘花花
+      </strong>
+
+      。
+
+    </div>
+
+
+    <div class="module-contact-wechat">
+      微信：zhaihuahua88
+    </div>
+
+
+    <button
+      class="qr-button"
+      type="button"
+      onclick="openQr()"
+    >
+      查看二维码 →
+    </button>
+
+
+    <div class="contact-flower">
+      <span class="flower-big">❀</span>
+    </div>
+
+
+  </section>
+
+
+
+  <section class="coordinate">
+
 
     <div class="coordinate-label">
       LEAVE YOUR MARK
@@ -2165,25 +2577,25 @@ button{
       你在哪座城市？最近在听谁？
     </div>
 
-  </div>
+
+    <button
+      class="coordinate-btn"
+      type="button"
+      onclick="openCoordinateForm()"
+    >
+      我也留一朵 🌼
+    </button>
 
 
-
-  <button
-    class="coordinate-btn"
-    type="button"
-    onclick="openCoordinateForm()"
-  >
-    我也留一朵 🌼
-  </button>
+  </section>
 
 
-</section>
+</div>
 
 
 
 <!-- =====================================================
-     花瓣
+     花瓣墙
 ===================================================== -->
 
 <section class="wall">
@@ -2207,8 +2619,8 @@ button{
 
     <button
       class="more-petals"
-      type="button"
       id="morePetalsBtn"
+      type="button"
       onclick="togglePetals()"
     >
       查看全部 ↓
@@ -2230,42 +2642,25 @@ button{
 
 
 <!-- =====================================================
-     CONTACT + FOLLOW
+     FOLLOW
 ===================================================== -->
 
-<div class="bottom-row">
+<section class="follow">
 
 
-
-  <section class="contact">
-
+  <div class="follow-photo-wrap">
 
     <img
-      src="images/wechat.png?v=3"
-      class="contact-qr"
-      alt="摘花花微信二维码"
+      src="images/me.jpg?v=6"
+      class="follow-photo"
+      alt="摘花花"
     >
 
-
-    <div class="contact-copy">
-
-      <strong>
-        想进群、找唱片、认识同好，都来找摘花花。
-      </strong>
-
-
-      <div class="contact-wechat">
-        微信：zhaihuahua88
-      </div>
-
-    </div>
-
-
-  </section>
+  </div>
 
 
 
-  <section class="follow">
+  <div class="follow-content">
 
 
     <div class="follow-heading">
@@ -2283,15 +2678,12 @@ button{
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="social-platform">
           WECHAT
         </div>
-
         <div class="social-name">
           公众号<br>摘花花
         </div>
-
       </a>
 
 
@@ -2302,15 +2694,12 @@ button{
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="social-platform">
           DOUYIN
         </div>
-
         <div class="social-name">
           抖音<br>摘花花
         </div>
-
       </a>
 
 
@@ -2321,15 +2710,12 @@ button{
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="social-platform">
           NETEASE
         </div>
-
         <div class="social-name">
           网易云<br>摘花花
         </div>
-
       </a>
 
 
@@ -2340,15 +2726,12 @@ button{
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="social-platform">
           WEIBO
         </div>
-
         <div class="social-name">
           微博<br>摘花花
         </div>
-
       </a>
 
 
@@ -2359,25 +2742,22 @@ button{
         target="_blank"
         rel="noopener noreferrer"
       >
-
         <div class="social-platform">
           JIKE
         </div>
-
         <div class="social-name">
           即刻<br>艺能人花花花
         </div>
-
       </a>
 
 
     </div>
 
 
-  </section>
+  </div>
 
 
-</div>
+</section>
 
 
 
@@ -2387,20 +2767,13 @@ button{
 
 <footer class="footer">
 
-
   <div class="footer-quote">
-
-    「醒来或者吃饱又是一年，<br>
-
-    相遇然后分别就在一天。」
-
+    醒来或者吃饱又是一年，相遇然后分别就在一天。
   </div>
-
 
   <div class="footer-tag">
     MUSIC · PEOPLE · CITY
   </div>
-
 
 </footer>
 
@@ -2410,7 +2783,63 @@ button{
 
 
 <!-- =====================================================
-     FORM MODAL
+     QR MODAL
+===================================================== -->
+
+<div
+  class="qr-modal"
+  id="qrModal"
+  onclick="closeQrFromBg(event)"
+>
+
+
+  <div
+    class="qr-box"
+    onclick="event.stopPropagation()"
+  >
+
+
+    <button
+      class="qr-close"
+      type="button"
+      onclick="closeQr()"
+    >
+      ×
+    </button>
+
+
+    <h2 class="qr-title">
+      联系摘花花 ❀
+    </h2>
+
+
+    <img
+      src="images/wechat.png?v=6"
+      class="qr-image"
+      alt="摘花花微信二维码"
+    >
+
+
+    <div class="qr-wechat">
+      微信：zhaihuahua88
+    </div>
+
+
+    <div class="qr-desc">
+      进群、找唱片、认识同好，<br>
+      都来找摘花花。
+    </div>
+
+
+  </div>
+
+
+</div>
+
+
+
+<!-- =====================================================
+     留下足迹 MODAL
 ===================================================== -->
 
 <div
@@ -2433,7 +2862,6 @@ button{
     >
       ×
     </button>
-
 
 
     <h2 class="form-title">
@@ -2512,66 +2940,51 @@ button{
 
 
             <label class="need-option">
-
               <input
                 type="radio"
                 name="need"
                 value="找演出搭子"
                 checked
               >
-
               <span>
                 找演出搭子
               </span>
-
             </label>
 
 
-
             <label class="need-option">
-
               <input
                 type="radio"
                 name="need"
                 value="进乐迷群"
               >
-
               <span>
                 进乐迷群
               </span>
-
             </label>
 
 
-
             <label class="need-option">
-
               <input
                 type="radio"
                 name="need"
                 value="买唱片"
               >
-
               <span>
                 买唱片
               </span>
-
             </label>
 
 
-
             <label class="need-option">
-
               <input
                 type="radio"
                 name="need"
                 value="认识同好"
               >
-
               <span>
                 认识同好
               </span>
-
             </label>
 
 
@@ -2702,10 +3115,6 @@ button{
 
 <script>
 
-/* =====================================================
-   DEMO DATA
-===================================================== */
-
 const demoMessages = [
 
   {
@@ -2759,14 +3168,9 @@ const demoMessages = [
 ];
 
 
-
 let petalsExpanded = false;
 
 
-
-/* =====================================================
-   LOCAL STORAGE
-===================================================== */
 
 function getLocalMessages(){
 
@@ -2783,7 +3187,9 @@ function getLocalMessages(){
 
     return JSON.parse(saved);
 
-  }catch(error){
+  }
+
+  catch(error){
 
     return [];
 
@@ -2804,10 +3210,6 @@ function saveLocalMessages(messages){
 
 
 
-/* =====================================================
-   SAFE TEXT
-===================================================== */
-
 function escapeHTML(value){
 
   return String(value || "")
@@ -2820,10 +3222,6 @@ function escapeHTML(value){
 }
 
 
-
-/* =====================================================
-   WALL
-===================================================== */
 
 function renderWall(){
 
@@ -2847,21 +3245,10 @@ function renderWall(){
     window.innerWidth <= 650;
 
 
-  let maxCount;
-
-
-  if(
-    isMobile &&
-    !petalsExpanded
-  ){
-
-    maxCount = 4;
-
-  }else{
-
-    maxCount = 8;
-
-  }
+  const maxCount =
+    isMobile && !petalsExpanded
+      ? 4
+      : 8;
 
 
   grid.innerHTML =
@@ -2916,12 +3303,15 @@ function renderWall(){
     btn.style.display =
       "inline-block";
 
+
     btn.textContent =
       petalsExpanded
         ? "收起 ↑"
         : "查看全部 ↓";
 
-  }else{
+  }
+
+  else{
 
     btn.style.display =
       "none";
@@ -2943,9 +3333,54 @@ function togglePetals(){
 
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+function openQr(){
+
+  document
+    .getElementById(
+      "qrModal"
+    )
+    .classList
+    .add("show");
+
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+
+function closeQr(){
+
+  document
+    .getElementById(
+      "qrModal"
+    )
+    .classList
+    .remove("show");
+
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+
+function closeQrFromBg(event){
+
+  if(
+    event.target.id ===
+    "qrModal"
+  ){
+
+    closeQr();
+
+  }
+
+}
+
+
 
 function openCoordinateForm(){
 
@@ -2996,10 +3431,6 @@ function closeModalFromBg(event){
 
 
 
-/* =====================================================
-   SUBMIT PREVIEW
-===================================================== */
-
 document
   .getElementById(
     "coordinateForm"
@@ -3012,7 +3443,9 @@ document
 
 
       const form =
-        new FormData(event.target);
+        new FormData(
+          event.target
+        );
 
 
       const nickname =
@@ -3036,13 +3469,17 @@ document
 
       const publish =
         document
-          .getElementById("publish")
+          .getElementById(
+            "publish"
+          )
           .checked;
 
 
       const notify =
         document
-          .getElementById("notify")
+          .getElementById(
+            "notify"
+          )
           .checked;
 
 
@@ -3070,11 +3507,13 @@ document
 
 
         messages.push({
+
           nickname,
           city,
           music,
           need,
           message
+
         });
 
 
@@ -3085,6 +3524,7 @@ document
 
         petalsExpanded = true;
 
+
         renderWall();
 
       }
@@ -3094,7 +3534,9 @@ document
 
 
       document
-        .getElementById("publish")
+        .getElementById(
+          "publish"
+        )
         .checked = true;
 
 
@@ -3110,10 +3552,6 @@ document
 
 
 
-/* =====================================================
-   RESIZE
-===================================================== */
-
 window.addEventListener(
   "resize",
   function(){
@@ -3125,15 +3563,16 @@ window.addEventListener(
 
 
 
-/* =====================================================
-   ESC
-===================================================== */
-
 document.addEventListener(
   "keydown",
   function(event){
 
-    if(event.key === "Escape"){
+    if(
+      event.key ===
+      "Escape"
+    ){
+
+      closeQr();
 
       closeCoordinateForm();
 
@@ -3147,6 +3586,7 @@ document.addEventListener(
 renderWall();
 
 </script>
+
 
 </body>
 </html>
