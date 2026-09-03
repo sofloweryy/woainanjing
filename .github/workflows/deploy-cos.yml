@@ -1,0 +1,21 @@
+name: deploy to tencent cos
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+
+      - name: install coscmd
+        run: pip install coscmd
+
+      - name: config coscmd
+        run: |
+         coscmd config -a ${{ secrets.TENCENT_SECRET_ID }} -s ${{ secrets.TENCENT_SECRET_KEY }} -b woainanjing-1352026585 -r ap-shanghai
+
+      - name: sync files to cos
+        run: coscmd upload -rs . / --delete
