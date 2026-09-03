@@ -6,15 +6,15 @@
   部署:
     继续: ubuntu‑latest
     步骤:
-      -姓名: 结账代码
+      - 姓名: 结账代码
         用途: actions/checkout@v4
 
-      -姓名: 安装 coscmd
+      - 姓名: 安装 coscmd
         跑步: pip install coscmd
 
-      -姓名: 配置 coscmd
+      - 姓名: 配置 coscmd
         跑步: |
           coscmd config -a ${{ secrets.COS_SECRET_ID }} -s ${{ secrets.COS_SECRET_KEY }} -b woainanjing‑1352026585 -r ap‑shanghai
 
-      -姓名: 将文件同步到 cos
+      - 姓名: 将文件同步到 cos
         跑步: coscmd upload -rs ./* ./ --delete
