@@ -33,6 +33,10 @@
   href="https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.7.0/style.css"
 >
 
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+
 <style>
 
 /* =========================================================
@@ -179,6 +183,7 @@ a{
 }
 
 
+
 /* =========================================================
    HEADER
 ========================================================= */
@@ -277,6 +282,7 @@ a{
   letter-spacing:.24em;
 
 }
+
 
 
 /* =========================================================
@@ -431,14 +437,13 @@ a{
 
   line-height:1.4;
 
-  letter-spacing:.01em;
-
 }
 
 
 .hero-lyric span{
   color:var(--red);
 }
+
 
 
 /* =========================================================
@@ -453,10 +458,7 @@ a{
 
   gap:18px;
 
-  margin:
-    0
-    0
-    30px;
+  margin-bottom:30px;
 
 }
 
@@ -487,6 +489,7 @@ a{
   color:#6f7370;
 
 }
+
 
 
 /* =========================================================
@@ -718,8 +721,9 @@ a{
 }
 
 
+
 /* =========================================================
-   CONTACT NOTE
+   CONTACT
 ========================================================= */
 
 .contact-note{
@@ -854,9 +858,9 @@ a{
 }
 
 
+
 /* =========================================================
    INTERACTION
-   电脑端左右并列
 ========================================================= */
 
 .interaction{
@@ -878,14 +882,13 @@ a{
 
 .leave-card,
 .petals-panel{
-
   min-width:0;
-
 }
 
 
+
 /* =========================================================
-   LEAVE MARK
+   LEAVE
 ========================================================= */
 
 .leave-card{
@@ -1024,6 +1027,7 @@ a{
 }
 
 
+
 /* =========================================================
    PETALS
 ========================================================= */
@@ -1088,22 +1092,16 @@ a{
 
   font-size:11px;
 
-  font-weight:400;
-
 }
 
 
-.petals-more{
-
-  border:0;
-
-  background:none;
+.petals-status{
 
   font-family:var(--font-body);
 
-  font-size:11px;
+  color:#777c78;
 
-  color:#555955;
+  font-size:10px;
 
 }
 
@@ -1240,6 +1238,42 @@ a{
 }
 
 
+.petal-time{
+
+  margin-top:10px;
+
+  color:#999;
+
+  font-family:var(--font-body);
+
+  font-size:8px;
+
+}
+
+
+.petal-empty{
+
+  grid-column:
+    1 / -1;
+
+  padding:
+    36px
+    12px;
+
+  text-align:center;
+
+  color:#898d89;
+
+  font-family:var(--font-body);
+
+  font-size:12px;
+
+  line-height:1.7;
+
+}
+
+
+
 /* =========================================================
    FOLLOW
 ========================================================= */
@@ -1358,8 +1392,6 @@ a{
 
   line-height:1.5;
 
-  letter-spacing:.02em;
-
   color:#555a56;
 
 }
@@ -1425,6 +1457,7 @@ a{
 }
 
 
+
 /* =========================================================
    FOOTER
 ========================================================= */
@@ -1467,6 +1500,7 @@ a{
   letter-spacing:.25em;
 
 }
+
 
 
 /* =========================================================
@@ -1593,8 +1627,9 @@ a{
 }
 
 
+
 /* =========================================================
-   FORM MODAL
+   FORM
 ========================================================= */
 
 .form-modal{
@@ -1821,12 +1856,21 @@ input:checked + span{
 }
 
 
+.submit-btn:disabled{
+
+  cursor:not-allowed;
+
+  opacity:.55;
+
+}
+
+
+
 /* =========================================================
    TABLET
 ========================================================= */
 
 @media(max-width:900px){
-
 
   .brand{
 
@@ -1873,12 +1917,12 @@ input:checked + span{
 }
 
 
+
 /* =========================================================
    MOBILE
 ========================================================= */
 
 @media(max-width:650px){
-
 
   body{
     overflow-x:hidden;
@@ -1892,13 +1936,10 @@ input:checked + span{
 
     padding:
       24px
-      0
-      24px;
+      0;
 
   }
 
-
-  /* Header */
 
   .header{
     margin-bottom:22px;
@@ -1934,8 +1975,6 @@ input:checked + span{
 
   }
 
-
-  /* Hero */
 
   .hero-section{
 
@@ -1980,10 +2019,7 @@ input:checked + span{
     margin-top:-9px;
 
     padding:
-      10px
       10px;
-
-    font-family:var(--font-literary);
 
     font-size:
       clamp(
@@ -1997,8 +2033,6 @@ input:checked + span{
   }
 
 
-  /* Divider */
-
   .section-divider{
     margin-bottom:20px;
   }
@@ -2009,11 +2043,9 @@ input:checked + span{
   }
 
 
-  /* Features */
+  /* 三个功能纵向 */
 
   .features{
-
-    display:grid;
 
     grid-template-columns:1fr;
 
@@ -2105,8 +2137,6 @@ input:checked + span{
   }
 
 
-  /* Contact */
-
   .contact-note{
 
     width:91%;
@@ -2146,7 +2176,7 @@ input:checked + span{
   }
 
 
-  /* 这里手机端才上下 */
+  /* 手机端才上下 */
 
   .interaction{
 
@@ -2158,8 +2188,6 @@ input:checked + span{
 
   }
 
-
-  /* Leave */
 
   .leave-card{
 
@@ -2204,8 +2232,6 @@ input:checked + span{
   }
 
 
-  /* Petals */
-
   .petals-panel{
 
     min-height:0;
@@ -2227,38 +2253,48 @@ input:checked + span{
   }
 
 
-  .petals-more{
-    font-size:9px;
+  .petals-status{
+    font-size:8px;
   }
 
 
+  /* 两张花瓣不左右滑 */
+
   .petals-grid{
 
-    grid-template-columns:1fr;
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0,1fr)
+      );
 
-    gap:10px;
+    gap:8px;
 
   }
 
 
   .petal-card{
 
-    min-height:0;
+    min-height:145px;
 
     padding:
-      16px
-      14px;
+      14px
+      11px;
 
   }
 
 
   .petal-meta{
-    font-size:10px;
+    font-size:9px;
   }
 
 
   .petal-music{
-    font-size:8px;
+
+    margin-top:7px;
+
+    font-size:7.5px;
+
   }
 
 
@@ -2266,25 +2302,32 @@ input:checked + span{
 
     margin-top:8px;
 
-    font-size:14px;
+    font-size:12px;
+
+    line-height:1.45;
 
   }
 
 
   .petal-tag{
 
-    margin-top:9px;
+    margin-top:8px;
 
-    font-size:8px;
+    padding:
+      3px
+      6px;
+
+    font-size:7px;
 
   }
 
 
-  /* Follow */
+  .petal-time{
+    font-size:6.5px;
+  }
+
 
   .follow{
-
-    display:grid;
 
     grid-template-columns:
       76px
@@ -2313,11 +2356,7 @@ input:checked + span{
 
 
   .follow-copy small{
-
     font-size:9px;
-
-    font-family:var(--font-body);
-
   }
 
 
@@ -2356,8 +2395,6 @@ input:checked + span{
   }
 
 
-  /* Footer */
-
   .footer{
     padding-top:20px;
   }
@@ -2366,8 +2403,6 @@ input:checked + span{
   .footer-quote{
 
     width:100%;
-
-    font-family:var(--font-literary);
 
     font-size:
       clamp(
@@ -2389,8 +2424,6 @@ input:checked + span{
 
   }
 
-
-  /* Modal */
 
   .modal-overlay{
 
@@ -2440,12 +2473,12 @@ input:checked + span{
 }
 
 
+
 /* =========================================================
    VERY SMALL MOBILE
 ========================================================= */
 
 @media(max-width:375px){
-
 
   .brand{
     font-size:34px;
@@ -2477,6 +2510,13 @@ input:checked + span{
   }
 
 
+  /* 特别小屏，两条花瓣改为上下 */
+
+  .petals-grid{
+    grid-template-columns:1fr;
+  }
+
+
   .footer-quote{
     font-size:9.5px;
   }
@@ -2494,6 +2534,8 @@ input:checked + span{
 <main class="page">
 
 
+<!-- HEADER -->
+
 <header class="header">
 
   <div class="brand-mini">
@@ -2507,9 +2549,11 @@ input:checked + span{
 
   </div>
 
+
   <h1 class="brand">
     摘花花的朋友们
   </h1>
+
 
   <div class="brand-en">
     INDEPENDENT MUSIC COMMUNITY
@@ -2518,17 +2562,21 @@ input:checked + span{
 </header>
 
 
+
+<!-- HERO -->
+
 <section class="hero-section">
 
   <div class="hero-frame">
 
     <img
-      src="images/lizhiconcert.jpg?v=11"
+      src="images/lizhiconcert.jpg?v=20"
       class="hero-photo"
       alt="现场照片"
     >
 
   </div>
+
 
   <div class="hero-lyric">
     我从遥远的地方来看你，要说许多的<span>故事</span>给你听。
@@ -2537,10 +2585,14 @@ input:checked + span{
 </section>
 
 
+
 <div class="section-divider">
   <span>THREE THINGS</span>
 </div>
 
+
+
+<!-- FEATURES -->
 
 <section class="features">
 
@@ -2554,7 +2606,7 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/group.jpg"
+        src="images/group.jpg?v=20"
         class="feature-photo"
         alt="乐迷进群"
         onerror="this.style.opacity='.15'"
@@ -2569,6 +2621,7 @@ input:checked + span{
   </article>
 
 
+
   <article class="feature">
 
     <h2 class="feature-title">
@@ -2578,7 +2631,7 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/album.jpg"
+        src="images/album.jpg?v=20"
         class="feature-photo"
         alt="购买唱片"
         onerror="this.style.opacity='.15'"
@@ -2593,6 +2646,7 @@ input:checked + span{
   </article>
 
 
+
   <article class="feature">
 
     <h2 class="feature-title">
@@ -2602,7 +2656,7 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/friend.jpg"
+        src="images/friend.jpg?v=20"
         class="feature-photo"
         alt="同好交友"
         onerror="this.style.opacity='.15'"
@@ -2620,17 +2674,22 @@ input:checked + span{
 </section>
 
 
+
+<!-- CONTACT -->
+
 <section class="contact-note">
 
   <div class="contact-main">
     进群、找唱片、认识同好，找<strong>摘花花</strong>。
   </div>
 
+
   <div class="contact-bottom">
 
     <span>
       微信：zhaihuahua88
     </span>
+
 
     <button
       class="contact-btn"
@@ -2644,6 +2703,9 @@ input:checked + span{
 
 </section>
 
+
+
+<!-- 留下足迹 + 最新花瓣 -->
 
 <section class="interaction">
 
@@ -2678,6 +2740,7 @@ input:checked + span{
   </article>
 
 
+
   <article class="petals-panel">
 
     <div class="petals-head">
@@ -2694,19 +2757,27 @@ input:checked + span{
 
       </div>
 
-      <button
-        class="petals-more"
-        type="button"
+
+      <div
+        class="petals-status"
+        id="petalsStatus"
       >
-        最新 ↓
-      </button>
+        LOADING...
+      </div>
 
     </div>
+
 
     <div
       class="petals-grid"
       id="petalsGrid"
-    ></div>
+    >
+
+      <div class="petal-empty">
+        正在捡最近掉落的花瓣……
+      </div>
+
+    </div>
 
   </article>
 
@@ -2714,13 +2785,16 @@ input:checked + span{
 </section>
 
 
+
+<!-- FOLLOW -->
+
 <section class="follow">
 
 
   <div class="follow-photo-wrap">
 
     <img
-      src="images/me.jpg?v=11"
+      src="images/me.jpg?v=20"
       class="follow-photo"
       alt="摘花花"
     >
@@ -2751,6 +2825,7 @@ input:checked + span{
       <span class="social-en">
         WECHAT
       </span>
+
       <span class="social-name">
         公众号<br>摘花花
       </span>
@@ -2766,6 +2841,7 @@ input:checked + span{
       <span class="social-en">
         DOUYIN
       </span>
+
       <span class="social-name">
         抖音<br>摘花花
       </span>
@@ -2781,6 +2857,7 @@ input:checked + span{
       <span class="social-en">
         NETEASE
       </span>
+
       <span class="social-name">
         网易云<br>摘花花
       </span>
@@ -2796,6 +2873,7 @@ input:checked + span{
       <span class="social-en">
         WEIBO
       </span>
+
       <span class="social-name">
         微博<br>摘花花
       </span>
@@ -2811,6 +2889,7 @@ input:checked + span{
       <span class="social-en">
         JIKE
       </span>
+
       <span class="social-name">
         即刻<br>艺能人花花花
       </span>
@@ -2821,6 +2900,9 @@ input:checked + span{
 
 </section>
 
+
+
+<!-- FOOTER -->
 
 <footer class="footer">
 
@@ -2837,6 +2919,9 @@ input:checked + span{
 
 </main>
 
+
+
+<!-- QR MODAL -->
 
 <div
   class="modal-overlay"
@@ -2862,7 +2947,7 @@ input:checked + span{
     </h2>
 
     <img
-      src="images/wechat.png?v=11"
+      src="images/wechat.png?v=20"
       class="qr-img"
       alt="摘花花微信二维码"
     >
@@ -2875,6 +2960,9 @@ input:checked + span{
 
 </div>
 
+
+
+<!-- FORM MODAL -->
 
 <div
   class="modal-overlay"
@@ -2895,15 +2983,19 @@ input:checked + span{
       ×
     </button>
 
+
     <h2 class="form-title">
       留下一朵花
     </h2>
 
+
     <div class="form-desc">
-      联系方式不会公开。
+      留言可以公开，联系方式不会公开。
     </div>
 
+
     <form id="footprintForm">
+
 
       <div class="form-grid">
 
@@ -2917,10 +3009,12 @@ input:checked + span{
           <input
             name="nickname"
             placeholder="怎么称呼你？"
+            maxlength="30"
             required
           >
 
         </div>
+
 
 
         <div class="field">
@@ -2932,10 +3026,12 @@ input:checked + span{
           <input
             name="city"
             placeholder="杭州 / 北京..."
+            maxlength="30"
             required
           >
 
         </div>
+
 
 
         <div class="field full">
@@ -2947,10 +3043,12 @@ input:checked + span{
           <input
             name="music"
             placeholder="李志 / 万青 / 赵雷..."
+            maxlength="80"
             required
           >
 
         </div>
+
 
 
         <div class="field full">
@@ -2959,47 +3057,71 @@ input:checked + span{
             想干嘛？
           </label>
 
+
           <div class="need-options">
 
 
             <label class="need-option">
+
               <input
                 type="radio"
                 name="need"
                 value="找演出搭子"
                 checked
               >
-              <span>找演出搭子</span>
+
+              <span>
+                找演出搭子
+              </span>
+
             </label>
 
 
+
             <label class="need-option">
+
               <input
                 type="radio"
                 name="need"
                 value="进乐迷群"
               >
-              <span>进乐迷群</span>
+
+              <span>
+                进乐迷群
+              </span>
+
             </label>
 
 
+
             <label class="need-option">
+
               <input
                 type="radio"
                 name="need"
                 value="买唱片"
               >
-              <span>买唱片</span>
+
+              <span>
+                买唱片
+              </span>
+
             </label>
 
 
+
             <label class="need-option">
+
               <input
                 type="radio"
                 name="need"
                 value="认识同好"
               >
-              <span>认识同好</span>
+
+              <span>
+                认识同好
+              </span>
+
             </label>
 
 
@@ -3007,35 +3129,6 @@ input:checked + span{
 
         </div>
 
-
-        <div class="field">
-
-          <label>
-            联系方式类型
-          </label>
-
-          <select name="contactType">
-            <option value="微信">微信</option>
-            <option value="邮箱">邮箱</option>
-            <option value="手机号">手机号</option>
-          </select>
-
-        </div>
-
-
-        <div class="field">
-
-          <label>
-            联系方式 *
-          </label>
-
-          <input
-            name="contact"
-            placeholder="仅用于后续活动触达"
-            required
-          >
-
-        </div>
 
 
         <div class="field full">
@@ -3046,13 +3139,62 @@ input:checked + span{
 
           <textarea
             name="message"
+            maxlength="180"
             placeholder="比如：11月南京有人一起吗？"
           ></textarea>
 
         </div>
 
 
+
+        <div class="field">
+
+          <label>
+            联系方式类型（选填）
+          </label>
+
+          <select name="contactType">
+
+            <option value="">
+              暂不留下
+            </option>
+
+            <option value="微信">
+              微信
+            </option>
+
+            <option value="邮箱">
+              邮箱
+            </option>
+
+            <option value="手机号">
+              手机号
+            </option>
+
+          </select>
+
+        </div>
+
+
+
+        <div class="field">
+
+          <label>
+            联系方式（选填）
+          </label>
+
+          <input
+            name="contact"
+            maxlength="100"
+            placeholder="想收到活动通知再留"
+          >
+
+        </div>
+
+
+
         <div class="field full">
+
 
           <label class="check-line">
 
@@ -3063,36 +3205,40 @@ input:checked + span{
             >
 
             <span>
-              同意公开昵称、城市、最近在听和留言到花瓣墙。联系方式不会公开。
+              同意公开昵称、城市、最近在听和留言到花瓣墙。
             </span>
 
           </label>
+
 
           <label class="check-line">
 
             <input
               type="checkbox"
               id="notify"
-              required
             >
 
             <span>
-              我同意摘花花通过留下的联系方式发送活动、演出或群聊通知。
+              如果填写联系方式，我同意摘花花向我发送活动、演出或群聊通知。
             </span>
 
           </label>
+
 
         </div>
 
 
       </div>
 
+
       <button
         class="submit-btn"
+        id="submitButton"
         type="submit"
       >
         留下一朵花 🌼
       </button>
+
 
     </form>
 
@@ -3101,62 +3247,41 @@ input:checked + span{
 </div>
 
 
+
 <script>
 
-const demoPetals = [
+/* =========================================================
+   SUPABASE
+========================================================= */
 
-  {
-    city:"杭州",
-    nickname:"小羊",
-    music:"李志",
-    message:"11月南京见，有没有一起的？",
-    need:"找演出搭子"
-  },
+/*
+  这里已经替你填好了。
 
-  {
-    city:"北京",
-    nickname:"春天",
-    music:"万能青年旅店",
-    message:"想认识一些真的会分享歌的人。",
-    need:"认识同好"
-  }
+  注意：
+  Publishable key 本来就是给前端浏览器使用的。
 
-];
+  不要把 service_role / secret key 放到这里。
+*/
+
+const SUPABASE_URL =
+  "https://hrgzmwtgpacdxifcevwy.supabase.co";
 
 
-function getLocalPetals(){
-
-  try{
-
-    const saved =
-      localStorage.getItem(
-        "zhaihuahua_petals"
-      );
-
-    if(!saved){
-      return [];
-    }
-
-    return JSON.parse(saved);
-
-  }
-
-  catch(error){
-    return [];
-  }
-
-}
+const SUPABASE_KEY =
+  "sb_publishable_4XcXlLh77BtvmIajOGbpPA_T7d6b9fu";
 
 
-function saveLocalPetals(data){
-
-  localStorage.setItem(
-    "zhaihuahua_petals",
-    JSON.stringify(data)
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_KEY
   );
 
-}
 
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
 
 function escapeHTML(value){
 
@@ -3170,63 +3295,264 @@ function escapeHTML(value){
 }
 
 
-function renderPetals(){
+
+/* =========================================================
+   TIME
+========================================================= */
+
+function formatRelativeTime(dateString){
+
+  const date =
+    new Date(dateString);
+
+
+  const now =
+    new Date();
+
+
+  const seconds =
+    Math.floor(
+      (now - date) / 1000
+    );
+
+
+  if(seconds < 60){
+    return "刚刚";
+  }
+
+
+  const minutes =
+    Math.floor(
+      seconds / 60
+    );
+
+
+  if(minutes < 60){
+    return `${minutes}分钟前`;
+  }
+
+
+  const hours =
+    Math.floor(
+      minutes / 60
+    );
+
+
+  if(hours < 24){
+    return `${hours}小时前`;
+  }
+
+
+  const days =
+    Math.floor(
+      hours / 24
+    );
+
+
+  if(days < 30){
+    return `${days}天前`;
+  }
+
+
+  return date.toLocaleDateString(
+    "zh-CN",
+    {
+      month:"numeric",
+      day:"numeric"
+    }
+  );
+
+}
+
+
+
+/* =========================================================
+   LOAD LATEST PETALS
+========================================================= */
+
+async function loadLatestPetals(){
 
   const grid =
     document.getElementById(
       "petalsGrid"
     );
 
-  const local =
-    getLocalPetals();
 
-  const petals = [
-    ...local.slice().reverse(),
-    ...demoPetals
-  ];
+  const status =
+    document.getElementById(
+      "petalsStatus"
+    );
 
-  const latestTwo =
-    petals.slice(0,2);
 
-  grid.innerHTML =
-    latestTwo
-      .map(item => {
+  status.textContent =
+    "LOADING...";
 
-        return `
 
-          <article class="petal-card">
+  try{
 
-            <div class="petal-meta">
-              ${escapeHTML(item.city)}
-              ·
-              ${escapeHTML(item.nickname)}
-            </div>
 
-            <div class="petal-music">
-              最近在听：
-              ${escapeHTML(item.music)}
-            </div>
+    const {
+      data,
+      error
+    } =
+      await supabaseClient
+        .from("fan_messages")
+        .select(`
+          id,
+          nickname,
+          city,
+          music,
+          need,
+          message,
+          created_at
+        `)
+        .order(
+          "created_at",
+          {
+            ascending:false
+          }
+        )
+        .limit(2);
 
-            <div class="petal-message">
-              ${escapeHTML(
-                item.message ||
-                "下次现场见。"
-              )}
-            </div>
 
-            <div class="petal-tag">
-              ${escapeHTML(item.need)}
-            </div>
+    if(error){
+      throw error;
+    }
 
-          </article>
 
-        `;
+    if(!data || !data.length){
 
-      })
-      .join("");
+      status.textContent =
+        "等第一朵花";
+
+
+      grid.innerHTML = `
+
+        <div class="petal-empty">
+
+          这里还没有花瓣。<br>
+
+          来留下第一朵吧 🌼
+
+        </div>
+
+      `;
+
+
+      return;
+
+    }
+
+
+    status.textContent =
+      "最新 ↓";
+
+
+    grid.innerHTML =
+      data
+        .map(item => {
+
+          const tagHTML =
+            item.need
+              ? `
+                <div class="petal-tag">
+                  ${escapeHTML(item.need)}
+                </div>
+              `
+              : "";
+
+
+          return `
+
+            <article class="petal-card">
+
+
+              <div class="petal-meta">
+
+                ${escapeHTML(item.city)}
+
+                ·
+
+                ${escapeHTML(item.nickname)}
+
+              </div>
+
+
+              <div class="petal-music">
+
+                最近在听：
+
+                ${escapeHTML(item.music)}
+
+              </div>
+
+
+              <div class="petal-message">
+
+                ${escapeHTML(
+                  item.message ||
+                  "下次现场见。"
+                )}
+
+              </div>
+
+
+              ${tagHTML}
+
+
+              <div class="petal-time">
+
+                ${formatRelativeTime(
+                  item.created_at
+                )}
+
+              </div>
+
+
+            </article>
+
+          `;
+
+        })
+        .join("");
+
+
+  }
+
+  catch(error){
+
+
+    console.error(
+      "加载花瓣失败：",
+      error
+    );
+
+
+    status.textContent =
+      "暂时没捡到";
+
+
+    grid.innerHTML = `
+
+      <div class="petal-empty">
+
+        花瓣暂时躲起来了。<br>
+
+        晚点再来看看 :)
+
+      </div>
+
+    `;
+
+  }
 
 }
 
+
+
+/* =========================================================
+   QR MODAL
+========================================================= */
 
 function openQrModal(){
 
@@ -3236,6 +3562,7 @@ function openQrModal(){
     )
     .classList
     .add("show");
+
 
   document.body.style.overflow =
     "hidden";
@@ -3252,6 +3579,7 @@ function closeQrModal(){
     .classList
     .remove("show");
 
+
   document.body.style.overflow =
     "";
 
@@ -3264,11 +3592,18 @@ function closeQrFromBackground(event){
     event.target.id ===
     "qrOverlay"
   ){
+
     closeQrModal();
+
   }
 
 }
 
+
+
+/* =========================================================
+   FORM MODAL
+========================================================= */
 
 function openFormModal(){
 
@@ -3278,6 +3613,7 @@ function openFormModal(){
     )
     .classList
     .add("show");
+
 
   document.body.style.overflow =
     "hidden";
@@ -3294,6 +3630,7 @@ function closeFormModal(){
     .classList
     .remove("show");
 
+
   document.body.style.overflow =
     "";
 
@@ -3306,11 +3643,18 @@ function closeFormFromBackground(event){
     event.target.id ===
     "formOverlay"
   ){
+
     closeFormModal();
+
   }
 
 }
 
+
+
+/* =========================================================
+   SUBMIT FORM
+========================================================= */
 
 document
   .getElementById(
@@ -3318,32 +3662,64 @@ document
   )
   .addEventListener(
     "submit",
-    function(event){
+    async function(event){
+
 
       event.preventDefault();
+
+
+      const button =
+        document.getElementById(
+          "submitButton"
+        );
+
 
       const form =
         new FormData(
           event.target
         );
 
+
       const nickname =
-        form.get("nickname")?.trim();
+        form
+          .get("nickname")
+          ?.trim();
+
 
       const city =
-        form.get("city")?.trim();
+        form
+          .get("city")
+          ?.trim();
+
 
       const music =
-        form.get("music")?.trim();
+        form
+          .get("music")
+          ?.trim();
+
 
       const need =
-        form.get("need");
+        form
+          .get("need");
+
 
       const message =
-        form.get("message")?.trim();
+        form
+          .get("message")
+          ?.trim();
+
+
+      const contactType =
+        form
+          .get("contactType")
+          ?.trim();
+
 
       const contact =
-        form.get("contact")?.trim();
+        form
+          .get("contact")
+          ?.trim();
+
 
       const publish =
         document
@@ -3352,6 +3728,7 @@ document
           )
           .checked;
 
+
       const notify =
         document
           .getElementById(
@@ -3359,60 +3736,229 @@ document
           )
           .checked;
 
+
       if(
         !nickname ||
         !city ||
-        !music ||
-        !contact ||
-        !notify
+        !music
       ){
 
         alert(
-          "还有必填项没有填写。"
+          "昵称、城市和最近在听谁还没有填写。"
         );
 
         return;
 
       }
 
-      if(publish){
 
-        const petals =
-          getLocalPetals();
+      /*
+        如果填写联系方式，
+        必须选择联系方式类型。
+      */
 
-        petals.push({
-          nickname,
-          city,
-          music,
-          need,
-          message
-        });
+      if(
+        contact &&
+        !contactType
+      ){
 
-        saveLocalPetals(
-          petals
+        alert(
+          "你填写了联系方式，请选择微信、邮箱或手机号。"
         );
 
-        renderPetals();
+        return;
 
       }
 
-      event.target.reset();
 
-      document
-        .getElementById(
-          "publish"
-        )
-        .checked = true;
+      /*
+        如果用户希望以后收到活动通知，
+        要明确勾选同意。
 
-      closeFormModal();
+        联系方式没填写则无需勾。
+      */
 
-      alert(
-        "收到一朵花 🌼"
-      );
+      if(
+        contact &&
+        !notify
+      ){
+
+        alert(
+          "如果希望留下联系方式用于活动通知，请勾选联系方式授权。"
+        );
+
+        return;
+
+      }
+
+
+      button.disabled =
+        true;
+
+
+      button.textContent =
+        "正在种下这朵花…";
+
+
+      try{
+
+
+        let messageId =
+          null;
+
+
+        /* ===============================================
+           1. 公开花瓣
+        =============================================== */
+
+        if(publish){
+
+
+          const {
+            data:messageData,
+            error:messageError
+          } =
+            await supabaseClient
+              .from(
+                "fan_messages"
+              )
+              .insert({
+
+                nickname,
+
+                city,
+
+                music,
+
+                need:
+                  need || null,
+
+                message:
+                  message || null
+
+              })
+              .select("id")
+              .single();
+
+
+          if(messageError){
+            throw messageError;
+          }
+
+
+          messageId =
+            messageData.id;
+
+        }
+
+
+
+        /* ===============================================
+           2. 私密联系方式
+        =============================================== */
+
+        if(contact){
+
+
+          const {
+            error:contactError
+          } =
+            await supabaseClient
+              .from(
+                "fan_contacts"
+              )
+              .insert({
+
+                message_id:
+                  messageId,
+
+                contact_type:
+                  contactType,
+
+                contact,
+
+                notify:true
+
+              });
+
+
+          if(contactError){
+            throw contactError;
+          }
+
+        }
+
+
+
+        /* ===============================================
+           成功
+        =============================================== */
+
+        event.target.reset();
+
+
+        document
+          .getElementById(
+            "publish"
+          )
+          .checked = true;
+
+
+        closeFormModal();
+
+
+        /*
+          重新从数据库读取，
+          最新提交自动成为第一条。
+        */
+
+        await loadLatestPetals();
+
+
+        alert(
+          "收到一朵花 🌼"
+        );
+
+
+      }
+
+      catch(error){
+
+
+        console.error(
+          "提交失败：",
+          error
+        );
+
+
+        alert(
+          "这朵花刚刚没种成功，再试一次吧。"
+        );
+
+
+      }
+
+      finally{
+
+
+        button.disabled =
+          false;
+
+
+        button.textContent =
+          "留下一朵花 🌼";
+
+
+      }
 
     }
   );
 
+
+
+/* =========================================================
+   ESC
+========================================================= */
 
 document.addEventListener(
   "keydown",
@@ -3424,6 +3970,7 @@ document.addEventListener(
     ){
 
       closeQrModal();
+
       closeFormModal();
 
     }
@@ -3432,10 +3979,16 @@ document.addEventListener(
 );
 
 
-renderPetals();
+
+/* =========================================================
+   START
+========================================================= */
+
+loadLatestPetals();
 
 </script>
 
 
 </body>
+
 </html>
