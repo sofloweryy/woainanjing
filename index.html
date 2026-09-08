@@ -530,16 +530,30 @@ a{
 
 
 .feature-photo{
+  display:block;
   width:91%;
   height:91%;
-
-  object-fit:cover;
-
   box-shadow:
     0
     9px
     20px
     rgba(0,0,0,.07);
+}
+
+/* 三个模块分别控制图片展示方式 */
+.feature-photo-group{
+  object-fit:contain;
+  background:#fff;
+}
+
+.feature-photo-album{
+  object-fit:contain;
+  background:#fff;
+}
+
+.feature-photo-friend{
+  object-fit:cover;
+  object-position:center 48%;
 }
 
 
@@ -2492,10 +2506,9 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/group.jpg?v=60"
-        class="feature-photo"
+        src="/images/group.jpg?v=120"
+        class="feature-photo feature-photo-group"
         alt="乐迷进群"
-        onerror="this.style.opacity='.12'"
       >
 
     </div>
@@ -2516,10 +2529,9 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/album.jpg?v=60"
-        class="feature-photo"
+        src="/images/album.jpg?v=120"
+        class="feature-photo feature-photo-album"
         alt="购买唱片"
-        onerror="this.style.opacity='.12'"
       >
 
     </div>
@@ -2540,10 +2552,9 @@ input:checked + span{
     <div class="feature-visual">
 
       <img
-        src="images/friend.jpg?v=60"
-        class="feature-photo"
+        src="/images/friend.jpg?v=120"
+        class="feature-photo feature-photo-friend"
         alt="同好交友"
-        onerror="this.style.opacity='.12'"
       >
 
     </div>
