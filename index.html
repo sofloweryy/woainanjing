@@ -533,6 +533,9 @@ a{
   display:block;
   width:91%;
   height:91%;
+  padding:8px;
+  border:1px solid rgba(24,25,24,.22);
+  background:#fffefa;
   box-shadow:
     0
     9px
@@ -1070,7 +1073,7 @@ a{
   display:grid;
 
   grid-template-columns:
-    150px
+    190px
     minmax(0,1fr);
 
   gap:28px;
@@ -1094,7 +1097,7 @@ a{
 .follow-photo-wrap{
   position:relative;
 
-  width:132px;
+  width:172px;
 
   margin:auto;
 }
@@ -1120,7 +1123,7 @@ a{
 
   position:absolute;
 
-  left:28px;
+  left:48px;
   top:-13px;
 
   width:54px;
@@ -1134,7 +1137,7 @@ a{
 
 
 .follow-photo{
-  width:132px;
+  width:172px;
 
   aspect-ratio:1 / 1;
 
@@ -1895,6 +1898,7 @@ input:checked + span{
   .feature-photo{
     width:100%;
     height:100%;
+    padding:5px;
   }
 
 
@@ -2088,7 +2092,7 @@ input:checked + span{
 
   .follow{
     grid-template-columns:
-      78px
+      104px
       minmax(0,1fr);
 
     gap:
@@ -2103,7 +2107,7 @@ input:checked + span{
 
   .follow-photo-wrap,
   .follow-photo{
-    width:78px;
+    width:100px;
   }
 
 
@@ -2435,24 +2439,9 @@ input:checked + span{
 
 <header class="header">
 
-  <div class="brand-mini">
-
-    ZHAI HUA HUA
-
-    <span class="brand-dots">
-      <i></i>
-      <i></i>
-    </span>
-
-  </div>
-
   <h1 class="brand">
     摘花花的朋友们
   </h1>
-
-  <div class="brand-en">
-    INDEPENDENT MUSIC COMMUNITY
-  </div>
 
 </header>
 
@@ -3920,7 +3909,7 @@ async function likePetal(
 
 
     alert(
-      "点赞功能还没有完全接好数据库。"
+      "这次没赞上，请稍后再试。"
     );
 
   }
