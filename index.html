@@ -496,85 +496,165 @@ a{
   position:relative;
 
   width:100%;
-  height:260px;
+  height:300px;
 
   display:flex;
-
   align-items:center;
   justify-content:center;
 
-  margin-bottom:16px;
+  margin-bottom:20px;
+
+  overflow:visible;
 }
 
 
+/* 相纸底：像被贴在页面上的旧照片 / zine 小卡片 */
+.feature-visual::after{
+  content:"";
+
+  position:absolute;
+
+  width:91%;
+  height:91%;
+
+  z-index:0;
+
+  background:#f8f5ee;
+
+  border:
+    1px solid
+    rgba(24,25,24,.16);
+
+  box-shadow:
+    7px
+    9px
+    18px
+    rgba(30,30,30,.08);
+}
+
+
+/* 半透明胶带 */
 .feature-visual::before{
   content:"";
 
   position:absolute;
 
-  top:3px;
+  top:-2px;
   left:50%;
 
-  z-index:2;
+  z-index:3;
 
-  width:56px;
-  height:17px;
+  width:62px;
+  height:19px;
 
   transform:
     translateX(-50%)
     rotate(-4deg);
 
   background:
-    rgba(119,158,178,.34);
+    rgba(143,171,184,.38);
+
+  box-shadow:
+    0 1px 1px
+    rgba(0,0,0,.03);
 }
 
 
+/* 图片本体 */
 .feature-photo{
+  position:relative;
+
+  z-index:1;
+
   display:block;
-  width:91%;
-  height:91%;
+
+  width:86%;
+  height:84%;
+
   padding:8px;
-  border:1px solid rgba(24,25,24,.22);
-  background:#fffefa;
+
+  background:#fffdf8;
+
+  border:
+    1px solid
+    rgba(24,25,24,.12);
+
   box-shadow:
     0
-    9px
-    20px
-    rgba(0,0,0,.07);
+    5px
+    13px
+    rgba(0,0,0,.055);
 }
 
-/* 三个模块分别控制图片展示方式 */
+
+/* 二维码：完整显示，不裁 */
 .feature-photo-group{
   object-fit:contain;
   background:#fff;
 }
 
+
+/* 专辑封面：完整显示，不裁 */
 .feature-photo-album{
   object-fit:contain;
   background:#fff;
 }
 
+
+/* 合照：铺满相框 */
 .feature-photo-friend{
   object-fit:cover;
   object-position:center 48%;
 }
 
 
+/* 三张照片故意不要完全一个角度 */
+.feature:nth-child(1)
+.feature-visual::after{
+  transform:rotate(-1.2deg);
+}
+
 .feature:nth-child(1)
 .feature-photo{
-  transform:rotate(-1.8deg);
+  transform:rotate(-.45deg);
 }
 
 
 .feature:nth-child(2)
+.feature-visual::after{
+  transform:rotate(.8deg);
+}
+
+.feature:nth-child(2)
 .feature-photo{
-  transform:rotate(1deg);
+  width:82%;
+  height:84%;
+
+  padding:
+    10px
+    10px
+    16px;
+
+  transform:rotate(.3deg);
+
+  box-shadow:
+    3px
+    7px
+    16px
+    rgba(0,0,0,.07);
 }
 
 
 .feature:nth-child(3)
+.feature-visual::after{
+  transform:rotate(-.55deg);
+}
+
+.feature:nth-child(3)
 .feature-photo{
-  transform:rotate(-1deg);
+  transform:rotate(.15deg);
+
+  padding:7px;
 }
 
 
@@ -636,35 +716,42 @@ a{
 }
 
 
+/* 联系方式：保持原来的干净一行，只稍微加粗、加深 */
 .contact-bottom{
   display:flex;
-
   align-items:center;
+  gap:18px;
+  margin-top:10px;
 
-  gap:16px;
-
-  margin-top:8px;
-
-  color:#686d69;
-
-  font-size:11px;
+  color:#4f534f;
+  font-size:12px;
 }
 
+.contact-bottom span{
+  font-weight:600;
+  color:#3f423f;
+}
 
 .contact-btn{
   border:0;
-
   padding:0;
 
   background:none;
+  color:#222;
 
   font-family:var(--font-literary);
-
-  font-size:12px;
+  font-size:13px;
+  font-weight:600;
 
   text-decoration:underline;
+  text-decoration-thickness:1.5px;
+  text-underline-offset:5px;
 
-  text-underline-offset:4px;
+  cursor:pointer;
+}
+
+.contact-btn:hover{
+  opacity:.68;
 }
 
 
@@ -1895,10 +1982,57 @@ input:checked + span{
   }
 
 
+  .feature-visual{
+    width:118px;
+    height:118px;
+
+    overflow:visible;
+  }
+
+
+  .feature-visual::after{
+    width:96%;
+    height:96%;
+
+    box-shadow:
+      4px
+      5px
+      10px
+      rgba(0,0,0,.065);
+  }
+
+
+  .feature-visual::before{
+    width:40px;
+    height:13px;
+
+    top:-4px;
+  }
+
+
   .feature-photo{
-    width:100%;
-    height:100%;
-    padding:5px;
+    width:90%;
+    height:88%;
+
+    padding:4px;
+  }
+
+
+  .feature:nth-child(2)
+  .feature-photo{
+    width:88%;
+    height:88%;
+
+    padding:
+      4px
+      4px
+      7px;
+  }
+
+
+  .feature:nth-child(3)
+  .feature-photo{
+    padding:4px;
   }
 
 
@@ -1925,18 +2059,15 @@ input:checked + span{
     font-size:14px;
   }
 
-
   .contact-bottom{
-    gap:8px;
-
+    gap:12px;
     flex-wrap:wrap;
-
-    font-size:9px;
+    font-size:11px;
   }
 
 
   .contact-btn{
-    font-size:10px;
+    font-size:11px;
   }
 
 
