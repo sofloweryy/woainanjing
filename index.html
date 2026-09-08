@@ -680,11 +680,11 @@ a{
 
   min-width:0;
 
-  min-height:280px;
+  min-height:205px;
 
   padding:
-    28px
-    26px;
+    22px
+    24px;
 
   background:#e8f0f3;
 
@@ -732,7 +732,7 @@ a{
 .leave-title{
   font-family:var(--font-hand);
 
-  font-size:43px;
+  font-size:38px;
 
   font-weight:400;
 
@@ -741,20 +741,20 @@ a{
 
 
 .leave-desc{
-  margin-top:11px;
+  margin-top:8px;
 
   color:#565b57;
 
-  font-size:12px;
+  font-size:11px;
 
-  line-height:1.7;
+  line-height:1.55;
 }
 
 
 .leave-btn{
-  margin-top:28px;
+  margin-top:17px;
 
-  height:43px;
+  height:39px;
 
   padding:
     0
@@ -775,12 +775,12 @@ a{
 .leave-flower{
   position:absolute;
 
-  right:26px;
-  bottom:25px;
+  right:21px;
+  bottom:18px;
 
   font-family:var(--font-hand);
 
-  font-size:58px;
+  font-size:44px;
 }
 
 
@@ -1191,7 +1191,7 @@ a{
 
   grid-template-columns:
     repeat(
-      5,
+      4,
       minmax(0,1fr)
     );
 }
@@ -1217,6 +1217,28 @@ a{
 .social-link:first-child{
   border-left:0;
 }
+
+
+.social-logo{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:30px;
+  height:30px;
+  margin:0 auto 8px;
+  color:#202220;
+}
+
+.social-logo svg{
+  display:block;
+  width:28px;
+  height:28px;
+  overflow:visible;
+}
+
+.social-logo-douyin svg{ width:27px; height:27px; }
+.social-logo-netease svg{ width:29px; height:29px; }
+.social-logo-jike svg{ width:27px; height:27px; }
 
 
 .social-en{
@@ -1263,15 +1285,15 @@ a{
 
 
 .footer-en{
-  margin-top:11px;
+  margin-top:10px;
 
   color:#7c807c;
 
   font-family:var(--font-en);
 
-  font-size:5px;
+  font-size:8px;
 
-  letter-spacing:.24em;
+  letter-spacing:.04em;
 }
 
 
@@ -1913,35 +1935,39 @@ input:checked + span{
     min-height:0;
 
     padding:
-      21px
-      18px;
+      17px
+      15px;
   }
 
 
   .leave-title{
-    font-size:35px;
+    font-size:31px;
   }
 
 
   .leave-desc{
-    font-size:10px;
+    margin-top:6px;
+    font-size:9.5px;
+    line-height:1.45;
   }
 
 
   .leave-btn{
-    height:41px;
+    height:37px;
 
-    margin-top:20px;
+    margin-top:13px;
 
-    font-size:11px;
+    padding:0 16px;
+
+    font-size:10px;
   }
 
 
   .leave-flower{
-    right:22px;
-    bottom:20px;
+    right:17px;
+    bottom:14px;
 
-    font-size:48px;
+    font-size:36px;
   }
 
 
@@ -2090,7 +2116,7 @@ input:checked + span{
 
     grid-template-columns:
       repeat(
-        5,
+        4,
         minmax(0,1fr)
       );
   }
@@ -2100,6 +2126,14 @@ input:checked + span{
     padding:
       8px
       2px;
+  }
+
+
+  .social-logo{
+    width:21px;
+    height:21px;
+    margin-bottom:5px;
+    font-size:9px;
   }
 
 
@@ -2126,7 +2160,10 @@ input:checked + span{
 
 
   .footer-en{
-    font-size:4px;
+    padding:0 10px;
+    font-size:6.5px;
+    line-height:1.5;
+    letter-spacing:.02em;
   }
 
 
@@ -2233,6 +2270,145 @@ input:checked + span{
 
 }
 
+
+
+/* HERO LYRIC UPDATE */
+.hero-lyric{
+  width:min(800px,93%);
+  padding:14px 18px 13px;
+  font-family:var(--font-body);
+  font-size:initial;
+  line-height:normal;
+  white-space:normal;
+}
+.hero-lyric-main{
+  margin-top:8px;
+  color:#2c2d2b;
+  font-family:var(--font-literary);
+  font-size:18px;
+  font-weight:400;
+  line-height:1.45;
+  white-space:nowrap;
+}
+.hero-lyric-note{
+  margin-top:0;
+  color:#181918;
+  font-family:var(--font-literary);
+  font-size:25px;
+  font-weight:700;
+  letter-spacing:.01em;
+  line-height:1.35;
+  white-space:nowrap;
+}
+@media(max-width:650px){
+  .hero-lyric{
+    width:96%;
+    margin-top:-8px;
+    padding:11px 5px 10px;
+  }
+  .hero-lyric-main{
+    margin-top:6px;
+    font-family:var(--font-literary);
+    font-size:clamp(10.5px,3vw,13px);
+    font-weight:400;
+    letter-spacing:-.02em;
+    line-height:1.35;
+    white-space:nowrap;
+  }
+  .hero-lyric-note{
+    margin-top:0;
+    font-size:clamp(12px,3.65vw,16px);
+    font-weight:700;
+    letter-spacing:-.02em;
+    line-height:1.3;
+    white-space:nowrap;
+  }
+}
+
+
+/* =====================================================
+   TICKET CTA + POSTER MODAL
+===================================================== */
+.hero-ticket-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  margin-top:12px;
+  min-height:40px;
+  padding:0 22px;
+  border:0;
+  border-radius:999px;
+  color:#fff;
+  background:#181918;
+  font-family:var(--font-body);
+  font-size:12px;
+  font-weight:600;
+  letter-spacing:.04em;
+  cursor:pointer;
+  box-shadow:3px 4px 0 rgba(0,0,0,.06);
+  transition:transform .18s ease, opacity .18s ease;
+}
+.hero-ticket-btn:hover{
+  transform:translateY(-1px);
+}
+.hero-ticket-btn:active{
+  transform:translateY(0);
+}
+.ticket-modal{
+  position:relative;
+  width:min(560px,100%);
+  max-height:calc(100dvh - 40px);
+  padding:14px;
+  overflow:auto;
+  background:#f8f4ec;
+  box-shadow:0 22px 60px rgba(0,0,0,.22);
+}
+.ticket-modal .modal-close{
+  z-index:3;
+  right:10px;
+  top:9px;
+  border-radius:50%;
+  background:rgba(248,244,236,.94);
+  box-shadow:0 2px 10px rgba(0,0,0,.12);
+}
+.ticket-poster{
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  background:#fff;
+}
+.ticket-tip{
+  padding:11px 4px 2px;
+  text-align:center;
+  color:#777c78;
+  font-size:10px;
+  line-height:1.5;
+}
+@media(max-width:650px){
+  .hero-ticket-btn{
+    margin-top:9px;
+    min-height:35px;
+    padding:0 17px;
+    font-size:10px;
+  }
+  .ticket-modal{
+    width:100%;
+    max-height:94dvh;
+    padding:10px 10px calc(12px + env(safe-area-inset-bottom));
+    border-radius:18px 18px 0 0;
+  }
+  .ticket-modal .modal-close{
+    width:34px;
+    height:34px;
+    right:9px;
+    top:8px;
+  }
+  .ticket-tip{
+    font-size:9px;
+  }
+}
+
 </style>
 </head>
 
@@ -2280,7 +2456,20 @@ input:checked + span{
   </div>
 
   <div class="hero-lyric">
-    我从遥远的地方来看你，要说许多的故事给你听。
+    <div class="hero-lyric-note">
+      2026年叁缺壹 · 11月13–15日 · 吉隆坡再相逢
+    </div>
+    <div class="hero-lyric-main">
+      胜利让给英雄们去轮替，真情要靠我们凡人自己努力。
+    </div>
+
+    <button
+      class="hero-ticket-btn"
+      type="button"
+      onclick="openTicketModal()"
+    >
+      立即购票 →
+    </button>
   </div>
 
 </section>
@@ -2336,7 +2525,7 @@ input:checked + span{
     </div>
 
     <div class="feature-desc">
-      李志日专 · 宋冬野 · CD / 黑胶
+      李志日专 · 宋冬野 · 更多CD / 黑胶
     </div>
 
   </article>
@@ -2372,7 +2561,7 @@ input:checked + span{
 <section class="contact-note">
 
   <div class="contact-main">
-    进群、找唱片、认识同好，找<strong>摘花花</strong>。
+    进乐迷群、找唱片、认识同好，找<strong>摘花花</strong>。
   </div>
 
   <div class="contact-bottom">
@@ -2400,16 +2589,15 @@ input:checked + span{
   <article class="leave-card">
 
     <div class="leave-label">
-      LEAVE YOUR MARK
+      COME AS YOU ARE
     </div>
 
     <h2 class="leave-title">
-      留下足迹
+      来都来了
     </h2>
 
     <div class="leave-desc">
-      你在哪座城市？<br>
-      最近在听谁？
+      最近在听谁？留句话再走。
     </div>
 
     <button
@@ -2417,7 +2605,7 @@ input:checked + span{
       type="button"
       onclick="openFormModal()"
     >
-      留下一朵花 🌼
+      来唠两句 →
     </button>
 
     <div class="leave-flower">
@@ -2434,11 +2622,11 @@ input:checked + span{
       <div>
 
         <h2 class="petals-title">
-          最近掉落的<span>花瓣</span>
+          音乐留言板
         </h2>
 
         <div class="petals-sub">
-          来自不同城市、不同耳机里的朋友们
+          产生一些音乐碰撞
         </div>
 
       </div>
@@ -2474,7 +2662,7 @@ input:checked + span{
     >
 
       <div class="petal-empty">
-        正在捡花瓣……
+        正在翻留言……
       </div>
 
     </div>
@@ -2515,84 +2703,64 @@ input:checked + span{
 
     <div class="socials">
 
-
-      <a
-        class="social-link"
-        href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI1MDE5NTUxNA%3D%3D&action=getalbum&album_id=3436050829072072710&scene=305#wechat_redirect"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-en">
-          WECHAT
+      <a class="social-link" href="https://mp.weixin.qq.com/mp/appmsgalbum?__biz=MzI1MDE5NTUxNA%3D%3D&action=getalbum&album_id=3436050829072072710&scene=305#wechat_redirect" target="_blank" rel="noopener noreferrer">
+        <span class="social-logo social-logo-wechat" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <path fill="currentColor" d="M27 12C14.9 12 5 20.2 5 30.2c0 5.7 3.2 10.8 8.3 14.2L11 52l8.1-4.1c2.5.7 5.1 1.1 7.9 1.1 12.1 0 22-8.2 22-18.8S39.1 12 27 12Z"/>
+            <circle cx="19" cy="27" r="2.3" fill="#f6f3ed"/><circle cx="34" cy="27" r="2.3" fill="#f6f3ed"/>
+            <path fill="currentColor" d="M43 28c9 0 16 6.1 16 13.7 0 4.1-2.1 7.8-5.6 10.3l1.7 5.6-5.9-3c-1.9.5-4 .8-6.2.8-9 0-16-6.1-16-13.7S34 28 43 28Z"/>
+            <circle cx="38" cy="39" r="1.8" fill="#f6f3ed"/><circle cx="49" cy="39" r="1.8" fill="#f6f3ed"/>
+          </svg>
         </span>
-
-        <span class="social-name">
-          公众号<br>摘花花
-        </span>
+        <span class="social-name">公众号<br>摘花花</span>
       </a>
 
-
-      <a
-        class="social-link"
-        href="https://v.douyin.com/lU38Z8aZ6Aw/"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-en">
-          DOUYIN
+      <a class="social-link" href="https://v.douyin.com/lU38Z8aZ6Aw/" target="_blank" rel="noopener noreferrer">
+        <span class="social-logo social-logo-douyin" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img">
+            <path fill="currentColor" d="M38 7h9c.8 7 4.8 11.3 11 13v9c-4.7-.3-8.5-1.8-11.8-4.4v17.1C46.2 51.2 38.8 58 29 58 19.5 58 12 50.8 12 41.8 12 32.4 19.7 25 29.4 25c1.4 0 2.7.1 4 .5v9.4c-1.1-.5-2.3-.7-3.6-.7-4.6 0-8 3.2-8 7.5 0 4.1 3.2 7.2 7.5 7.2 5.3 0 8.7-3.8 8.7-9.6V7Z"/>
+          </svg>
         </span>
-
-        <span class="social-name">
-          抖音<br>摘花花
-        </span>
+        <span class="social-name">抖音<br>摘花花</span>
       </a>
 
-
-      <a
-        class="social-link"
-        href="https://y.music.163.com/m/user?id=53695011&dlt=0846&app_version=9.5.60"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-en">
-          NETEASE
+      <a class="social-link" href="https://y.music.163.com/m/user?id=53695011&dlt=0846&app_version=9.5.60" target="_blank" rel="noopener noreferrer">
+        <span class="social-logo social-logo-netease" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img" aria-label="网易云音乐">
+            <path
+              d="M43.7 13.1c-6.8-6-17.3-5.4-23.4 1.4-5.2 5.8-5.5 14.4-.8 20.5 4 5.2 11.3 7.1 17.4 4.3 4.9-2.2 7.3-7.9 5.5-12.9-1.5-4.1-6-6.3-10.1-4.9-3.3 1.1-5.1 4.7-4 8 0 0 .7 2.3 3 3.4 2.1 1.1 4.8.2 5.9-1.9"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="5.6"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M19.7 16.2C11 19.9 6.8 30 10.5 38.8c4.4 10.5 16.5 15.4 27 11 8.5-3.6 13.4-12.3 12.4-21.1"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="5.6"
+              stroke-linecap="round"
+            />
+            <path
+              d="M44 13.4c-1.7 1.8-3.1 4.1-3.7 6.6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="5.6"
+              stroke-linecap="round"
+            />
+          </svg>
         </span>
-
-        <span class="social-name">
-          网易云<br>摘花花
-        </span>
+        <span class="social-name">网易云<br>摘花花</span>
       </a>
 
-
-      <a
-        class="social-link"
-        href="https://weibo.com/u/1951061083"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-en">
-          WEIBO
+      <a class="social-link" href="https://okjk.co/BTISiR" target="_blank" rel="noopener noreferrer">
+        <span class="social-logo social-logo-jike" aria-hidden="true">
+          <svg viewBox="0 0 64 64" role="img" aria-label="即刻">
+            <path d="M37 7v27.5L23 45l7.5 12L46 45.2c4.2-3.2 6-7.2 6-12.2V7H37z" fill="currentColor"/>
+          </svg>
         </span>
-
-        <span class="social-name">
-          微博<br>摘花花呀
-        </span>
-      </a>
-
-
-      <a
-        class="social-link"
-        href="https://okjk.co/BTISiR"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <span class="social-en">
-          JIKE
-        </span>
-
-        <span class="social-name">
-          即刻<br>艺能人花花花
-        </span>
+        <span class="social-name">即刻<br>艺能人花花花</span>
       </a>
 
 
@@ -2610,13 +2778,49 @@ input:checked + span{
   </div>
 
   <div class="footer-en">
-    MUSIC · PEOPLE · CITY
+    Wake up or eat your fill, another year passes; we meet and part in a single day.
   </div>
 
 </footer>
 
 
 </main>
+
+
+<!-- 叁缺壹购票海报 -->
+<div
+  class="modal-overlay"
+  id="ticketOverlay"
+  onclick="closeTicketFromBackground(event)"
+>
+
+  <div
+    class="ticket-modal"
+    onclick="event.stopPropagation()"
+  >
+
+    <button
+      class="modal-close"
+      type="button"
+      aria-label="关闭购票海报"
+      onclick="closeTicketModal()"
+    >
+      ×
+    </button>
+
+    <img
+      src="images/ticket-poster.jpg?v=90"
+      class="ticket-poster"
+      alt="2026叁缺壹吉隆坡演出购票海报"
+    >
+
+    <div class="ticket-tip">
+      长按 / 截图识别海报中的二维码购票
+    </div>
+
+  </div>
+
+</div>
 
 
 <!-- 微信二维码 -->
@@ -2682,12 +2886,12 @@ input:checked + span{
 
 
     <h2 class="form-title">
-      留下一朵花
+      来都来了
     </h2>
 
 
     <div class="form-desc">
-      在这里留下你的音乐足迹。
+      来都来了，随便唠唠。
     </div>
 
 
@@ -2915,7 +3119,7 @@ input:checked + span{
         <div class="field full">
 
           <label>
-            想干嘛？
+            来这瞅啥
           </label>
 
           <div class="need-options">
@@ -2930,9 +3134,7 @@ input:checked + span{
                 checked
               >
 
-              <span>
-                找演出搭子
-              </span>
+              <span>找演出搭子</span>
 
             </label>
 
@@ -2945,9 +3147,7 @@ input:checked + span{
                 value="进乐迷群"
               >
 
-              <span>
-                进乐迷群
-              </span>
+              <span>进乐迷群</span>
 
             </label>
 
@@ -2960,9 +3160,7 @@ input:checked + span{
                 value="买唱片"
               >
 
-              <span>
-                买唱片
-              </span>
+              <span>买唱片</span>
 
             </label>
 
@@ -2972,15 +3170,51 @@ input:checked + span{
               <input
                 type="radio"
                 name="need"
-                value="认识同好"
+                value="歌曲推荐"
               >
 
-              <span>
-                认识同好
-              </span>
+              <span>歌曲推荐</span>
 
             </label>
 
+
+            <label class="need-option">
+
+              <input
+                type="radio"
+                name="need"
+                value="乐队推荐"
+              >
+
+              <span>乐队推荐</span>
+
+            </label>
+
+
+            <label class="need-option">
+
+              <input
+                type="radio"
+                name="need"
+                value="聊聊现场"
+              >
+
+              <span>聊聊现场</span>
+
+            </label>
+
+
+            <label class="need-option">
+
+              <input
+                type="radio"
+                name="need"
+                value="小声bb"
+              >
+
+              <span>小声bb</span>
+
+            </label>
 
           </div>
 
@@ -2990,13 +3224,13 @@ input:checked + span{
         <div class="field full">
 
           <label>
-            留一句话
+            随便唠唠
           </label>
 
           <textarea
             name="message"
             maxlength="180"
-            placeholder="比如：11月南京有人一起吗？"
+            placeholder="关于音乐、现场，或者今天。"
           ></textarea>
 
         </div>
@@ -3015,7 +3249,7 @@ input:checked + span{
             <span>
 
               <div class="publish-title">
-                公开到花瓣墙
+                公开到留言墙
               </div>
 
               <div class="publish-desc">
@@ -3063,7 +3297,6 @@ input:checked + span{
           <input
             name="contact"
             maxlength="100"
-            placeholder="想收到活动通知再留"
           >
 
         </div>
@@ -3076,6 +3309,7 @@ input:checked + span{
             <input
               type="checkbox"
               id="notify"
+              checked
             >
 
             <span>
@@ -3103,7 +3337,7 @@ input:checked + span{
         id="submitButton"
         type="submit"
       >
-        留下一朵花 🌼
+        来唠两句 →
       </button>
 
 
@@ -3316,7 +3550,7 @@ async function loadPetals(){
 
   grid.innerHTML = `
     <div class="petal-empty">
-      正在捡花瓣……
+      正在翻留言……
     </div>
   `;
 
@@ -3401,9 +3635,9 @@ async function loadPetals(){
 
         <div class="petal-empty">
 
-          这里还没有公开花瓣。<br>
+          这儿暂时没人吱声。<br>
 
-          留下第一朵吧 🌼
+          你快来吧！
 
         </div>
 
@@ -3522,9 +3756,9 @@ async function loadPetals(){
 
       <div class="petal-empty">
 
-        花瓣暂时躲起来了。<br>
+        留言暂时没刷出来。<br>
 
-        晚点再来看看 :)
+        晚点再来看看。
 
       </div>
 
@@ -3684,6 +3918,54 @@ async function likePetal(
 
     button.disabled =
       false;
+
+  }
+
+}
+
+
+/* =====================================================
+   TICKET MODAL
+===================================================== */
+
+function openTicketModal(){
+
+  document
+    .getElementById(
+      "ticketOverlay"
+    )
+    .classList
+    .add("show");
+
+  document.body.style.overflow =
+    "hidden";
+
+}
+
+
+function closeTicketModal(){
+
+  document
+    .getElementById(
+      "ticketOverlay"
+    )
+    .classList
+    .remove("show");
+
+  document.body.style.overflow =
+    "";
+
+}
+
+
+function closeTicketFromBackground(event){
+
+  if(
+    event.target.id ===
+    "ticketOverlay"
+  ){
+
+    closeTicketModal();
 
   }
 
@@ -3908,7 +4190,7 @@ document
 
 
       button.textContent =
-        "正在种下这朵花…";
+        "正在提交…";
 
 
       try{
@@ -3970,6 +4252,14 @@ document
             true;
 
 
+        document
+          .getElementById(
+            "notify"
+          )
+          .checked =
+            true;
+
+
         closeFormModal();
 
 
@@ -4003,9 +4293,9 @@ document
         alert(
           publish
             ?
-            "收到一朵花 🌼 已经掉落在花瓣墙上。"
+            "收到，已经出现在留言墙上了。"
             :
-            "收到一朵花 🌼 这条留言只有摘花花能看到。"
+            "收到，这条只有摘花花能看到。"
         );
 
 
@@ -4020,7 +4310,7 @@ document
 
 
         alert(
-          "这朵花刚刚没种成功，再试一次吧。"
+          "刚刚没提交成功，再试一次吧。"
         );
 
       }
@@ -4032,7 +4322,7 @@ document
 
 
         button.textContent =
-          "留下一朵花 🌼";
+          "来唠两句 →";
 
       }
 
