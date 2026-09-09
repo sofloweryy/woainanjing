@@ -120,15 +120,6 @@ img{
   max-width:100%;
 }
 
-/* 展示图片：降低手机长按、拖拽和右键另存的便利性。
-   这不是 DRM，截图或开发者工具仍然无法从网页层彻底阻止。 */
-.protected-media{
-  -webkit-touch-callout:none;
-  -webkit-user-select:none;
-  user-select:none;
-  -webkit-user-drag:none;
-}
-
 
 a{
   color:inherit;
@@ -761,28 +752,6 @@ a{
 
 .contact-btn:hover{
   opacity:.68;
-}
-
-.copy-wechat-btn{
-  min-height:40px;
-  padding:0 16px;
-  border:1px solid rgba(24,25,24,.2);
-  border-radius:999px;
-  color:#222;
-  background:rgba(255,255,255,.58);
-  font-family:var(--font-literary);
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
-}
-
-.copy-wechat-btn:hover{
-  background:rgba(255,255,255,.88);
-}
-
-.copy-wechat-btn:focus-visible{
-  outline:2px solid #588aa5;
-  outline-offset:3px;
 }
 
 
@@ -1807,10 +1776,6 @@ input:checked + span{
   font-size:12px;
 }
 
-.qr-modal .copy-wechat-btn{
-  margin-top:14px;
-}
-
 
 /* =====================================================
    TABLET
@@ -2618,14 +2583,8 @@ input:checked + span{
 
     <img
       src="images/lizhiconcert.jpg?v=60"
-      srcset="images/lizhiconcert-640.webp 640w, images/lizhiconcert-960.webp 960w, images/lizhiconcert-1440.webp 1440w"
-      sizes="(max-width: 650px) calc(100vw - 28px), 940px"
       class="hero-photo"
       alt="现场照片"
-      width="1440"
-      height="1080"
-      decoding="async"
-      fetchpriority="high"
     >
 
   </div>
@@ -2668,16 +2627,8 @@ input:checked + span{
 
       <img
         src="/images/group.jpg?v=120"
-        srcset="/images/group-480.webp 480w, /images/group-720.webp 720w"
-        sizes="(max-width: 650px) 42vw, 316px"
-        class="feature-photo feature-photo-group protected-media"
+        class="feature-photo feature-photo-group"
         alt="乐迷进群"
-        width="1200"
-        height="900"
-        loading="lazy"
-        decoding="async"
-        draggable="false"
-        data-protected-image
       >
 
     </div>
@@ -2699,16 +2650,8 @@ input:checked + span{
 
       <img
         src="/images/album.jpg?v=120"
-        srcset="/images/album-480.webp 480w, /images/album-720.webp 720w"
-        sizes="(max-width: 650px) 42vw, 277px"
-        class="feature-photo feature-photo-album protected-media"
+        class="feature-photo feature-photo-album"
         alt="购买唱片"
-        width="2048"
-        height="2048"
-        loading="lazy"
-        decoding="async"
-        draggable="false"
-        data-protected-image
       >
 
     </div>
@@ -2730,16 +2673,8 @@ input:checked + span{
 
       <img
         src="/images/friend.jpg?v=120"
-        srcset="/images/friend-480.webp 480w, /images/friend-720.webp 720w"
-        sizes="(max-width: 650px) 42vw, 314px"
-        class="feature-photo feature-photo-friend protected-media"
+        class="feature-photo feature-photo-friend"
         alt="同好交友"
-        width="1200"
-        height="900"
-        loading="lazy"
-        decoding="async"
-        draggable="false"
-        data-protected-image
       >
 
     </div>
@@ -2772,14 +2707,6 @@ input:checked + span{
       onclick="openQrModal()"
     >
       查看二维码 →
-    </button>
-
-    <button
-      class="copy-wechat-btn"
-      type="button"
-      onclick="copyWeChatId(this)"
-    >
-      复制微信号
     </button>
 
   </div>
@@ -2883,16 +2810,8 @@ input:checked + span{
 
     <img
       src="images/me.jpg?v=60"
-      srcset="images/me-240.webp 240w, images/me-400.webp 400w"
-      sizes="172px"
-      class="follow-photo protected-media"
+      class="follow-photo"
       alt="摘花花"
-      width="724"
-      height="904"
-      loading="lazy"
-      decoding="async"
-      draggable="false"
-      data-protected-image
     >
 
   </div>
@@ -3022,14 +2941,8 @@ input:checked + span{
 
     <img
       src="images/ticket-poster.jpg?v=90"
-      srcset="images/ticket-poster-720.webp 720w, images/ticket-poster-1125.webp 1125w"
-      sizes="(max-width: 650px) calc(100vw - 40px), 532px"
       class="ticket-poster"
       alt="2026叁缺壹吉隆坡演出购票海报"
-      width="1125"
-      height="1617"
-      loading="lazy"
-      decoding="async"
     >
 
     <div class="ticket-tip">
@@ -3057,7 +2970,6 @@ input:checked + span{
     <button
       class="modal-close"
       type="button"
-      aria-label="关闭微信二维码"
       onclick="closeQrModal()"
     >
       ×
@@ -3069,29 +2981,13 @@ input:checked + span{
 
     <img
       src="images/wechat.png?v=60"
-      srcset="images/wechat-480.webp 480w, images/wechat-804.webp 804w"
-      sizes="(max-width: 380px) calc(100vw - 76px), 280px"
-      class="qr-img protected-media"
+      class="qr-img"
       alt="摘花花微信二维码"
-      width="804"
-      height="800"
-      loading="lazy"
-      decoding="async"
-      draggable="false"
-      data-protected-image
     >
 
     <div class="qr-id">
       微信：zhaihuahua88
     </div>
-
-    <button
-      class="copy-wechat-btn"
-      type="button"
-      onclick="copyWeChatId(this)"
-    >
-      复制微信号
-    </button>
 
   </div>
 
@@ -4210,116 +4106,6 @@ function closeTicketFromBackground(event){
 /* =====================================================
    QR MODAL
 ===================================================== */
-
-async function copyWeChatId(button){
-
-  const wechatId =
-    "zhaihuahua88";
-
-  const originalText =
-    button.textContent;
-
-  try{
-
-    if(
-      navigator.clipboard &&
-      window.isSecureContext
-    ){
-
-      await navigator.clipboard.writeText(
-        wechatId
-      );
-
-    }
-
-    else{
-
-      const helper =
-        document.createElement("textarea");
-
-      helper.value =
-        wechatId;
-
-      helper.setAttribute(
-        "readonly",
-        ""
-      );
-
-      helper.style.position =
-        "fixed";
-
-      helper.style.opacity =
-        "0";
-
-      document.body.appendChild(
-        helper
-      );
-
-      helper.select();
-
-      document.execCommand("copy");
-
-      helper.remove();
-
-    }
-
-    button.textContent =
-      "已复制：zhaihuahua88";
-
-  }
-
-  catch(error){
-
-    button.textContent =
-      "微信号：zhaihuahua88";
-
-  }
-
-  window.setTimeout(
-    () => {
-      button.textContent =
-        originalText;
-    },
-    2200
-  );
-
-}
-
-
-document.addEventListener(
-  "contextmenu",
-  function(event){
-
-    if(
-      event.target.closest(
-        "[data-protected-image]"
-      )
-    ){
-
-      event.preventDefault();
-
-    }
-
-  }
-);
-
-
-document.addEventListener(
-  "dragstart",
-  function(event){
-
-    if(
-      event.target.closest(
-        "[data-protected-image]"
-      )
-    ){
-
-      event.preventDefault();
-
-    }
-
-  }
-);
 
 function openQrModal(){
 
