@@ -732,6 +732,27 @@ a{
   color:#3f423f;
 }
 
+.copy-wechat-btn{
+  border:0;
+  padding:0;
+  background:none;
+  color:#5f7180;
+  font-family:var(--font-body);
+  font-size:11px;
+  font-weight:600;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  cursor:pointer;
+}
+
+/* 除购票海报和个人微信二维码外，页面图片均为展示图 */
+img:not(.ticket-poster):not(.qr-img){
+  -webkit-touch-callout:none;
+  -webkit-user-select:none;
+  user-select:none;
+  -webkit-user-drag:none;
+}
+
 .contact-btn{
   border:0;
   padding:0;
@@ -2702,6 +2723,14 @@ input:checked + span{
     </span>
 
     <button
+      class="copy-wechat-btn"
+      type="button"
+      onclick="copyWechatId(this)"
+    >
+      复制微信号
+    </button>
+
+    <button
       class="contact-btn"
       type="button"
       onclick="openQrModal()"
@@ -4054,6 +4083,54 @@ async function likePetal(
 
 }
 
+
+/* =====================================================
+   COPY WECHAT + IMAGE PROTECTION
+===================================================== */
+
+async function copyWechatId(button){
+  const wechatId = "zhaihuahua88";
+
+  try{
+    await navigator.clipboard.writeText(wechatId);
+  }
+  catch(error){
+    const input = document.createElement("textarea");
+    input.value = wechatId;
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+
+  const oldText = button.textContent;
+  button.textContent = "已复制 ✓";
+
+  setTimeout(() => {
+    button.textContent = oldText;
+  }, 1600);
+}
+
+function isSaveAllowedImage(img){
+  return img.classList.contains("ticket-poster") ||
+         img.classList.contains("qr-img");
+}
+
+document.querySelectorAll("img").forEach(img => {
+  if(!isSaveAllowedImage(img)){
+    img.setAttribute("draggable", "false");
+  }
+});
+
+document.addEventListener("contextmenu", function(event){
+  const img = event.target.closest("img");
+
+  if(img && !isSaveAllowedImage(img)){
+    event.preventDefault();
+  }
+});
 
 /* =====================================================
    TICKET MODAL
