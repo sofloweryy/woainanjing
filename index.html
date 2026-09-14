@@ -4043,6 +4043,126 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+/* =====================================================
+   DESKTOP — 来都来了重新排版
+   标题单独一行 / 描述一行 / 按钮单独一行
+   手机端保持现有布局不动
+===================================================== */
+@media (min-width:651px){
+
+  .leave-card{
+    position:relative !important;
+    display:flex !important;
+    flex-direction:column !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    min-height:205px !important;
+    padding:26px 24px 24px !important;
+
+    text-align:center !important;
+  }
+
+  .leave-card .leave-main-row{
+    position:relative !important;
+    display:block !important;
+
+    width:100% !important;
+    min-height:auto !important;
+
+    margin:0 !important;
+    padding:0 58px !important;
+  }
+
+  /* 小花固定在左边，不再挤标题 */
+  .leave-card .leave-flower{
+    position:absolute !important;
+
+    left:0 !important;
+    top:50% !important;
+    right:auto !important;
+    bottom:auto !important;
+
+    width:52px !important;
+    height:52px !important;
+
+    transform:
+      translateY(-50%)
+      rotate(-8deg) !important;
+
+    opacity:.88 !important;
+  }
+
+  /* 标题单独一整行，绝不换行 */
+  .leave-card .leave-title{
+    position:static !important;
+
+    display:block !important;
+
+    width:100% !important;
+    max-width:none !important;
+
+    margin:0 !important;
+
+    font-size:38px !important;
+    line-height:1.05 !important;
+
+    text-align:center !important;
+    white-space:nowrap !important;
+
+    transform:none !important;
+  }
+
+  /* 描述放在标题下面 */
+  .leave-card .leave-desc{
+    width:100% !important;
+
+    margin:14px 0 0 !important;
+
+    color:#5d625e !important;
+
+    font-size:11px !important;
+    line-height:1.5 !important;
+
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  /* 按钮独立一行，不再和标题抢位置 */
+  .leave-card .leave-btn{
+    position:static !important;
+
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+
+    min-width:92px !important;
+    height:36px !important;
+
+    margin:17px auto 0 !important;
+    padding:0 18px !important;
+
+    border:1px solid rgba(88,138,165,.32) !important;
+    border-radius:999px !important;
+
+    color:#426f86 !important;
+    background:rgba(255,255,255,.58) !important;
+
+    font-family:var(--font-literary) !important;
+    font-size:11px !important;
+    font-weight:600 !important;
+
+    box-shadow:2px 3px 0 rgba(88,138,165,.08) !important;
+
+    transform:none !important;
+    white-space:nowrap !important;
+  }
+
+}
+</style>
+
 </head>
 
 
