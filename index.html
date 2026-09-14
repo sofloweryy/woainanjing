@@ -5464,75 +5464,14 @@ async function loadPetals(){
 
 
 /* =====================================================
-   DAILY LIKE LIMIT
-===================================================== */
-
-function getTodayKey(){
-
-  const now =
-    new Date();
-
-
-  return [
-    now.getFullYear(),
-    now.getMonth()+1,
-    now.getDate()
-  ].join("-");
-
-}
-
-
-function getLocalLikeCount(){
-
-  const key =
-    `zhh_like_${getTodayKey()}`;
-
-
-  return Number(
-    localStorage.getItem(key)
-    || 0
-  );
-
-}
-
-
-function addLocalLikeCount(){
-
-  const key =
-    `zhh_like_${getTodayKey()}`;
-
-
-  localStorage.setItem(
-    key,
-    String(
-      getLocalLikeCount() + 1
-    )
-  );
-
-}
-
-
-/* =====================================================
    LIKE
+   每日 10 次限制统一由 Supabase 判断，避免本地缓存误判
 ===================================================== */
 
 async function likePetal(
   messageId,
   button
 ){
-
-  if(
-    getLocalLikeCount() >= 10
-  ){
-
-    alert(
-      "今天的 10 次点赞已经用完啦 🌼"
-    );
-
-    return;
-
-  }
-
 
   button.disabled =
     true;
@@ -5561,9 +5500,6 @@ async function likePetal(
     if(error){
       throw error;
     }
-
-
-    addLocalLikeCount();
 
 
     const number =
@@ -5601,10 +5537,26 @@ async function likePetal(
       error
     );
 
+    const message =
+      String(
+        error?.message ||
+        error?.details ||
+        error?.hint ||
+        ""
+      );
 
-    alert(
-      "这次没赞上，请稍后再试。"
-    );
+    if(
+      message.includes("DAILY_LIKE_LIMIT")
+    ){
+      alert(
+        "今天的 10 次点赞已经用完啦 🌼"
+      );
+    }
+    else{
+      alert(
+        "这次没赞上，请稍后再试。"
+      );
+    }
 
   }
 
