@@ -3071,6 +3071,67 @@ input:checked + span{
     opacity:.78;
   }
 }
+
+
+/* =====================================================
+   GUIDE CTA POSITION UPDATE
+   查看按钮固定到卡片右下角，整张 banner 仍可点击
+===================================================== */
+.guide-entry-inner{
+  min-height:96px;
+}
+
+.guide-link{
+  position:absolute;
+  right:4px;
+  bottom:0;
+  z-index:4;
+  min-width:64px;
+  min-height:38px;
+  padding:0 16px;
+  font-size:12px;
+}
+
+@media(max-width:650px){
+  .guide-entry{
+    padding:13px 12px 12px;
+  }
+
+  .guide-entry-inner{
+    grid-template-columns:100px minmax(0,1fr);
+    gap:7px;
+    min-height:104px;
+    padding-right:0;
+    padding-bottom:36px;
+  }
+
+  .guide-character{
+    width:116px;
+    transform:
+      translateX(-16px)
+      translateY(-1px)
+      rotate(-5deg);
+  }
+
+  .guide-entry-copy{
+    align-self:center;
+    transform:translateY(-4px);
+  }
+
+  .guide-desc{
+    font-size:10px;
+    padding:3px 7px 4px;
+  }
+
+  .guide-link{
+    right:2px;
+    bottom:0;
+    min-width:70px;
+    min-height:36px;
+    padding:0 15px;
+    font-size:11px;
+  }
+}
 </style>
 
 <style>
