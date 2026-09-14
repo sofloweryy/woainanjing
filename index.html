@@ -3298,6 +3298,81 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+/* FINAL：来都来了——可爱小花左置 / 标题中轴 / 按钮右置 */
+.leave-card .leave-flower{
+  position:static;
+  right:auto;
+  bottom:auto;
+  width:66px;
+  height:66px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#d98e9a;
+  opacity:.92;
+  transform:rotate(-7deg);
+  pointer-events:none;
+}
+.leave-card .leave-flower svg{width:100%;height:100%;display:block;}
+
+@media (max-width:650px){
+  .leave-card{padding:20px 18px 18px !important;}
+  .leave-card .leave-main-row{
+    position:relative !important;
+    display:grid !important;
+    grid-template-columns:86px 1fr 86px !important;
+    align-items:center !important;
+    gap:0 !important;
+    width:100% !important;
+    min-height:72px !important;
+    margin:0 !important;
+  }
+  .leave-card .leave-flower{
+    grid-column:1 !important;
+    justify-self:start !important;
+    width:58px !important;
+    height:58px !important;
+    margin-left:0 !important;
+  }
+  .leave-card .leave-title{
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-50%) !important;
+    width:max-content !important;
+    max-width:46% !important;
+    margin:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+    font-size:30px !important;
+  }
+  .leave-card .leave-btn{
+    grid-column:3 !important;
+    justify-self:end !important;
+    position:relative !important;
+    z-index:3 !important;
+    height:34px !important;
+    margin:0 !important;
+    padding:0 13px !important;
+    white-space:nowrap !important;
+  }
+  .leave-card .leave-desc{
+    width:100% !important;
+    margin:7px 0 0 !important;
+    text-align:center !important;
+    font-size:10px !important;
+  }
+}
+@media (max-width:390px){
+  .leave-card .leave-main-row{grid-template-columns:72px 1fr 72px !important;}
+  .leave-card .leave-flower{width:50px !important;height:50px !important;}
+  .leave-card .leave-title{font-size:27px !important;}
+  .leave-card .leave-btn{height:32px !important;padding:0 10px !important;font-size:10px !important;}
+}
+</style>
+
 </head>
 
 
@@ -3499,6 +3574,26 @@ input:checked + span{
     
 
     <div class="leave-main-row">
+
+      <div class="leave-flower" aria-hidden="true">
+        <svg viewBox="0 0 90 90" xmlns="http://www.w3.org/2000/svg">
+          <g fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M42 39 C29 28,27 17,34 14 C42 11,47 23,45 35"/>
+            <path d="M45 37 C50 22,59 17,65 22 C71 28,61 38,49 41"/>
+            <path d="M48 42 C63 38,72 43,70 51 C68 59,54 57,47 48"/>
+            <path d="M44 47 C52 60,48 70,40 70 C32 70,31 56,39 47"/>
+            <path d="M39 43 C25 51,15 47,16 39 C17 31,31 31,40 38"/>
+            <circle cx="43" cy="42" r="4.5"/>
+            <path d="M34 57 C28 64,25 70,25 78"/>
+            <path d="M27 68 C20 64,16 66,15 71 C21 73,25 72,27 68"/>
+            <path d="M25 74 C30 72,34 75,34 79 C29 81,26 79,25 74"/>
+            <path d="M72 30 L79 26"/>
+            <path d="M74 37 L83 37"/>
+            <path d="M70 23 L74 17"/>
+          </g>
+        </svg>
+      </div>
+
       <h2 class="leave-title">
         来都来了
       </h2>
@@ -3508,16 +3603,12 @@ input:checked + span{
         type="button"
         onclick="openFormModal()"
       >
-        来唠两句 →
+        来唠两句
       </button>
     </div>
 
     <div class="leave-desc">
       有什么想说的、最近在听谁、宝贵建议...
-    </div>
-
-    <div class="leave-flower">
-      ❀
     </div>
 
   </article>
