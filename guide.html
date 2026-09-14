@@ -45,8 +45,47 @@ img{display:block;max-width:100%}
 .site{font-family:var(--font-en);font-size:11px;letter-spacing:.16em;color:var(--muted)}
 .hero{position:relative;padding:26px 0 36px;border-bottom:1px solid var(--line)}
 .eyebrow{font-family:var(--font-en);font-size:11px;letter-spacing:.18em;color:var(--blue);margin-bottom:12px}
-h1{font-family:var(--font-literary);font-size:clamp(35px,6vw,66px);line-height:1.05;font-weight:600;letter-spacing:-.035em;max-width:760px}
+h1{font-family:var(--font-literary);font-size:clamp(30px,5.2vw,58px);line-height:1.05;font-weight:600;letter-spacing:-.045em;max-width:none;white-space:nowrap}
 .hero-sub{margin-top:14px;font-family:var(--font-literary);font-size:17px;color:#4c514e;line-height:1.8;max-width:720px}
+.hero-wechat{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:9px;
+  margin-top:16px;
+  padding:10px 14px;
+  border:1.5px solid rgba(100,141,165,.58);
+  border-radius:10px 13px 9px 12px;
+  background:rgba(255,255,255,.42);
+  box-shadow:3px 4px 0 rgba(217,178,189,.22);
+  font-family:var(--font-literary);
+  font-size:13px;
+  color:#4c514e;
+  transform:rotate(-.25deg);
+}
+.hero-wechat::before{
+  content:"✿";
+  color:var(--pink);
+  font-size:15px;
+  line-height:1;
+}
+.hero-wechat strong{
+  font-family:var(--font-en);
+  font-weight:600;
+  color:var(--ink);
+}
+.copy-wechat{
+  border:0;
+  border-left:1px dashed rgba(100,141,165,.42);
+  background:none;
+  padding:1px 0 1px 10px;
+  font:inherit;
+  font-size:12px;
+  color:var(--blue);
+  cursor:pointer;
+}
+.copy-wechat:hover{opacity:.68}
+
 .hero-art{margin-top:28px;position:relative;transform:rotate(-.35deg)}
 .hero-art img{width:100%;border:1px solid var(--line);box-shadow:8px 10px 20px rgba(25,25,25,.07)}
 .hero-art::before{content:"";position:absolute;width:78px;height:20px;background:rgba(143,171,184,.4);left:50%;top:-8px;transform:translateX(-50%) rotate(-3deg);z-index:2}
@@ -65,7 +104,8 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
 .info strong{font-family:var(--font-literary);font-size:17px;font-weight:600;line-height:1.5}
 .callout{margin:22px 0;padding:17px 18px;border-left:3px solid var(--blue);background:rgba(220,233,239,.38);font-family:var(--font-literary);line-height:1.8}
 .steps{counter-reset:step;display:grid;gap:10px;margin:18px 0}
-.step{counter-increment:step;display:grid;grid-template-columns:31px 1fr;gap:12px;align-items:start;padding:13px 0;border-bottom:1px dashed rgba(24,25,24,.16);font-size:14px;line-height:1.7}
+.step{counter-increment:step;display:grid;grid-template-columns:31px minmax(0,1fr);gap:12px;align-items:start;padding:13px 0;border-bottom:1px dashed rgba(24,25,24,.16);font-size:14px;line-height:1.7}
+.step strong{display:inline;font-weight:400;color:inherit}
 .step::before{content:counter(step,decimal-leading-zero);font-family:var(--font-en);font-size:10px;color:var(--blue);padding-top:4px}
 .notes{margin:15px 0 0;padding-left:20px;font-size:14px;line-height:1.85;color:#444845}
 .notes li+li{margin-top:6px}
@@ -106,8 +146,17 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
   .page{width:min(100% - 28px,980px);padding-top:18px}
   .site{display:none}
   .hero{padding-top:16px}
-  h1{font-size:39px}
+  h1{font-size:clamp(26px,7.5vw,34px);white-space:nowrap;letter-spacing:-.055em}
   .hero-sub{font-size:15px}
+  .hero-wechat{
+    font-size:12px;
+    gap:7px;
+    padding:9px 11px;
+    max-width:100%;
+    flex-wrap:nowrap;
+  }
+  .hero-wechat::before{font-size:13px}
+  .copy-wechat{font-size:11px;padding-left:8px;white-space:nowrap}
   .quick{grid-template-columns:repeat(2,1fr);gap:16px 12px}
   .section{padding-top:44px}
   h2{font-size:27px}
@@ -121,6 +170,7 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
   .route{grid-template-columns:1fr;gap:7px}
   .route h3{font-size:17px}
   .button{font-size:12px}
+  .step{grid-template-columns:28px minmax(0,1fr);gap:10px;font-size:13px;white-space:nowrap}
 }
 </style>
 </head>
@@ -133,8 +183,12 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
 
   <header class="hero">
     <div class="eyebrow">2026 THREE MISSING ONE · KUALA LUMPUR</div>
-    <h1>吉隆坡演出<br>/ 旅行攻略</h1>
+    <h1>吉隆坡演出 / 旅行攻略</h1>
     <p class="hero-sub">第一次出国看演出也别慌。把购票、座位、场地、交通和住宿放在一页里，去看叁缺壹，也顺便好好逛一趟吉隆坡。</p>
+    <div class="hero-wechat">
+      <span>演出进群：vx：<strong id="wechatId">zhaihuahua88</strong></span>
+      <button class="copy-wechat" type="button" onclick="copyWechat(this)">复制</button>
+    </div>
     <div class="hero-art"><img src="/images/guide/hero-banner.webp?v=2" alt="2026 叁缺壹吉隆坡演出"></div>
     <nav class="quick">
       <a href="#ticket"><b>01</b>购票 / 座位</a>
@@ -161,8 +215,8 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
 
       <h3 class="subhead">怎么买</h3>
       <div class="steps">
-        <div class="step">把 Fantopia 语言修改为<strong>简体中文</strong>。</div>
-        <div class="step">地区修改为<strong>马来西亚</strong>。</div>
+        <div class="step">把 Fantopia 语言修改为简体中文。</div>
+        <div class="step">地区修改为马来西亚。</div>
         <div class="step">搜索演出名，选择演出日期和票种。</div>
         <div class="step">填写姓名、证件号、手机号。</div>
         <div class="step">支付时不要只看默认 VISA，继续往下滑，可选择支付宝 Alipay / 微信支付。</div>
@@ -272,7 +326,28 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
   </section>
 
   <div class="notice">攻略内容整理自「2026 吉隆坡叁缺壹最新攻略」。演出、票务、交通与酒店信息都有可能调整，临行前请以官方平台及当天实际情况为准。</div>
-  <div class="footer">摘花花1701 · 祝你看得开心，也玩得开心。</div>
+  <div class="footer">zhaihuahua1701 · 祝你看得开心，也玩得开心。</div>
 </main>
+
+<script>
+async function copyWechat(button){
+  const wechatId = "zhaihuahua88";
+  try{
+    await navigator.clipboard.writeText(wechatId);
+  }catch(error){
+    const input = document.createElement("textarea");
+    input.value = wechatId;
+    input.style.position = "fixed";
+    input.style.opacity = "0";
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand("copy");
+    input.remove();
+  }
+  const oldText = button.textContent;
+  button.textContent = "已复制 ✓";
+  setTimeout(() => { button.textContent = oldText; }, 1600);
+}
+</script>
 </body>
 </html>
