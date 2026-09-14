@@ -3072,6 +3072,43 @@ input:checked + span{
   }
 }
 </style>
+
+<style>
+@media (max-width:650px){
+
+  /* 来都来了：去掉英文眉题后，保持标题区紧凑居中 */
+  .visit-card,
+  .come-card,
+  .come-as-you-are{
+    text-align:center;
+  }
+
+  /* 音乐留言板：手机端标题、副标题、排序整体居中 */
+  .wall-head,
+  .wall-header,
+  .message-wall-head,
+  .message-wall-header{
+    text-align:center !important;
+  }
+
+  .wall-head > div:first-child,
+  .wall-header > div:first-child,
+  .message-wall-head > div:first-child,
+  .message-wall-header > div:first-child{
+    width:100%;
+    text-align:center !important;
+  }
+
+  .wall-sort,
+  .sort-tabs,
+  .wall-sort-buttons{
+    margin-left:auto !important;
+    margin-right:auto !important;
+    justify-content:center !important;
+  }
+}
+</style>
+
 </head>
 
 
@@ -3270,9 +3307,7 @@ input:checked + span{
 
   <article class="leave-card">
 
-    <div class="leave-label">
-      COME AS YOU ARE
-    </div>
+    
 
     <div class="leave-main-row">
       <h2 class="leave-title">
@@ -3289,7 +3324,7 @@ input:checked + span{
     </div>
 
     <div class="leave-desc">
-      最近在听谁？留句话再走。
+      有什么想说的、最近在听谁、宝贵建议...
     </div>
 
     <div class="leave-flower">
