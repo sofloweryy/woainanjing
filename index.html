@@ -3583,6 +3583,163 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+@media (max-width:650px){
+
+  /* =====================================================
+     GUIDE BANNER — compact mobile layout
+     保持短高度，同时让「查看」更明显
+  ===================================================== */
+
+  .guide-entry{
+    margin:14px auto 26px !important;
+    padding:10px 10px !important;
+  }
+
+  .guide-entry-inner{
+    position:relative !important;
+
+    display:grid !important;
+    grid-template-columns:92px minmax(0,1fr) 82px !important;
+    grid-template-rows:auto auto !important;
+
+    column-gap:6px !important;
+    row-gap:4px !important;
+
+    align-items:center !important;
+
+    min-height:96px !important;
+
+    padding:4px 2px !important;
+  }
+
+  /* 左侧小人保持较大，但不撑高 Banner */
+  .guide-character{
+    grid-column:1 !important;
+    grid-row:1 / span 2 !important;
+
+    align-self:center !important;
+
+    width:104px !important;
+    height:auto !important;
+
+    margin:0 !important;
+
+    transform:
+      translateX(-15px)
+      translateY(-1px)
+      rotate(-5deg) !important;
+  }
+
+  .guide-entry-inner::before{
+    left:2px !important;
+    top:50% !important;
+
+    width:58px !important;
+    height:58px !important;
+
+    transform:
+      translateY(-50%)
+      rotate(-4deg) !important;
+  }
+
+  /* 中间标题与说明 */
+  .guide-entry-copy{
+    grid-column:2 !important;
+    grid-row:1 / span 2 !important;
+
+    align-self:center !important;
+
+    min-width:0 !important;
+
+    text-align:center !important;
+  }
+
+  .guide-title{
+    margin:0 !important;
+
+    font-size:clamp(18px,5vw,21px) !important;
+    line-height:1.08 !important;
+
+    white-space:nowrap !important;
+  }
+
+  .guide-desc{
+    margin-top:7px !important;
+    padding:0 !important;
+
+    background:transparent !important;
+
+    font-size:12px !important;
+    line-height:1.35 !important;
+
+    white-space:nowrap !important;
+  }
+
+  /* 查看：放在右侧偏下，但不占独立一整行 */
+  .guide-link{
+    grid-column:3 !important;
+    grid-row:2 !important;
+
+    justify-self:end !important;
+    align-self:end !important;
+
+    min-width:72px !important;
+    min-height:38px !important;
+
+    margin:0 2px 2px 0 !important;
+    padding:0 14px !important;
+
+    border-radius:999px !important;
+
+    font-size:12px !important;
+    font-weight:600 !important;
+
+    background:rgba(255,255,255,.82) !important;
+
+    box-shadow:
+      2px
+      3px
+      0
+      rgba(217,178,189,.18) !important;
+  }
+
+}
+
+@media (max-width:390px){
+
+  .guide-entry-inner{
+    grid-template-columns:84px minmax(0,1fr) 74px !important;
+    min-height:92px !important;
+  }
+
+  .guide-character{
+    width:96px !important;
+
+    transform:
+      translateX(-14px)
+      rotate(-5deg) !important;
+  }
+
+  .guide-title{
+    font-size:17px !important;
+  }
+
+  .guide-desc{
+    font-size:11px !important;
+  }
+
+  .guide-link{
+    min-width:66px !important;
+    min-height:36px !important;
+    padding:0 12px !important;
+    font-size:11px !important;
+  }
+
+}
+</style>
+
 </head>
 
 
