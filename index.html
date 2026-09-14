@@ -3219,6 +3219,85 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+@media (max-width:650px){
+
+  /* =====================================================
+     来都来了 / 音乐留言板：标题严格共用同一条中轴线
+  ===================================================== */
+
+  /* 来都来了：标题钉在正中，按钮独立放右边 */
+  .leave-main-row{
+    display:grid !important;
+    grid-template-columns:1fr auto 1fr !important;
+    align-items:center !important;
+    gap:8px !important;
+
+    width:100% !important;
+    margin:0 !important;
+  }
+
+  .leave-title{
+    grid-column:2 !important;
+    justify-self:center !important;
+
+    margin:0 !important;
+    text-align:center !important;
+  }
+
+  .leave-btn{
+    grid-column:3 !important;
+    justify-self:end !important;
+
+    margin:0 !important;
+  }
+
+  .leave-desc{
+    width:100% !important;
+    margin-top:10px !important;
+    text-align:center !important;
+  }
+
+  /* 音乐留言板：标题、副标题也锁在相同中轴线 */
+  .petals-head{
+    position:relative !important;
+    display:block !important;
+
+    min-height:62px !important;
+    margin-bottom:22px !important;
+
+    text-align:center !important;
+  }
+
+  .petals-head > div:first-child{
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .petals-title{
+    margin-left:auto !important;
+    margin-right:auto !important;
+    text-align:center !important;
+  }
+
+  .petals-sub{
+    margin-top:8px !important;
+    text-align:center !important;
+  }
+
+  /* 筛选按钮独立靠右，不影响标题中轴 */
+  .sort-tabs{
+    position:absolute !important;
+    right:0 !important;
+    top:0 !important;
+
+    margin:0 !important;
+  }
+
+}
+</style>
+
 </head>
 
 
