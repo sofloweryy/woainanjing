@@ -3373,6 +3373,155 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+@media (max-width:650px){
+
+  /* =====================================================
+     FINAL MOBILE ALIGNMENT
+     来都来了 / 音乐留言板共用同一条页面中轴线
+  ===================================================== */
+
+  /* 来都来了：标题严格居中，花左，按钮右 */
+  .leave-card{
+    position:relative !important;
+  }
+
+  .leave-card .leave-main-row{
+    position:relative !important;
+    display:block !important;
+    width:100% !important;
+    min-height:72px !important;
+    margin:0 !important;
+  }
+
+  .leave-card .leave-title{
+    position:absolute !important;
+    left:50% !important;
+    top:50% !important;
+    transform:translate(-50%,-50%) !important;
+
+    width:max-content !important;
+    margin:0 !important;
+
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  .leave-card .leave-flower{
+    position:absolute !important;
+    left:4px !important;
+    top:50% !important;
+    right:auto !important;
+    bottom:auto !important;
+
+    width:54px !important;
+    height:54px !important;
+
+    transform:
+      translateY(-50%)
+      rotate(-8deg) !important;
+  }
+
+  .leave-card .leave-btn{
+    position:absolute !important;
+    right:0 !important;
+    top:50% !important;
+    left:auto !important;
+
+    transform:translateY(-50%) !important;
+
+    height:31px !important;
+    margin:0 !important;
+    padding:0 11px !important;
+
+    font-size:9px !important;
+    white-space:nowrap !important;
+  }
+
+  .leave-card .leave-desc{
+    margin-top:7px !important;
+    text-align:center !important;
+  }
+
+
+  /* 音乐留言板：标题 + 副标题使用完全相同的中轴线 */
+  .petals-head{
+    position:relative !important;
+    display:block !important;
+
+    min-height:66px !important;
+    margin-bottom:20px !important;
+
+    text-align:center !important;
+  }
+
+  .petals-head > div:first-child{
+    position:absolute !important;
+    left:50% !important;
+    top:0 !important;
+
+    width:max-content !important;
+    max-width:60% !important;
+
+    transform:translateX(-50%) !important;
+
+    text-align:center !important;
+  }
+
+  .petals-title{
+    margin:0 !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  .petals-sub{
+    margin-top:7px !important;
+    text-align:center !important;
+    white-space:nowrap !important;
+  }
+
+  /* 按时间 / 按热度：缩小并靠右，不影响标题中轴 */
+  .sort-tabs{
+    position:absolute !important;
+    right:0 !important;
+    top:3px !important;
+
+    gap:2px !important;
+    padding:2px !important;
+    margin:0 !important;
+  }
+
+  .sort-btn{
+    height:24px !important;
+    padding:0 7px !important;
+    font-size:7.5px !important;
+  }
+
+}
+
+@media (max-width:390px){
+
+  .leave-card .leave-flower{
+    width:48px !important;
+    height:48px !important;
+  }
+
+  .leave-card .leave-btn{
+    height:29px !important;
+    padding:0 9px !important;
+    font-size:8.5px !important;
+  }
+
+  .sort-btn{
+    height:22px !important;
+    padding:0 6px !important;
+    font-size:7px !important;
+  }
+
+}
+</style>
+
 </head>
 
 
