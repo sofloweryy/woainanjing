@@ -3144,6 +3144,81 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+@media (max-width:650px){
+
+  /* =====================================================
+     MOBILE SECTION AXIS
+     联系卡 / 来都来了 / 音乐留言板统一到同一条中轴线
+  ===================================================== */
+
+  /* 联系卡：两行都居中 */
+  .contact-note{
+    text-align:center !important;
+  }
+
+  .contact-main{
+    text-align:center !important;
+  }
+
+  .contact-bottom{
+    justify-content:center !important;
+    align-items:center !important;
+    width:100% !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  /* 来都来了：标题 + 按钮作为一组整体居中 */
+  .leave-main-row{
+    justify-content:center !important;
+    width:100% !important;
+    margin-left:auto !important;
+    margin-right:auto !important;
+  }
+
+  .leave-desc{
+    text-align:center !important;
+  }
+
+  /* 音乐留言板：标题与副标题严格按页面中轴居中 */
+  .petals-head{
+    position:relative !important;
+    display:block !important;
+    min-height:58px !important;
+    margin-bottom:22px !important;
+    text-align:center !important;
+  }
+
+  .petals-head > div:first-child{
+    width:100% !important;
+    text-align:center !important;
+  }
+
+  .petals-title{
+    text-align:center !important;
+  }
+
+  .petals-sub{
+    margin-top:7px !important;
+    text-align:center !important;
+  }
+
+  /* 筛选按钮不参与中轴，独立固定在右上角 */
+  .sort-tabs{
+    position:absolute !important;
+    right:0 !important;
+    top:0 !important;
+
+    margin:0 !important;
+
+    justify-content:flex-end !important;
+  }
+
+}
+</style>
+
 </head>
 
 
