@@ -23,7 +23,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link
-  href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&display=swap"
+  href="https://fonts.googleapis.com/css2?family=Long+Cang&family=Noto+Sans+SC:wght@400;500;600&family=Space+Grotesk:wght@400;500;600&family=ZCOOL+XiaoWei&display=swap"
   rel="stylesheet"
 >
 
@@ -457,9 +457,11 @@ a{
 
   margin-bottom:20px;
 
-  font-family:var(--font-hand);
+  font-family:"ZCOOL XiaoWei", var(--font-literary), serif;
 
-  font-size:38px;
+  font-size:34px;
+
+  letter-spacing:.035em;
 
   font-weight:400;
 }
@@ -2721,6 +2723,26 @@ input:checked + span{
   }
 }
 
+
+
+/* MOBILE FEATURE CENTER OVERRIDE */
+@media(max-width:650px){
+  .features{grid-template-columns:1fr;gap:42px;margin-top:4px;margin-bottom:34px;}
+  .feature,.feature:first-child,.feature:last-child{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:0;text-align:center;}
+  .feature + .feature{border-left:0;}
+  .feature-visual{order:1;width:142px;height:142px;margin:0 auto 17px;overflow:visible;}
+  .feature-visual::after{width:96%;height:96%;box-shadow:4px 6px 12px rgba(30,30,30,.07);}
+  .feature-visual::before{width:44px;height:14px;top:-5px;}
+  .feature-photo{width:90%;height:88%;padding:5px;}
+  .feature:nth-child(2) .feature-photo{width:88%;height:88%;padding:5px 5px 8px;}
+  .feature:nth-child(3) .feature-photo{padding:5px;}
+  .feature-title{order:2;position:relative;display:inline-block;margin:0 auto 12px;font-family:"ZCOOL XiaoWei",var(--font-literary),serif;font-size:30px;letter-spacing:.055em;line-height:1.12;text-align:center;}
+  .feature-title::after{left:50%;bottom:-6px;width:82%;height:2px;transform:translateX(-50%) rotate(-1deg);}
+  .feature-desc{order:3;width:100%;color:#555a56;font-size:10px;line-height:1.6;text-align:center;}
+  .feature:nth-child(1) .feature-visual{transform:rotate(-.5deg);}
+  .feature:nth-child(2) .feature-visual{transform:rotate(.45deg);}
+  .feature:nth-child(3) .feature-visual{transform:rotate(-.3deg);}
+}
 </style>
 </head>
 
