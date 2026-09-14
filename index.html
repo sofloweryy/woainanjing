@@ -809,22 +809,68 @@ img:not(.ticket-poster):not(.qr-img){
 }
 
 .guide-entry-inner{
+  position:relative;
+
   display:grid;
-  grid-template-columns:74px minmax(0,1fr) auto;
+  grid-template-columns:88px minmax(0,1fr) auto;
   align-items:center;
-  gap:16px;
+  gap:14px;
+}
+
+.guide-entry-inner::before{
+  content:"";
+
+  position:absolute;
+
+  left:5px;
+  top:50%;
+
+  width:64px;
+  height:64px;
+
+  border-radius:50%;
+
+  background:
+    rgba(220,233,239,.66);
+
+  border:
+    1px solid
+    rgba(100,141,165,.22);
+
+  transform:
+    translateY(-50%)
+    rotate(-4deg);
+
+  z-index:1;
 }
 
 .guide-character{
-  width:68px;
-  height:68px;
-  object-fit:cover;
-  object-position:50% 32%;
-  border-radius:50%;
-  background:#eef3f5;
-  border:2px solid rgba(255,255,255,.9);
-  box-shadow:2px 3px 0 rgba(95,130,150,.14);
-  transform:rotate(-3deg);
+  position:relative;
+  z-index:3;
+
+  width:94px;
+  height:auto;
+
+  max-width:none;
+
+  object-fit:contain;
+
+  border-radius:0;
+  background:transparent;
+  border:0;
+  box-shadow:none;
+
+  transform:
+    translateX(-8px)
+    rotate(-5deg);
+
+  filter:
+    drop-shadow(
+      3px
+      5px
+      0
+      rgba(95,130,150,.12)
+    );
 }
 
 .guide-entry-copy{
@@ -893,13 +939,24 @@ img:not(.ticket-poster):not(.qr-img){
   }
 
   .guide-entry-inner{
-    grid-template-columns:48px minmax(0,1fr) auto;
-    gap:7px;
+    grid-template-columns:70px minmax(0,1fr) auto;
+    gap:5px;
+  }
+
+  .guide-entry-inner::before{
+    left:2px;
+
+    width:52px;
+    height:52px;
   }
 
   .guide-character{
-    width:46px;
-    height:46px;
+    width:78px;
+    height:auto;
+
+    transform:
+      translateX(-8px)
+      rotate(-5deg);
   }
 
   .guide-title{
@@ -2941,6 +2998,74 @@ input:checked + span{
 
 }
 
+
+
+/* MOBILE LEAVE CARD — 标题与按钮同排居中 */
+.leave-main-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+
+@media(max-width:650px){
+  .leave-card{
+    min-height:0;
+    padding:18px 18px 17px;
+    text-align:center;
+  }
+
+  .leave-label{
+    margin-bottom:10px;
+    text-align:center;
+  }
+
+  .leave-main-row{
+    position:relative;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    width:100%;
+  }
+
+  .leave-title{
+    margin:0;
+    font-size:30px;
+    line-height:1;
+    white-space:nowrap;
+  }
+
+  .leave-btn{
+    flex:0 0 auto;
+    height:32px;
+    margin:0;
+    padding:0 13px;
+    border:1px solid rgba(88,138,165,.32);
+    color:#426f86;
+    background:rgba(255,255,255,.55);
+    font-family:var(--font-literary);
+    font-size:9px;
+    font-weight:600;
+    box-shadow:2px 3px 0 rgba(88,138,165,.08);
+  }
+
+  .leave-desc{
+    position:relative;
+    z-index:2;
+    margin-top:10px;
+    text-align:center;
+    font-size:9.5px;
+    line-height:1.45;
+  }
+
+  .leave-flower{
+    right:15px;
+    bottom:10px;
+    font-size:30px;
+    opacity:.78;
+  }
+}
 </style>
 </head>
 
@@ -2995,7 +3120,7 @@ input:checked + span{
 
       <img
         class="guide-character"
-        src="/images/guide/guide-character.png?v=2"
+        src="/images/guide/guide-character.png?v=3"
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -3149,21 +3274,23 @@ input:checked + span{
       COME AS YOU ARE
     </div>
 
-    <h2 class="leave-title">
-      来都来了
-    </h2>
+    <div class="leave-main-row">
+      <h2 class="leave-title">
+        来都来了
+      </h2>
+
+      <button
+        class="leave-btn"
+        type="button"
+        onclick="openFormModal()"
+      >
+        来唠两句 →
+      </button>
+    </div>
 
     <div class="leave-desc">
       最近在听谁？留句话再走。
     </div>
-
-    <button
-      class="leave-btn"
-      type="button"
-      onclick="openFormModal()"
-    >
-      来唠两句 →
-    </button>
 
     <div class="leave-flower">
       ❀
