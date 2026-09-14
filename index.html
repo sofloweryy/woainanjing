@@ -810,6 +810,9 @@ img:not(.ticket-poster):not(.qr-img){
 
 .guide-entry-inner{
   position:relative;
+  text-decoration:none;
+  color:inherit;
+  cursor:pointer;
 
   display:grid;
   grid-template-columns:108px minmax(0,1fr) auto;
@@ -2280,7 +2283,7 @@ input:checked + span{
 
 
   .contact-main{
-    font-size:14px;
+    font-size:16px;
   }
 
   .contact-bottom{
@@ -3118,7 +3121,7 @@ input:checked + span{
 
 
   <section class="guide-entry" aria-label="吉隆坡演出旅行攻略">
-    <div class="guide-entry-inner">
+    <a class="guide-entry-inner" href="/guide.html" aria-label="查看吉隆坡演出旅行攻略">
 
       <img
         class="guide-character"
@@ -3138,14 +3141,9 @@ input:checked + span{
         </p>
       </div>
 
-      <a
-        class="guide-link"
-        href="/guide.html"
-      >
-        查看
-      </a>
+      <span class="guide-link">查看</span>
 
-    </div>
+    </a>
   </section>
 
 </section>
