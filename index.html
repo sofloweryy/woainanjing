@@ -776,6 +776,148 @@ img:not(.ticket-poster):not(.qr-img){
 }
 
 
+
+/* =====================================================
+   KUALA LUMPUR GUIDE
+===================================================== */
+
+.guide-entry{
+  position:relative;
+  width:min(880px,94%);
+  margin:18px auto 38px;
+  padding:18px 20px;
+  overflow:hidden;
+  border:1px solid rgba(24,25,24,.14);
+  border-radius:16px 12px 17px 13px;
+  background:
+    linear-gradient(105deg,rgba(220,233,239,.44),rgba(255,255,255,.60) 50%,rgba(238,219,225,.34));
+  box-shadow:4px 5px 0 rgba(217,178,189,.16);
+}
+
+.guide-entry::before{
+  content:"";
+  position:absolute;
+  left:26px;
+  top:-7px;
+  width:54px;
+  height:15px;
+  background:rgba(211,190,148,.42);
+  transform:rotate(-5deg);
+  z-index:2;
+}
+
+.guide-entry-inner{
+  display:grid;
+  grid-template-columns:74px minmax(0,1fr) auto;
+  align-items:center;
+  gap:16px;
+}
+
+.guide-character{
+  width:68px;
+  height:68px;
+  object-fit:cover;
+  object-position:50% 32%;
+  border-radius:50%;
+  background:#eef3f5;
+  border:2px solid rgba(255,255,255,.9);
+  box-shadow:2px 3px 0 rgba(95,130,150,.14);
+  transform:rotate(-3deg);
+}
+
+.guide-entry-copy{
+  min-width:0;
+  text-align:center;
+}
+
+.guide-title{
+  margin:0;
+  font-family:var(--font-hand);
+  font-size:31px;
+  font-weight:400;
+  line-height:1.1;
+  letter-spacing:-.04em;
+  white-space:nowrap;
+}
+
+.guide-desc{
+  display:inline-block;
+  margin-top:8px;
+  padding:3px 10px 4px;
+  border-radius:999px;
+  color:#5f6662;
+  background:rgba(255,255,255,.48);
+  font-family:var(--font-literary);
+  font-size:11px;
+  line-height:1.4;
+  white-space:nowrap;
+}
+
+.guide-link{
+  flex:0 0 auto;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:34px;
+  padding:0 13px;
+  border:1px solid rgba(95,130,150,.46);
+  border-radius:999px;
+  color:#405b69;
+  background:rgba(255,255,255,.66);
+  font-family:var(--font-literary);
+  font-size:11px;
+  font-weight:600;
+  text-decoration:none;
+  white-space:nowrap;
+  box-shadow:2px 3px 0 rgba(217,178,189,.18);
+}
+
+.guide-link:hover{
+  opacity:.72;
+  transform:translateY(-1px);
+}
+
+@media(max-width:650px){
+  .guide-entry{
+    width:94%;
+    margin:14px auto 28px;
+    padding:14px 12px;
+  }
+
+  .guide-entry::before{
+    left:16px;
+    width:40px;
+    height:11px;
+  }
+
+  .guide-entry-inner{
+    grid-template-columns:48px minmax(0,1fr) auto;
+    gap:7px;
+  }
+
+  .guide-character{
+    width:46px;
+    height:46px;
+  }
+
+  .guide-title{
+    font-size:clamp(17px,5.1vw,22px);
+    letter-spacing:-.06em;
+  }
+
+  .guide-desc{
+    margin-top:5px;
+    padding:2px 6px 3px;
+    font-size:8px;
+  }
+
+  .guide-link{
+    min-height:30px;
+    padding:0 8px;
+    font-size:9px;
+  }
+}
+
 /* =====================================================
    INTERACTION
    左窄右宽
@@ -2627,6 +2769,38 @@ input:checked + span{
     </button>
   </div>
 
+
+  <section class="guide-entry" aria-label="吉隆坡演出旅行攻略">
+    <div class="guide-entry-inner">
+
+      <img
+        class="guide-character"
+        src="/images/guide-character.jpg?v=1"
+        alt=""
+        aria-hidden="true"
+        draggable="false"
+      >
+
+      <div class="guide-entry-copy">
+        <h2 class="guide-title">
+          吉隆坡演出 / 旅行攻略
+        </h2>
+
+        <p class="guide-desc">
+          购票 · 座位 · 场地 · 交通 · 住宿
+        </p>
+      </div>
+
+      <a
+        class="guide-link"
+        href="/guide.html"
+      >
+        查看攻略 →
+      </a>
+
+    </div>
+  </section>
+
 </section>
 
 
@@ -2741,6 +2915,9 @@ input:checked + span{
   </div>
 
 </section>
+
+
+
 
 
 <section class="interaction">
