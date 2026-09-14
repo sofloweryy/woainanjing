@@ -2728,89 +2728,76 @@ input:checked + span{
 /* MOBILE FEATURE CENTER OVERRIDE */
 @media(max-width:650px){
 
+  /* 三角形构图：
+     第一行：乐迷进群
+     第二行：购买唱片 + 同好交友
+  */
   .features{
-    grid-template-columns:1fr;
-    gap:30px;
-    margin-top:2px;
-    margin-bottom:30px;
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    grid-template-areas:
+      "group group"
+      "album friend";
+
+    column-gap:18px;
+    row-gap:24px;
+
+    width:100%;
+    margin:4px auto 30px;
   }
 
   .feature,
   .feature:first-child,
   .feature:last-child{
-    position:relative;
     display:flex;
     flex-direction:column;
     align-items:center;
-    justify-content:center;
+    justify-content:flex-start;
 
-    width:88%;
-    max-width:340px;
+    width:100%;
+    max-width:none;
 
-    margin:0 auto;
+    margin:0;
     padding:0;
 
     text-align:center;
+
+    transform:none;
   }
 
   .feature + .feature{
     border-left:0;
   }
 
-  /* 三组轻微错位，减少“中轴排队感” */
   .feature:nth-child(1){
-    transform:translateX(-10px);
+    grid-area:group;
   }
 
   .feature:nth-child(2){
-    transform:translateX(12px);
+    grid-area:album;
   }
 
   .feature:nth-child(3){
-    transform:translateX(-6px);
+    grid-area:friend;
   }
 
-  /* 轻量小装饰，保持 zine / 手账感 */
-  .feature:nth-child(1)::before{
-    content:"✦";
-    position:absolute;
-    right:8px;
-    top:28px;
-    color:rgba(100,141,165,.58);
-    font-size:18px;
-    transform:rotate(10deg);
+  /* 第一行主视觉稍大，形成三角顶点 */
+  .feature:nth-child(1) .feature-visual{
+    width:158px;
+    height:158px;
+    margin:0 auto 12px;
   }
 
-  .feature:nth-child(2)::before{
-    content:"〰";
-    position:absolute;
-    left:4px;
-    top:58px;
-    color:rgba(146,135,170,.58);
-    font-size:22px;
-    letter-spacing:-.15em;
-    transform:rotate(-10deg);
+  /* 第二行两个模块稍小，形成左右两个底点 */
+  .feature:nth-child(2) .feature-visual,
+  .feature:nth-child(3) .feature-visual{
+    width:132px;
+    height:132px;
+    margin:0 auto 10px;
   }
 
-  .feature:nth-child(3)::before{
-    content:"❀";
-    position:absolute;
-    right:2px;
-    bottom:14px;
-    color:rgba(215,95,87,.48);
-    font-size:18px;
-    transform:rotate(8deg);
-  }
-
-  /* 相框放大，让图片成为手机端视觉主体 */
   .feature-visual{
     order:1;
-
-    width:176px;
-    height:176px;
-
-    margin:0 auto 15px;
-
     overflow:visible;
   }
 
@@ -2819,43 +2806,40 @@ input:checked + span{
     height:96%;
 
     box-shadow:
-      5px
-      7px
-      15px
-      rgba(30,30,30,.075);
+      4px
+      6px
+      12px
+      rgba(30,30,30,.07);
   }
 
   .feature-visual::before{
-    width:48px;
-    height:15px;
-
+    width:42px;
+    height:13px;
     top:-5px;
   }
 
   .feature-photo{
     width:90%;
     height:88%;
-
-    padding:5px;
+    padding:4px;
   }
 
   .feature:nth-child(2) .feature-photo{
     width:88%;
     height:88%;
-
     padding:
-      5px
-      5px
-      8px;
+      4px
+      4px
+      7px;
   }
 
   .feature:nth-child(3) .feature-photo{
-    padding:5px;
+    padding:4px;
   }
 
-  /* 图片本身保留一点手工错位感 */
+  /* 轻微错位，避免过于规整 */
   .feature:nth-child(1) .feature-visual{
-    transform:rotate(-.6deg);
+    transform:rotate(-.45deg);
   }
 
   .feature:nth-child(2) .feature-visual{
@@ -2863,7 +2847,7 @@ input:checked + span{
   }
 
   .feature:nth-child(3) .feature-visual{
-    transform:rotate(-.4deg);
+    transform:rotate(-.35deg);
   }
 
   .feature-title{
@@ -2872,19 +2856,30 @@ input:checked + span{
     position:relative;
     display:inline-block;
 
-    margin:0 auto 12px;
+    margin:0 auto 10px;
 
     font-family:"ZCOOL XiaoWei",var(--font-literary),serif;
-    font-size:31px;
-    letter-spacing:.055em;
-    line-height:1.12;
+    font-weight:400;
+    line-height:1.08;
+    letter-spacing:.045em;
 
     text-align:center;
   }
 
+  /* 顶点标题稍大 */
+  .feature:nth-child(1) .feature-title{
+    font-size:30px;
+  }
+
+  /* 底部两个标题略小，避免挤 */
+  .feature:nth-child(2) .feature-title,
+  .feature:nth-child(3) .feature-title{
+    font-size:25px;
+  }
+
   .feature-title::after{
     left:50%;
-    bottom:-6px;
+    bottom:-5px;
 
     width:82%;
     height:2px;
@@ -2897,15 +2892,51 @@ input:checked + span{
   .feature-desc{
     order:3;
 
-    width:auto;
-    max-width:88%;
+    width:100%;
 
     color:#555a56;
 
-    font-size:10px;
-    line-height:1.65;
+    font-size:9px;
+    line-height:1.55;
 
     text-align:center;
+  }
+
+  /* 底部两项描述更紧凑，避免折行太乱 */
+  .feature:nth-child(2) .feature-desc,
+  .feature:nth-child(3) .feature-desc{
+    max-width:150px;
+  }
+
+  /* 三角形构图的小装饰 */
+  .feature:nth-child(1)::before{
+    content:"✦";
+    position:absolute;
+    left:calc(50% + 86px);
+    top:26px;
+    color:rgba(100,141,165,.52);
+    font-size:16px;
+    transform:rotate(10deg);
+  }
+
+  .feature:nth-child(2)::before{
+    content:"〰";
+    position:absolute;
+    left:4px;
+    top:48px;
+    color:rgba(146,135,170,.48);
+    font-size:18px;
+    transform:rotate(-8deg);
+  }
+
+  .feature:nth-child(3)::before{
+    content:"❀";
+    position:absolute;
+    right:4px;
+    top:50px;
+    color:rgba(215,95,87,.42);
+    font-size:15px;
+    transform:rotate(8deg);
   }
 
 }
