@@ -2727,22 +2727,189 @@ input:checked + span{
 
 /* MOBILE FEATURE CENTER OVERRIDE */
 @media(max-width:650px){
-  .features{grid-template-columns:1fr;gap:42px;margin-top:4px;margin-bottom:34px;}
-  .feature,.feature:first-child,.feature:last-child{display:flex;flex-direction:column;align-items:center;justify-content:center;width:100%;padding:0;text-align:center;}
-  .feature + .feature{border-left:0;}
-  .feature-visual{order:1;width:142px;height:142px;margin:0 auto 17px;overflow:visible;}
-  .feature-visual::after{width:96%;height:96%;box-shadow:4px 6px 12px rgba(30,30,30,.07);}
-  .feature-visual::before{width:44px;height:14px;top:-5px;}
-  .feature-photo{width:90%;height:88%;padding:5px;}
-  .feature:nth-child(2) .feature-photo{width:88%;height:88%;padding:5px 5px 8px;}
-  .feature:nth-child(3) .feature-photo{padding:5px;}
-  .feature-title{order:2;position:relative;display:inline-block;margin:0 auto 12px;font-family:"ZCOOL XiaoWei",var(--font-literary),serif;font-size:30px;letter-spacing:.055em;line-height:1.12;text-align:center;}
-  .feature-title::after{left:50%;bottom:-6px;width:82%;height:2px;transform:translateX(-50%) rotate(-1deg);}
-  .feature-desc{order:3;width:100%;color:#555a56;font-size:10px;line-height:1.6;text-align:center;}
-  .feature:nth-child(1) .feature-visual{transform:rotate(-.5deg);}
-  .feature:nth-child(2) .feature-visual{transform:rotate(.45deg);}
-  .feature:nth-child(3) .feature-visual{transform:rotate(-.3deg);}
+
+  .features{
+    grid-template-columns:1fr;
+    gap:30px;
+    margin-top:2px;
+    margin-bottom:30px;
+  }
+
+  .feature,
+  .feature:first-child,
+  .feature:last-child{
+    position:relative;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    width:88%;
+    max-width:340px;
+
+    margin:0 auto;
+    padding:0;
+
+    text-align:center;
+  }
+
+  .feature + .feature{
+    border-left:0;
+  }
+
+  /* 三组轻微错位，减少“中轴排队感” */
+  .feature:nth-child(1){
+    transform:translateX(-10px);
+  }
+
+  .feature:nth-child(2){
+    transform:translateX(12px);
+  }
+
+  .feature:nth-child(3){
+    transform:translateX(-6px);
+  }
+
+  /* 轻量小装饰，保持 zine / 手账感 */
+  .feature:nth-child(1)::before{
+    content:"✦";
+    position:absolute;
+    right:8px;
+    top:28px;
+    color:rgba(100,141,165,.58);
+    font-size:18px;
+    transform:rotate(10deg);
+  }
+
+  .feature:nth-child(2)::before{
+    content:"〰";
+    position:absolute;
+    left:4px;
+    top:58px;
+    color:rgba(146,135,170,.58);
+    font-size:22px;
+    letter-spacing:-.15em;
+    transform:rotate(-10deg);
+  }
+
+  .feature:nth-child(3)::before{
+    content:"❀";
+    position:absolute;
+    right:2px;
+    bottom:14px;
+    color:rgba(215,95,87,.48);
+    font-size:18px;
+    transform:rotate(8deg);
+  }
+
+  /* 相框放大，让图片成为手机端视觉主体 */
+  .feature-visual{
+    order:1;
+
+    width:176px;
+    height:176px;
+
+    margin:0 auto 15px;
+
+    overflow:visible;
+  }
+
+  .feature-visual::after{
+    width:96%;
+    height:96%;
+
+    box-shadow:
+      5px
+      7px
+      15px
+      rgba(30,30,30,.075);
+  }
+
+  .feature-visual::before{
+    width:48px;
+    height:15px;
+
+    top:-5px;
+  }
+
+  .feature-photo{
+    width:90%;
+    height:88%;
+
+    padding:5px;
+  }
+
+  .feature:nth-child(2) .feature-photo{
+    width:88%;
+    height:88%;
+
+    padding:
+      5px
+      5px
+      8px;
+  }
+
+  .feature:nth-child(3) .feature-photo{
+    padding:5px;
+  }
+
+  /* 图片本身保留一点手工错位感 */
+  .feature:nth-child(1) .feature-visual{
+    transform:rotate(-.6deg);
+  }
+
+  .feature:nth-child(2) .feature-visual{
+    transform:rotate(.55deg);
+  }
+
+  .feature:nth-child(3) .feature-visual{
+    transform:rotate(-.4deg);
+  }
+
+  .feature-title{
+    order:2;
+
+    position:relative;
+    display:inline-block;
+
+    margin:0 auto 12px;
+
+    font-family:"ZCOOL XiaoWei",var(--font-literary),serif;
+    font-size:31px;
+    letter-spacing:.055em;
+    line-height:1.12;
+
+    text-align:center;
+  }
+
+  .feature-title::after{
+    left:50%;
+    bottom:-6px;
+
+    width:82%;
+    height:2px;
+
+    transform:
+      translateX(-50%)
+      rotate(-1deg);
+  }
+
+  .feature-desc{
+    order:3;
+
+    width:auto;
+    max-width:88%;
+
+    color:#555a56;
+
+    font-size:10px;
+    line-height:1.65;
+
+    text-align:center;
+  }
+
 }
+
 </style>
 </head>
 
