@@ -812,7 +812,7 @@ img:not(.ticket-poster):not(.qr-img){
   position:relative;
 
   display:grid;
-  grid-template-columns:88px minmax(0,1fr) auto;
+  grid-template-columns:108px minmax(0,1fr) auto;
   align-items:center;
   gap:14px;
 }
@@ -825,8 +825,8 @@ img:not(.ticket-poster):not(.qr-img){
   left:5px;
   top:50%;
 
-  width:64px;
-  height:64px;
+  width:72px;
+  height:72px;
 
   border-radius:50%;
 
@@ -848,7 +848,7 @@ img:not(.ticket-poster):not(.qr-img){
   position:relative;
   z-index:3;
 
-  width:94px;
+  width:118px;
   height:auto;
 
   max-width:none;
@@ -861,13 +861,14 @@ img:not(.ticket-poster):not(.qr-img){
   box-shadow:none;
 
   transform:
-    translateX(-8px)
+    translateX(-14px)
+    translateY(-2px)
     rotate(-5deg);
 
   filter:
     drop-shadow(
       3px
-      5px
+      6px
       0
       rgba(95,130,150,.12)
     );
@@ -939,23 +940,24 @@ img:not(.ticket-poster):not(.qr-img){
   }
 
   .guide-entry-inner{
-    grid-template-columns:70px minmax(0,1fr) auto;
+    grid-template-columns:92px minmax(0,1fr) auto;
     gap:5px;
   }
 
   .guide-entry-inner::before{
     left:2px;
 
-    width:52px;
-    height:52px;
+    width:60px;
+    height:60px;
   }
 
   .guide-character{
-    width:78px;
+    width:104px;
     height:auto;
 
     transform:
-      translateX(-8px)
+      translateX(-15px)
+      translateY(-2px)
       rotate(-5deg);
   }
 
@@ -3120,7 +3122,7 @@ input:checked + span{
 
       <img
         class="guide-character"
-        src="/images/guide/guide-character.png?v=3"
+        src="/images/guide/guide-character.png?v=4"
         alt=""
         aria-hidden="true"
         draggable="false"
@@ -3140,7 +3142,7 @@ input:checked + span{
         class="guide-link"
         href="/guide.html"
       >
-        查看攻略 →
+        查看 →
       </a>
 
     </div>
