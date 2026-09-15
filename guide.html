@@ -144,8 +144,31 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
 .area p{font-size:12px;line-height:1.7;color:var(--muted);margin-top:6px}
 .notice{margin-top:50px;padding-top:20px;border-top:1px solid var(--line);font-family:var(--font-literary);font-size:12px;line-height:1.8;color:var(--muted)}
 .footer{text-align:center;margin-top:50px;font-family:var(--font-literary);color:#656a66;font-size:12px}
+
+/* Mobile overflow safety */
+html,body{
+  width:100%;
+  max-width:100%;
+  overflow-x:hidden;
+}
+.page,main,section,header,nav,div,figure,p,ul,li{
+  min-width:0;
+}
+img,svg,video,iframe{
+  max-width:100%;
+  height:auto;
+}
+p,li,.text,.step,.info strong,.route p,.hotel p,.area p,.callout{
+  overflow-wrap:anywhere;
+  word-break:break-word;
+}
+
 @media(max-width:720px){
-  .page{width:min(100% - 28px,980px);padding-top:18px}
+  .page{
+    width:calc(100% - 28px);
+    max-width:980px;
+    padding-top:18px;
+  }
   .site{display:none}
   .hero{padding-top:16px}
   h1{font-size:clamp(26px,7.5vw,34px);white-space:nowrap;letter-spacing:-.055em}
@@ -163,7 +186,12 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
   .section{padding-top:44px}
   h2{font-size:27px}
   .section-head{gap:12px}
-  .paper{padding:18px 15px}
+  .paper{
+    width:100%;
+    max-width:100%;
+    padding:18px 15px;
+    overflow:hidden;
+  }
   .info-grid{grid-template-columns:1fr}
   .info{min-height:0}
   .price-grid,.hotel-picks,.area-list{grid-template-columns:1fr}
@@ -171,8 +199,34 @@ h2{font-family:var(--font-literary);font-size:31px;line-height:1.2;font-weight:6
   .photo.wide{grid-column:auto}
   .route{grid-template-columns:1fr;gap:7px}
   .route h3{font-size:17px}
-  .button{font-size:12px}
-  .step{grid-template-columns:28px minmax(0,1fr);gap:10px;font-size:13px;white-space:nowrap}
+  .button{
+    max-width:100%;
+    font-size:12px;
+    white-space:normal;
+    text-align:center;
+  }
+  .button-row{width:100%;max-width:100%}
+  .step{
+    width:100%;
+    max-width:100%;
+    grid-template-columns:28px minmax(0,1fr);
+    gap:10px;
+    font-size:13px;
+    white-space:normal;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+  }
+  .info-grid,.price-grid,.gallery,.hotel-picks,.area-list,.route,.steps{
+    width:100%;
+    max-width:100%;
+    min-width:0;
+  }
+  .info,.price,.photo,.hotel,.area,.route > *,.step > *{
+    min-width:0;
+    max-width:100%;
+  }
+  .photo{transform:none !important}
+  .photo img{width:100%;max-width:100%;height:auto}
 }
 </style>
 </head>
