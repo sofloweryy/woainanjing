@@ -996,12 +996,12 @@ img:not(.ticket-poster):not(.qr-img){
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:18px;
-  min-height:56px;
-  padding:0 34px;
+  gap:22px;
+  min-height:76px;
+  padding:10px 32px;
   overflow:hidden;
   border:1.5px solid rgba(103,145,166,.48);
-  border-radius:999px;
+  border-radius:24px;
   color:#526f7d;
   background:linear-gradient(135deg,#e8f1f3 0%,#fbfaf7 48%,#f3eaea 100%);
   box-shadow:
@@ -1009,12 +1009,12 @@ img:not(.ticket-poster):not(.qr-img){
     0 8px 22px rgba(102,139,157,.16),
     inset 0 1px 0 rgba(255,255,255,.95);
   font-family:var(--font-literary);
-  font-size:17px;
-  font-weight:600;
   text-decoration:none;
-  letter-spacing:.1em;
   transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;
 }
+.notice-entry-copy{display:flex;flex-direction:column;align-items:center;gap:5px;}
+.notice-entry-title{font-size:19px;font-weight:600;letter-spacing:.12em;line-height:1.25;}
+.notice-entry-desc{font-size:12px;font-weight:400;letter-spacing:.09em;color:#7c8585;line-height:1.4;white-space:nowrap;}
 
 .notice-entry::before{
   content:"";
@@ -1061,7 +1061,9 @@ img:not(.ticket-poster):not(.qr-img){
 
 @media(max-width:650px){
   .notice-entry-wrap{margin:-12px auto 26px;}
-  .notice-entry{min-height:50px;padding:0 28px;gap:15px;font-size:15px;}
+  .notice-entry{min-height:68px;padding:9px 22px;gap:16px;border-radius:20px;}
+  .notice-entry-title{font-size:17px;}
+  .notice-entry-desc{font-size:11px;letter-spacing:.04em;}
   .notice-entry-arrow{font-size:18px;}
 }
 
@@ -4327,8 +4329,11 @@ input:checked + span{
 </section>
 
 <div class="notice-entry-wrap">
-  <a class="notice-entry" href="https://mp.weixin.qq.com/s/47OYBi37BU41c_uqEtqvqw" target="_blank" rel="noopener noreferrer" aria-label="阅读演出须知（微信公众号）">
-    <span>演出须知</span>
+  <a class="notice-entry" href="https://mp.weixin.qq.com/s/47OYBi37BU41c_uqEtqvqw" target="_blank" rel="noopener noreferrer" aria-label="演出须知：入境、交通、入场、观演、生活">
+    <span class="notice-entry-copy">
+      <span class="notice-entry-title">演出须知</span>
+      <span class="notice-entry-desc">入境 · 交通 · 入场 · 观演 · 生活</span>
+    </span>
     <span class="notice-entry-arrow" aria-hidden="true">↗</span>
   </a>
 </div>
