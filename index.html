@@ -602,6 +602,60 @@ a{
   background:#fff;
 }
 
+/* 唱片展示：保留原有拼图，并新增2025叁缺壹 CD / DVD */
+.feature-album .feature-visual{height:318px;}
+.album-showcase{
+  position:relative;
+  z-index:1;
+  display:grid;
+  grid-template-rows:minmax(0,1fr) 112px;
+  gap:8px;
+  width:100%;
+  height:100%;
+  padding:8px 10px 4px;
+}
+.album-main{
+  width:100%;
+  height:100%;
+  min-height:0;
+  padding:5px;
+  object-fit:contain;
+  background:#fff;
+  border:1px solid rgba(24,25,24,.12);
+  box-shadow:0 4px 10px rgba(0,0,0,.05);
+}
+.album-new-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  justify-items:center;
+  align-items:start;
+}
+.album-new-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:3px;
+  min-width:0;
+  color:#4c514e;
+  font-size:10px;
+  line-height:1.2;
+  letter-spacing:.04em;
+}
+.album-new-item img{
+  width:88px;
+  height:88px;
+  object-fit:cover;
+  border:4px solid #fff;
+  box-shadow:0 3px 9px rgba(0,0,0,.12);
+}
+@media(max-width:650px){
+  .feature-album .feature-visual{height:318px;}
+  .album-showcase{grid-template-rows:minmax(0,1fr) 112px;padding:8px 6px 4px;gap:6px;}
+  .album-new-item img{width:88px;height:88px;}
+  .album-new-item{font-size:10px;}
+}
+
 
 /* 合照：铺满相框 */
 .feature-photo-friend{
@@ -4394,24 +4448,34 @@ input:checked + span{
 
 
 
-  <article class="feature">
+  <article class="feature feature-album">
 
     <h2 class="feature-title">
       购买唱片
     </h2>
 
     <div class="feature-visual">
-
-      <img
-        src="/images/album.jpg?v=120"
-        class="feature-photo feature-photo-album"
-        alt="购买唱片"
-      >
-
+      <div class="album-showcase">
+        <img
+          src="/images/album.jpg?v=120"
+          class="album-main"
+          alt="李志日专、宋冬野唱片"
+        >
+        <div class="album-new-row">
+          <div class="album-new-item">
+            <img src="data:image/webp;base64,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" alt="2025叁缺壹 CD">
+            <span>2025 叁缺壹 · CD</span>
+          </div>
+          <div class="album-new-item">
+            <img src="data:image/webp;base64,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" alt="2025叁缺壹 DVD">
+            <span>2025 叁缺壹 · DVD</span>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="feature-desc">
-      李志日专 · 宋冬野 · 更多CD / 黑胶
+      李志日专 · 宋冬野 · 2025叁缺壹 CD / DVD
     </div>
 
   </article>
