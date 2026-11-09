@@ -3307,6 +3307,73 @@ input:checked + span{
     font-size:11px;
   }
 }
+
+
+/* 2026 吉隆坡演出倒计时：沿用纸感配色 */
+.countdown-card{
+  width:min(760px,92%);
+  margin:0 auto 34px;
+  padding:22px 24px 20px;
+  text-align:center;
+  background:linear-gradient(135deg,#f1e7d5 0%,#f8f4ec 58%,#e9f0f2 100%);
+  border:1px solid rgba(24,25,24,.10);
+  box-shadow:5px 6px 0 rgba(0,0,0,.035);
+  position:relative;
+}
+.countdown-kicker{
+  color:#788b91;
+  font-family:var(--font-en);
+  font-size:9px;
+  letter-spacing:.22em;
+  margin-bottom:7px;
+}
+.countdown-heading{
+  font-family:var(--font-hand);
+  font-size:clamp(25px,4vw,34px);
+  line-height:1.2;
+  margin-bottom:5px;
+}
+.countdown-subtitle{
+  color:#777b76;
+  font-family:var(--font-literary);
+  font-size:12px;
+  margin-bottom:17px;
+}
+.countdown-values{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:clamp(10px,3vw,24px);
+}
+.countdown-unit{min-width:48px;}
+.countdown-number{
+  display:block;
+  color:#557f95;
+  font-family:var(--font-en);
+  font-size:clamp(27px,5vw,38px);
+  font-weight:500;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.countdown-label{
+  display:block;
+  margin-top:7px;
+  color:#858983;
+  font-size:10px;
+  letter-spacing:.12em;
+}
+.countdown-colon{
+  color:#c78a7e;
+  font-family:var(--font-en);
+  font-size:25px;
+  transform:translateY(-7px);
+}
+@media(max-width:650px){
+  .countdown-card{padding:18px 12px 16px;margin-bottom:26px;}
+  .countdown-unit{min-width:42px;}
+  .countdown-label{font-size:9px;}
+}
+
 </style>
 
 <style>
@@ -4423,6 +4490,22 @@ input:checked + span{
     <span class="notice-entry-arrow" aria-hidden="true">↗</span>
   </a>
 </div>
+
+
+<section class="countdown-card" aria-label="吉隆坡演出倒计时">
+  <div class="countdown-kicker">THREE MISSING ONE · KUALA LUMPUR</div>
+  <h2 class="countdown-heading">下一次现场见。</h2>
+  <p class="countdown-subtitle">2026年11月13日 · 20:00 · 吉隆坡时间</p>
+  <div class="countdown-values" id="countdownValues" aria-live="polite">
+    <div class="countdown-unit"><strong class="countdown-number" id="countDays">--</strong><span class="countdown-label">天</span></div>
+    <span class="countdown-colon">:</span>
+    <div class="countdown-unit"><strong class="countdown-number" id="countHours">--</strong><span class="countdown-label">时</span></div>
+    <span class="countdown-colon">:</span>
+    <div class="countdown-unit"><strong class="countdown-number" id="countMinutes">--</strong><span class="countdown-label">分</span></div>
+    <span class="countdown-colon">:</span>
+    <div class="countdown-unit"><strong class="countdown-number" id="countSeconds">--</strong><span class="countdown-label">秒</span></div>
+  </div>
+</section>
 
 <div class="section-divider" aria-hidden="true">
   <span>❀</span>
@@ -6345,6 +6428,35 @@ document.addEventListener(
 
   }
 );
+
+
+
+/* Kuala Lumpur show countdown: 2026-11-13 20:00, UTC+8 */
+(function initShowCountdown(){
+  const target = new Date("2026-11-13T20:00:00+08:00").getTime();
+  const ids = ["countDays","countHours","countMinutes","countSeconds"];
+  function tick(){
+    const remaining = target - Date.now();
+    if(remaining <= 0){
+      const values = document.getElementById("countdownValues");
+      if(values) values.innerHTML = '<div class="countdown-heading">演出开始了，现场见！</div>';
+      clearInterval(timer);
+      return;
+    }
+    const parts = [
+      Math.floor(remaining / 86400000),
+      Math.floor((remaining % 86400000) / 3600000),
+      Math.floor((remaining % 3600000) / 60000),
+      Math.floor((remaining % 60000) / 1000)
+    ];
+    ids.forEach((id,index)=>{
+      const node=document.getElementById(id);
+      if(node) node.textContent=String(parts[index]).padStart(2,"0");
+    });
+  }
+  tick();
+  const timer=setInterval(tick,1000);
+})();
 
 
 loadPetals();
