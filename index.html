@@ -4405,6 +4405,140 @@ input:checked + span{
 }
 </style>
 
+
+<style>
+/* 演出倒计时：独立模块，放在演出须知与四个功能入口之间 */
+.countdown-card{
+  position:relative;
+  isolation:isolate;
+  width:min(880px,94%);
+  margin:22px auto 34px;
+  padding:20px 24px 22px;
+  overflow:hidden;
+  text-align:center;
+  border:1px solid rgba(100,141,165,.25);
+  border-radius:14px 18px 13px 17px;
+  background:linear-gradient(105deg,rgba(226,237,240,.78),rgba(255,253,248,.92) 52%,rgba(240,231,232,.62));
+  box-shadow:4px 5px 0 rgba(100,141,165,.08),0 10px 24px rgba(45,58,62,.045);
+}
+.countdown-card::before{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  top:-7px;
+  left:12%;
+  width:58px;
+  height:16px;
+  background:rgba(143,171,184,.34);
+  transform:rotate(-5deg);
+}
+.countdown-card::after{
+  content:"";
+  position:absolute;
+  z-index:-1;
+  right:22px;
+  top:18px;
+  width:54px;
+  height:54px;
+  border:1px solid rgba(100,141,165,.16);
+  border-radius:50%;
+  box-shadow:0 0 0 7px rgba(100,141,165,.035),0 0 0 14px rgba(100,141,165,.025);
+}
+.countdown-kicker{
+  color:#78909a;
+  font-family:var(--font-en);
+  font-size:9px;
+  letter-spacing:.2em;
+}
+.countdown-heading{
+  margin-top:5px;
+  color:#252927;
+  font-family:var(--font-hand);
+  font-size:29px;
+  font-weight:400;
+  line-height:1.2;
+}
+.countdown-subtitle{
+  margin-top:5px;
+  color:#737c79;
+  font-family:var(--font-literary);
+  font-size:12px;
+  letter-spacing:.04em;
+}
+.countdown-values{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:15px auto 0;
+}
+.countdown-unit{
+  display:flex;
+  align-items:baseline;
+  justify-content:center;
+  gap:5px;
+  min-width:76px;
+  padding:7px 10px 8px;
+  border:1px solid rgba(126,151,163,.17);
+  border-radius:9px;
+  background:rgba(255,255,255,.7);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9);
+}
+.countdown-number{
+  color:#5d7f91;
+  font-family:var(--font-en);
+  font-size:29px;
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+  line-height:1;
+}
+.countdown-label{
+  color:#6f7774;
+  font-family:var(--font-literary);
+  font-size:12px;
+}
+.countdown-colon{
+  color:#a0aaa8;
+  font-family:var(--font-en);
+  font-size:20px;
+}
+@media(max-width:650px){
+  .countdown-card{
+    width:94%;
+    margin:17px auto 26px;
+    padding:15px 10px 17px;
+    border-radius:12px 15px 11px 14px;
+  }
+  .countdown-card::after{
+    right:8px;
+    top:10px;
+    width:35px;
+    height:35px;
+  }
+  .countdown-kicker{font-size:7px;letter-spacing:.14em;}
+  .countdown-heading{font-size:24px;}
+  .countdown-subtitle{font-size:10px;}
+  .countdown-values{gap:4px;margin-top:12px;}
+  .countdown-unit{
+    flex:1 1 0;
+    min-width:0;
+    gap:3px;
+    padding:8px 3px;
+    border-radius:7px;
+  }
+  .countdown-number{font-size:clamp(19px,6vw,25px);}
+  .countdown-label{font-size:10px;}
+  .countdown-colon{font-size:13px;}
+}
+@media(max-width:360px){
+  .countdown-values{gap:2px;}
+  .countdown-unit{padding:7px 2px;}
+  .countdown-number{font-size:18px;}
+  .countdown-label{font-size:9px;}
+  .countdown-colon{font-size:11px;}
+}
+</style>
+
 </head>
 
 
