@@ -4637,26 +4637,29 @@ input:checked + span{
 
 
 <style>
-/* 唱片封面：六张独立正方形，保持原有纸质相框风格 */
+/* 唱片卡片：外框尺寸与左右两张照片完全一致，六张方图缩小后居中 */
 .feature-album .feature-visual{
-  height:500px !important;
+  height:300px !important;
 }
 .album-showcase.feature-photo.album-grid{
   display:grid !important;
-  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  grid-template-rows:repeat(3,minmax(0,1fr)) !important;
+  grid-template-columns:repeat(2,76px) !important;
+  grid-template-rows:repeat(3,76px) !important;
   width:86% !important;
-  height:auto !important;
-  aspect-ratio:2 / 3 !important;
-  gap:10px !important;
-  padding:10px !important;
-  align-content:stretch !important;
-  justify-content:stretch !important;
+  height:84% !important;
+  aspect-ratio:auto !important;
+  gap:8px !important;
+  padding:8px !important;
+  align-content:center !important;
+  justify-content:center !important;
   box-sizing:border-box !important;
+  background:#fffdf8 !important;
+  border:1px solid rgba(24,25,24,.12) !important;
+  box-shadow:0 5px 13px rgba(0,0,0,.055) !important;
 }
 .album-showcase.feature-photo.album-grid .album-grid-card{
-  width:100% !important;
-  height:100% !important;
+  width:76px !important;
+  height:76px !important;
   min-width:0 !important;
   min-height:0 !important;
   aspect-ratio:1 / 1 !important;
@@ -4676,40 +4679,19 @@ input:checked + span{
 }
 @media(max-width:650px){
   .feature-album .feature-visual{
-    height:clamp(450px,115vw,620px) !important;
+    height:126px !important;
   }
   .album-showcase.feature-photo.album-grid{
-    width:86% !important;
-    height:auto !important;
-    aspect-ratio:2 / 3 !important;
-    gap:8px !important;
-    padding:9px !important;
+    width:90% !important;
+    height:88% !important;
+    grid-template-columns:repeat(2,34px) !important;
+    grid-template-rows:repeat(3,34px) !important;
+    gap:3px !important;
+    padding:4px !important;
   }
-}
-/* 倒计时数字再放大，仍沿用原有红棕色 */
-.hero-countdown-label{
-  font-size:18px !important;
-}
-.hero-countdown-values{
-  font-size:17px !important;
-  gap:12px !important;
-}
-.hero-countdown-values strong{
-  font-size:34px !important;
-}
-@media(max-width:650px){
-  .hero-countdown{
-    gap:11px !important;
-  }
-  .hero-countdown-label{
-    font-size:17px !important;
-  }
-  .hero-countdown-values{
-    font-size:15px !important;
-    gap:8px !important;
-  }
-  .hero-countdown-values strong{
-    font-size:30px !important;
+  .album-showcase.feature-photo.album-grid .album-grid-card{
+    width:34px !important;
+    height:34px !important;
   }
 }
 </style>
