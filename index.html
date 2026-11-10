@@ -1068,94 +1068,79 @@ img:not(.ticket-poster):not(.qr-img){
   }
 }
 
-/* 演出须知入口：延续攻略卡片的蓝灰色调，增加柔和高光 */
+/* 首页攻略入口：替换原「演出须知」，采用用户提供的横向标题样式 */
 .notice-entry-wrap{
   display:flex;
   justify-content:center;
   width:100%;
-  margin:-18px auto 34px;
+  margin:0 auto 34px;
+  padding:34px 20px 38px;
+  border-top:1px solid rgba(24,25,24,.12);
+  border-bottom:1px solid rgba(24,25,24,.12);
+  background:rgba(255,255,255,.38);
 }
-
 .notice-entry{
-  position:relative;
-  isolation:isolate;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  color:var(--ink);
+  text-decoration:none;
+  text-align:center;
+  transition:opacity .2s ease,transform .2s ease;
+}
+.notice-entry-copy{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:12px;
+}
+.notice-entry-title{
+  font-family:var(--font-hand);
+  font-size:clamp(36px,7vw,58px);
+  font-weight:400;
+  letter-spacing:.035em;
+  line-height:1.18;
+}
+.notice-entry-desc{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:22px;
-  min-height:76px;
-  padding:10px 32px;
-  overflow:hidden;
-  border:1.5px solid rgba(103,145,166,.48);
-  border-radius:24px;
-  color:#526f7d;
-  background:linear-gradient(135deg,#e8f1f3 0%,#fbfaf7 48%,#f3eaea 100%);
-  box-shadow:
-    0 5px 0 rgba(117,151,166,.09),
-    0 8px 22px rgba(102,139,157,.16),
-    inset 0 1px 0 rgba(255,255,255,.95);
-  font-family:var(--font-literary);
-  text-decoration:none;
-  transition:transform .22s ease,box-shadow .22s ease,filter .22s ease;
-}
-.notice-entry-copy{display:flex;flex-direction:column;align-items:center;gap:5px;}
-.notice-entry-title{font-size:19px;font-weight:600;letter-spacing:.12em;line-height:1.25;}
-.notice-entry-desc{font-size:12px;font-weight:400;letter-spacing:.09em;color:#7c8585;line-height:1.4;white-space:nowrap;}
-
-.notice-entry::before{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  inset:1px 12% 48%;
+  padding:7px 18px 8px;
   border-radius:999px;
-  background:linear-gradient(180deg,rgba(255,255,255,.82),rgba(255,255,255,0));
-  pointer-events:none;
+  color:#737a76;
+  background:rgba(255,255,255,.68);
+  font-family:var(--font-literary);
+  font-size:clamp(13px,2.1vw,18px);
+  letter-spacing:.04em;
+  line-height:1.4;
+  white-space:nowrap;
 }
-
-.notice-entry::after{
-  content:"";
-  position:absolute;
-  z-index:-1;
-  top:-45%;
-  left:-38%;
-  width:34%;
-  height:190%;
-  transform:rotate(24deg);
-  background:linear-gradient(90deg,transparent,rgba(255,255,255,.62),transparent);
-  animation:noticeSheen 4.8s ease-in-out infinite;
-  pointer-events:none;
-}
-
 .notice-entry:hover{
-  transform:translateY(-2px);
-  filter:saturate(1.06);
-  box-shadow:0 7px 0 rgba(117,151,166,.08),0 12px 26px rgba(102,139,157,.22),inset 0 1px 0 rgba(255,255,255,.98);
+  opacity:.78;
+  transform:translateY(-1px);
 }
-
-.notice-entry-arrow{
-  font-family:var(--font-en);
-  font-size:20px;
-  line-height:1;
-  font-weight:400;
-}
-
-@keyframes noticeSheen{
-  0%,55%{left:-38%;opacity:0;}
-  68%{opacity:.85;}
-  100%{left:112%;opacity:0;}
-}
-
 @media(max-width:650px){
-  .notice-entry-wrap{margin:-12px auto 26px;}
-  .notice-entry{min-height:68px;padding:9px 22px;gap:16px;border-radius:20px;}
-  .notice-entry-title{font-size:17px;}
-  .notice-entry-desc{font-size:11px;letter-spacing:.04em;}
-  .notice-entry-arrow{font-size:18px;}
+  .notice-entry-wrap{
+    margin:0 auto 26px;
+    padding:26px 12px 29px;
+  }
+  .notice-entry-copy{gap:9px;}
+  .notice-entry-title{
+    font-size:clamp(31px,8.2vw,44px);
+    letter-spacing:0;
+  }
+  .notice-entry-desc{
+    padding:6px 12px 7px;
+    font-size:clamp(11px,3.1vw,14px);
+    letter-spacing:0;
+  }
+}
+@media(max-width:360px){
+  .notice-entry-title{font-size:30px;}
+  .notice-entry-desc{font-size:11px;padding-left:9px;padding-right:9px;}
 }
 
-@media(prefers-reduced-motion:reduce){
-  .notice-entry::after{animation:none;}
-}
 
 /* =====================================================
    INTERACTION
@@ -4582,35 +4567,37 @@ input:checked + span{
   aspect-ratio:auto;
 }
 /* 演出倒计时：提高数字层级，手机端也清楚可读 */
+/* 演出倒计时：加大数字与标签层级，桌面和手机端都更醒目 */
 .hero-countdown{
   display:flex;
   align-items:center;
   justify-content:center;
   flex-wrap:wrap;
-  gap:14px;
-  margin:14px auto 0;
+  gap:17px;
+  margin:18px auto 0;
   color:#4f5653;
   font-family:var(--font-literary);
-  font-size:15px;
-  line-height:1.35;
+  font-size:17px;
+  line-height:1.4;
 }
 .hero-countdown-label{
   color:#a34f49;
-  font-size:16px;
+  font-size:20px;
+  font-weight:600;
   letter-spacing:.08em;
 }
 .hero-countdown-values{
   display:flex;
   align-items:baseline;
-  gap:11px;
+  gap:14px;
   color:#626b68;
   font-family:var(--font-en);
-  font-size:14px;
+  font-size:16px;
   font-variant-numeric:tabular-nums;
 }
 .hero-countdown-values strong{
   color:#8f4844;
-  font-size:23px;
+  font-size:32px;
   font-weight:600;
 }
 .hero-countdown-values span{white-space:nowrap;}
@@ -4620,18 +4607,18 @@ input:checked + span{
     padding:8px;
   }
   .hero-countdown{
-    gap:9px;
-    margin-top:11px;
-    font-size:13px;
+    gap:10px;
+    margin-top:14px;
+    font-size:14px;
   }
-  .hero-countdown-label{font-size:14px;}
-  .hero-countdown-values{gap:7px;font-size:12px;}
-  .hero-countdown-values strong{font-size:19px;}
+  .hero-countdown-label{font-size:17px;}
+  .hero-countdown-values{gap:8px;font-size:13px;}
+  .hero-countdown-values strong{font-size:24px;}
 }
 @media(max-width:360px){
   .album-showcase.feature-photo.album-grid{gap:5px;padding:6px;}
-  .hero-countdown-values{gap:5px;font-size:11px;}
-  .hero-countdown-values strong{font-size:17px;}
+  .hero-countdown-values{gap:6px;font-size:12px;}
+  .hero-countdown-values strong{font-size:21px;}
 }
 </style>
 
@@ -4782,12 +4769,11 @@ input:checked + span{
 </section>
 
 <div class="notice-entry-wrap">
-  <a class="notice-entry" href="https://mp.weixin.qq.com/s/47OYBi37BU41c_uqEtqvqw" target="_blank" rel="noopener noreferrer" aria-label="演出须知：入境、交通、入场、观演、生活">
+  <a class="notice-entry" href="/guide.html" aria-label="吉隆坡演出 / 旅行攻略">
     <span class="notice-entry-copy">
-      <span class="notice-entry-title">演出须知</span>
-      <span class="notice-entry-desc">入境 · 交通 · 入场 · 观演 · 生活</span>
+      <span class="notice-entry-title">吉隆坡演出 / 旅行攻略</span>
+      <span class="notice-entry-desc">购票 · 座位 · 场地 · 交通 · 住宿</span>
     </span>
-    <span class="notice-entry-arrow" aria-hidden="true">↗</span>
   </a>
 </div>
 
